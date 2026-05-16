@@ -1,0 +1,82 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+:root {
+  /* Dark canvas: midnight navy, obsidian */
+  --background: #050810;
+  --foreground: #d8d4cc;
+  --surface: #0c1526;
+  --field: #060b14;
+  --muted: #7d8496;
+  --charcoal: #a8aebd;
+  --heading: #faf8f4;
+  --midnight: #020617;
+  /* Champagne gold — editorial accent */
+  --accent: #d4af37;
+  /* Brighter gold for small caps / eyebrows on midnight & charcoal-footer (WCAG-friendly) */
+  --accent-readable: #e8cf73;
+  --accent-soft: rgba(212, 175, 55, 0.16);
+  --border-subtle: rgba(212, 175, 55, 0.22);
+  --ink: #05080f;
+  /* Light sections (value props, booking, editorial) */
+  --cream: #f7f5f0;
+  --paper: #ffffff;
+  --light-ink: #0a1628;
+  --light-muted: #5a6578;
+  --charcoal-footer: #141b26;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@theme inline {
+  --color-page: var(--background);
+  --color-surface: var(--surface);
+  --color-field: var(--field);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-charcoal: var(--charcoal);
+  --color-heading: var(--heading);
+  --color-midnight: var(--midnight);
+  --color-accent: var(--accent);
+  --color-accent-readable: var(--accent-readable);
+  --color-accent-soft: var(--accent-soft);
+  --color-border-subtle: var(--border-subtle);
+  --color-ink: var(--ink);
+  --color-cream: var(--cream);
+  --color-paper: var(--paper);
+  --color-light-ink: var(--light-ink);
+  --color-light-muted: var(--light-muted);
+  --color-charcoal-footer: var(--charcoal-footer);
+
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-heading), ui-serif, Georgia, "Times New Roman",
+    serif;
+
+  --tracking-brand: 0.28em;
+  --tracking-nav: 0.14em;
+  --radius-card: 0.75rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-page text-foreground font-sans antialiased;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--accent) 35%, var(--midnight));
+    color: var(--heading);
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent;
+  }
+}

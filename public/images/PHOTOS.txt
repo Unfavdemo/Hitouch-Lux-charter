@@ -1,0 +1,18 @@
+HiTouch image drop zones (Next.js serves files under /public at the site root).
+
+FLEET — one folder per vehicle slug (matches content/fleet.js):
+  /images/fleet/<slug>/
+  Suggested files per folder (any names OK; update fleet.js imageSrc when you switch):
+    hero.jpg or hero.webp     — main card / carousel image (wide, ~3:2 or 16:9)
+    thumb.jpg                 — optional smaller crop for dense layouts
+    gallery-1.jpg, gallery-2.jpg — optional extras for a future gallery
+
+MARKETING — optional site-wide assets:
+  /images/marketing/hero/
+  /images/marketing/about/
+  /images/marketing/services/
+
+BRAND:
+  /images/brand/   — logos, marks (SVG or PNG)
+
+After you add files, set each vehicle’s imageSrc in content/fleet.js to e.g. "/images/fleet/mercedes-s-class-560/hero.webp".

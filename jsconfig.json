@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    },
+    "jsx": "react-jsx",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "ES2017",
+    "checkJs": false,
+    "skipLibCheck": true
+  },
+  "include": ["next.config.mjs", "**/*.js", "**/*.jsx"],
+  "exclude": ["node_modules", ".next"]
+}
