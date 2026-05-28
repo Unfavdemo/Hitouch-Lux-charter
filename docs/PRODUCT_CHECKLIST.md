@@ -116,4 +116,4 @@ Replace Moovs, calendar sync, native apps, multi-tenant, audit log, auto-assign 
 | Real email | `RESEND_*` |
 | Smith production webhook | `SMITH_AI_WEBHOOK_SECRET` |
 | Smith widget | `NEXT_PUBLIC_ENABLE_SMITH_AI=1` + widget id |
-| Booking follow-up cron | `CRON_SECRET` |
+| Booking follow-up cron | Disabled (`ENABLE_BOOKING_CRON=1` + `vercel.json` crons to re-enable) |
