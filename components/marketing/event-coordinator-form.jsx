@@ -53,7 +53,7 @@ export function EventCoordinatorForm() {
   return (
     <Card className="relative overflow-hidden p-6 sm:p-8 before:pointer-events-none before:absolute before:inset-x-8 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-accent/80 before:to-transparent">
       <h2 className="font-serif text-2xl text-heading">Event coordination inquiry</h2>
-      <p className="mt-2 text-sm text-muted">
+      <p className="mt-2 text-sm text-charcoal">
         Share production timelines and guest volumes—we respond with a coordinated
         vehicle plan and front-of-house options.
       </p>
@@ -137,7 +137,7 @@ export function EventCoordinatorForm() {
         </div>
         <label className="flex cursor-pointer items-start gap-3 rounded-[var(--radius-card)] border border-accent/18 bg-field/80 p-4">
           <input type="checkbox" name="checkInAssistance" className="mt-1 h-4 w-4 rounded border border-accent/35 bg-field accent-accent" />
-          <span className="text-sm text-muted">
+          <span className="text-sm text-charcoal">
             Request guest check-in staffing and branded welcome cues at primary
             arrival points.
           </span>

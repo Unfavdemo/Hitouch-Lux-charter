@@ -50,7 +50,7 @@ export function CorporateAccountForm() {
   return (
     <Card className="relative overflow-hidden p-6 sm:p-8 before:pointer-events-none before:absolute before:inset-x-8 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-accent/80 before:to-transparent">
       <h2 className="font-serif text-2xl text-heading">Corporate account intake</h2>
-      <p className="mt-2 text-sm text-muted">
+      <p className="mt-2 text-sm text-charcoal">
         Designed for recurring executive travel, consolidated reporting, and structured
         invoicing.
       </p>

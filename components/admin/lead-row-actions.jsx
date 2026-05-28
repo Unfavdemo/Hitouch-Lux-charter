@@ -31,6 +31,17 @@ export function LeadRowActions({ scope, id, status: initialStatus, reviewedAt })
         return;
       }
       setStatus(next);
+      if (next === "accepted" && data.tripBooked?.tripId) {
+        const msg = data.tripBooked.created
+          ? "Lead accepted — trip created on the trip desk."
+          : "Lead accepted — trip already exists for this request.";
+        window.alert(msg);
+      } else if (next === "accepted" && data.tripBooked?.skipped) {
+        window.alert(
+          data.tripBooked.reason ??
+            "Lead accepted, but a trip could not be auto-created. Create one manually under Trips.",
+        );
+      }
       window.location.reload();
     } catch {
       setError("Network error.");

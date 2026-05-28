@@ -1,20 +1,17 @@
 import { philosophyIntro, valuePillars } from "@/content/home";
+import { LuxuryEyebrow } from "@/components/marketing/luxury-eyebrow";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 
-const cardBase =
-  "flex flex-col justify-between rounded-[var(--radius-card)] border border-light-ink/10 bg-paper p-8 shadow-sm transition-shadow hover:shadow-md lg:p-10";
-
 export function HomeValueProps() {
   return (
-    <Section id="experience" className="scroll-mt-28 bg-cream py-20 lg:py-28">
-      <Container>
-        <p className="text-[11px] font-semibold uppercase tracking-[var(--tracking-brand)] text-accent">
-          {philosophyIntro.eyebrow}
-        </p>
-        <h2 className="mt-5 max-w-4xl font-serif text-3xl font-normal leading-[1.15] tracking-tight text-light-ink sm:text-4xl lg:text-[2.65rem]">
+    <Section id="experience" className="luxury-mesh-cream relative scroll-mt-28 overflow-hidden bg-cream py-20 lg:py-28">
+      <Container className="relative">
+        <LuxuryEyebrow className="max-w-full">{philosophyIntro.eyebrow}</LuxuryEyebrow>
+        <h2 className="luxury-display mt-6 max-w-4xl text-3xl text-light-ink sm:text-4xl lg:text-[2.75rem]">
           {philosophyIntro.headline}
         </h2>
+        <div className="mt-6 h-px w-16 bg-gradient-to-r from-accent/90 to-transparent" aria-hidden />
         <p className="mt-8 max-w-2xl text-base leading-relaxed text-light-muted lg:text-lg">
           {philosophyIntro.supporting}
         </p>
@@ -28,10 +25,7 @@ export function HomeValueProps() {
                   ? "md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3"
                   : "md:col-span-5";
             return (
-              <article
-                key={p.id}
-                className={`${cardBase} ${span}`}
-              >
+              <article key={p.id} className={`luxury-card-light group flex flex-col justify-between p-8 lg:p-10 ${span}`}>
                 <div>
                   <h3 className="font-serif text-2xl tracking-tight text-light-ink lg:text-[1.65rem]">
                     {p.title}
@@ -40,7 +34,10 @@ export function HomeValueProps() {
                     {p.body}
                   </p>
                 </div>
-                <div className="mt-10 h-px w-12 bg-accent/80" aria-hidden />
+                <div
+                  className="mt-10 h-px w-12 bg-gradient-to-r from-accent/90 to-accent/20 transition-all duration-500 group-hover:w-20"
+                  aria-hidden
+                />
               </article>
             );
           })}

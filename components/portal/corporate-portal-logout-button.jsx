@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 export function CorporatePortalLogoutButton() {
   async function logout() {
     await fetch("/api/portal/corporate/logout", { method: "POST" });
-    window.location.href = "/portal/corporate";
+    window.location.href = "/login?mode=corporate";
   }
 
   return (

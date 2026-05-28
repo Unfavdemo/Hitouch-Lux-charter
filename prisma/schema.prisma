@@ -1,0 +1,254 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum InquiryStatus {
+  CONTACT_CAPTURED
+  QUOTED
+  COMPLETED
+  ABANDONED
+}
+
+enum FollowUpStatus {
+  PENDING
+  SENT
+  FAILED
+  CANCELLED
+}
+
+enum GlobalRole {
+  ADMIN
+  CHAUFFEUR
+}
+
+enum TripStatus {
+  ASSIGNED
+  IN_ROUTE
+  ARRIVED
+  PASSENGER_ONBOARD
+  COMPLETED
+  CANCELLED
+}
+
+enum PendingSubmissionStatus {
+  PENDING
+  PROCESSED
+  DISMISSED
+}
+
+model CorporateLead {
+  id           String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt    DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  company      String
+  contactName  String    @map("contact_name")
+  email        String
+  phone        String
+  invoicing    String
+  profileNotes String?   @map("profile_notes")
+  status       String    @default("pending")
+  reviewedAt   DateTime? @map("reviewed_at") @db.Timestamptz(6)
+  portalGrants      CorporatePortalGrant[]
+  corporateCompany  CorporateCompany?
+
+  @@map("corporate_leads")
+}
+
+model CorporatePortalGrant {
+  id              String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  corporateLeadId String    @map("corporate_lead_id") @db.Uuid
+  corporateLead   CorporateLead @relation(fields: [corporateLeadId], references: [id], onDelete: Cascade)
+  email           String
+  createdAt       DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  revokedAt       DateTime? @map("revoked_at") @db.Timestamptz(6)
+  magicTokens     CorporatePortalMagicToken[]
+
+  @@map("corporate_portal_grants")
+}
+
+model CorporatePortalMagicToken {
+  id         String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  grantId    String    @map("grant_id") @db.Uuid
+  grant      CorporatePortalGrant @relation(fields: [grantId], references: [id], onDelete: Cascade)
+  tokenHash  String    @map("token_hash")
+  expiresAt  DateTime  @map("expires_at") @db.Timestamptz(6)
+  consumedAt DateTime? @map("consumed_at") @db.Timestamptz(6)
+
+  @@map("corporate_portal_magic_tokens")
+}
+
+model EventLead {
+  id                 String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt          DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  eventName          String    @map("event_name")
+  eventDate          DateTime  @map("event_date") @db.Date
+  guestCount         Int       @map("guest_count")
+  venues             String?
+  checkInAssistance  Boolean   @default(false) @map("check_in_assistance")
+  logisticsNotes     String?   @map("logistics_notes")
+  contactName        String    @map("contact_name")
+  email              String
+  phone              String
+  status             String    @default("pending")
+  reviewedAt         DateTime? @map("reviewed_at") @db.Timestamptz(6)
+
+  @@map("event_leads")
+}
+
+model ExperienceLead {
+  id         String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt  DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  status     String    @default("pending")
+  reviewedAt DateTime? @map("reviewed_at") @db.Timestamptz(6)
+  payload    Json
+
+  @@map("experience_leads")
+}
+
+model BookingInquiry {
+  id          String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt   DateTime      @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime      @updatedAt @map("updated_at") @db.Timestamptz(6)
+  status      InquiryStatus @default(CONTACT_CAPTURED)
+  contactName String        @map("contact_name")
+  email       String
+  phone       String
+  lastStep    String        @default("contact") @map("last_step")
+  tripPayload Json?         @map("trip_payload")
+  quoteSummary Json?        @map("quote_summary")
+  quotedAt    DateTime?     @map("quoted_at") @db.Timestamptz(6)
+  completedAt DateTime?     @map("completed_at") @db.Timestamptz(6)
+  abandonedAt DateTime?     @map("abandoned_at") @db.Timestamptz(6)
+  followUps   InquiryFollowUp[]
+
+  @@index([email])
+  @@index([status, updatedAt])
+  @@map("booking_inquiries")
+}
+
+model ConciergeCallLog {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  source    String   @default("smith_ai")
+  inquiryId String?  @map("inquiry_id") @db.Uuid
+  eventType String?  @map("event_type")
+  payload   Json
+
+  @@index([inquiryId])
+  @@index([createdAt])
+  @@map("concierge_call_logs")
+}
+
+model InquiryFollowUp {
+  id               String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  bookingInquiryId String         @map("booking_inquiry_id") @db.Uuid
+  bookingInquiry   BookingInquiry @relation(fields: [bookingInquiryId], references: [id], onDelete: Cascade)
+  scheduledFor     DateTime       @map("scheduled_for") @db.Timestamptz(6)
+  sentAt           DateTime?      @map("sent_at") @db.Timestamptz(6)
+  status           FollowUpStatus @default(PENDING)
+  templateKey      String         @default("touchback_v1") @map("template_key")
+  errorMessage     String?        @map("error_message")
+
+  @@index([status, scheduledFor])
+  @@map("inquiry_follow_ups")
+}
+
+model User {
+  id           String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt    DateTime   @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt    DateTime   @updatedAt @map("updated_at") @db.Timestamptz(6)
+  email        String     @unique
+  name         String
+  passwordHash String     @map("password_hash")
+  phone        String?
+  globalRole   GlobalRole @map("global_role")
+  chauffeurTrips       Trip[]              @relation("ChauffeurTrips")
+  processedSubmissions PendingSubmission[] @relation("ProcessedSubmissions")
+
+  @@index([globalRole, email])
+  @@map("users")
+}
+
+model CorporateCompany {
+  id              String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt       DateTime       @default(now()) @map("created_at") @db.Timestamptz(6)
+  name            String
+  contactEmail    String?        @map("contact_email")
+  phone           String?
+  corporateLeadId String?        @unique @map("corporate_lead_id") @db.Uuid
+  corporateLead   CorporateLead? @relation(fields: [corporateLeadId], references: [id], onDelete: SetNull)
+  trips           Trip[]
+
+  @@map("corporate_companies")
+}
+
+model Trip {
+  id                  String            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt           DateTime          @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt           DateTime          @updatedAt @map("updated_at") @db.Timestamptz(6)
+  status              TripStatus        @default(ASSIGNED)
+  scheduledAt         DateTime          @map("scheduled_at") @db.Timestamptz(6)
+  pickupLabel         String            @map("pickup_label")
+  dropoffLabel        String            @map("dropoff_label")
+  notes               String?
+  chauffeurId         String?           @map("chauffeur_id") @db.Uuid
+  chauffeur           User?             @relation("ChauffeurTrips", fields: [chauffeurId], references: [id], onDelete: SetNull)
+  corporateCompanyId  String?           @map("corporate_company_id") @db.Uuid
+  corporateCompany    CorporateCompany? @relation(fields: [corporateCompanyId], references: [id], onDelete: SetNull)
+  sourceScope         String?           @map("source_scope")
+  sourceLeadId        String?           @map("source_lead_id") @db.Uuid
+  passengerTrips      PassengerTrip[]
+  liveLocation        TripLocation?
+
+  @@unique([sourceScope, sourceLeadId])
+  @@index([chauffeurId, status])
+  @@index([status, scheduledAt])
+  @@map("trips")
+}
+
+model TripLocation {
+  id             String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tripId         String   @unique @map("trip_id") @db.Uuid
+  trip           Trip     @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  latitude       Float
+  longitude      Float
+  accuracyMeters Float?   @map("accuracy_meters")
+  heading        Float?
+  speedMps       Float?   @map("speed_mps")
+  updatedAt      DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  @@index([updatedAt])
+  @@map("trip_locations")
+}
+
+model PassengerTrip {
+  id        String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  tripId    String  @map("trip_id") @db.Uuid
+  trip      Trip    @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  name      String
+  phone     String
+  email     String?
+  isPrimary Boolean @default(true) @map("is_primary")
+
+  @@index([tripId])
+  @@map("passenger_trips")
+}
+
+model PendingSubmission {
+  id                String                  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt         DateTime                @default(now()) @map("created_at") @db.Timestamptz(6)
+  source            String                  @default("smith_intake")
+  status            PendingSubmissionStatus @default(PENDING)
+  payload           Json
+  processedAt       DateTime?               @map("processed_at") @db.Timestamptz(6)
+  processedByUserId String?                 @map("processed_by_user_id") @db.Uuid
+  processedBy       User?                   @relation("ProcessedSubmissions", fields: [processedByUserId], references: [id], onDelete: SetNull)
+
+  @@index([status, createdAt])
+  @@map("pending_submissions")
+}

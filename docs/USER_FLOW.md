@@ -12,8 +12,9 @@ This document is the **story of the product** in the repo: who arrives, what the
 | **Company travel buyer** | Open a corporate relationship | Submit **`/corporate`** intake → optionally use **`/portal/corporate`** after staff enables them. |
 | **Event planner** | Coordinate transport for an occasion | Submit **`/events`** intake. |
 | **Experience-led guest** | Describe a bespoke itinerary | Submit **`/experience-request`** (long form) or fall back to Moovs / contact. |
-| **Staff (HiTouch)** | Review and triage inbound interest | Sign in at **`/admin/login`**, work **Corporate / Events / Experience** queues, set lead status, **grant or revoke** corporate portal access. |
-| **Onboarded corporate client** | Self-serve shortcuts (Moovs, fleet, contact) | **`/portal/corporate`**: request magic link to the **email that was granted** on their corporate lead. |
+| **Staff (HiTouch)** | Review leads and run trip operations | Sign in at **`/login`** (Staff tab): env admin and/or **User ADMIN** email. Desk: leads, **`/admin/intake`**, **`/admin/trips`**, **`/admin/chauffeurs`**. |
+| **Chauffeur** | Execute assigned runs on the road | Sign in at **`/login`** (Driver tab) → **`/driver/dashboard`**: advance trip status (SMS on en route / arrived when Twilio configured). |
+| **Onboarded corporate client** | Self-serve shortcuts (Moovs, fleet, contact) | **`/login`** (Corporate tab) → magic link → **`/portal/corporate`** dashboard. |
 
 There is **no** authenticated end-user “booking history” app in this repo beyond the corporate portal shortcuts. **Moovs** owns the live booking UX.
 
@@ -237,11 +238,30 @@ flowchart TD
 
 ---
 
-## 12. Updating this map later
+## 12. Operations platform (trips, chauffeurs, Smith intake)
+
+Requires **`DATABASE_URL`** and **`USER_SESSION_SECRET`** (or `ADMIN_SESSION_SECRET` fallback).
+
+| Route / API | Purpose |
+|-------------|---------|
+| **`/login`** | Staff (env + User ADMIN), **Driver** (User CHAUFFEUR), Corporate (magic link). |
+| **`/driver/dashboard`** | Chauffeur active trips; single-action status buttons. |
+| **`/admin/intake`** | Pending **`PendingSubmission`** rows from Smith.ai. |
+| **`/admin/trips`** | Create trips, assign chauffeurs. |
+| **`/admin/chauffeurs`** | Create chauffeur accounts. |
+| **`POST /api/webhooks/smith-intake`** | Stage call payloads (no Trip/User mutation). |
+| **`lib/notifications.ts`** | `triggerTripStatusUpdate` — Twilio SMS on **IN_ROUTE** / **ARRIVED**. |
+
+Demo seed: `npm run seed:operations-demo`.
+
+---
+
+## 13. Updating this map later
 
 - **Change Moovs URL or phone:** `content/site.js`.
 - **Add/remove nav item:** `content/site.js` → `nav`; if it’s a booking link, also update `site-nav.jsx` if it’s not driven by `nav`.
 - **New marketing page:** add `app/(marketing)/…/page.jsx` and link it from `nav`, footer, or home `content/home.js` as needed.
 - **Admin / B2B / portal:** `.env.example`; `lib/lead-storage.js`; `lib/corporate-portal-storage.js`; `lib/corporate-portal-auth.js`; `lib/admin-auth.js`.
+- **Operations:** `prisma/schema.prisma`; `lib/trip-service.ts`; `lib/user-auth.ts`; `scripts/seed-operations-demo.mjs`.
 
 If you want this exported as **PDF** or a **diagram file** (e.g. for Notion), say what format you prefer.

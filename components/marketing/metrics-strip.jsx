@@ -48,7 +48,7 @@ function MetricCard({ metric, light = false }) {
     >
       <p
         className={`text-[11px] font-semibold uppercase tracking-[var(--tracking-brand)] ${
-          light ? "text-light-muted" : "text-muted"
+          light ? "text-light-muted" : "text-charcoal"
         }`}
       >
         {metric.label}
@@ -64,7 +64,7 @@ function MetricCard({ metric, light = false }) {
       </p>
       <p
         className={`mt-3 text-sm leading-relaxed ${
-          light ? "text-light-muted" : "text-muted"
+          light ? "text-light-muted" : "text-charcoal"
         }`}
       >
         {metric.description}

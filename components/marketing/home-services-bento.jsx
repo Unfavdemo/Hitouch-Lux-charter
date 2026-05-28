@@ -20,14 +20,14 @@ export function HomeServicesBento() {
       <Container>
         <div className="max-w-2xl">
           <p className="text-[11px] font-semibold uppercase tracking-[var(--tracking-brand)] text-accent">
-            Signature frames
+            Occasions we choreograph
           </p>
           <h2 className="mt-4 font-serif text-3xl font-normal tracking-tight text-light-ink sm:text-4xl">
-            Every itinerary, architected.
+            A frame for every chapter of your evening.
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-light-muted sm:text-base">
-            From boardroom tempo to celebration choreography—each engagement is staffed,
-            routed, and reviewed by a single concierge thread.
+            Celebrations, executive programs, tasting days, and arrival rituals—each led by one
+            concierge thread from first brief to final door.
           </p>
         </div>
 
@@ -45,16 +45,16 @@ export function HomeServicesBento() {
                 sizes="(min-width: 1024px) 33vw, 100vw"
                 className="object-cover transition duration-700 ease-out group-hover:scale-[1.03]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/55 to-midnight/10" />
-              <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-8">
-                <p className="text-[10px] font-semibold uppercase tracking-[var(--tracking-brand)] text-accent-readable">
+              <div className="absolute inset-0 image-caption-scrim" />
+              <div className="relative flex flex-col justify-end p-6 sm:p-8">
+                <p className="text-[10px] font-semibold uppercase tracking-[var(--tracking-nav)] text-accent-readable">
                   {tile.title}
                 </p>
-                <p className="mt-2 max-w-md font-serif text-xl text-heading sm:text-2xl">
+                <p className="mt-2 max-w-md font-serif text-xl text-heading text-hero-shadow sm:text-2xl">
                   {tile.blurb}
                 </p>
-                <span className="mt-4 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[var(--tracking-nav)] text-heading/90">
-                  Explore
+                <span className="mt-4 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[var(--tracking-nav)] text-heading">
+                  View occasion
                   <span aria-hidden className="transition-transform group-hover:translate-x-1">
                     →
                   </span>

@@ -41,7 +41,9 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-See [.env.example](.env.example) and [docs/USER_FLOW.md](docs/USER_FLOW.md) for flows and env vars. Optional demo portal rows: `npm run seed:corporate-demo`.
+See [.env.example](.env.example), [docs/USER_FLOW.md](docs/USER_FLOW.md), and [docs/PRODUCT_CHECKLIST.md](docs/PRODUCT_CHECKLIST.md) for flows, env vars, and what is / isn’t built yet.
+
+**Demo data:** `npm run seed:all` (full sample set) · `npm run seed:corporate-demo` (portal testers only).
 
 ---
 

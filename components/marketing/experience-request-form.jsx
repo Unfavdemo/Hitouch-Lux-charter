@@ -200,7 +200,7 @@ export function ExperienceRequestForm() {
           <legend className={luxuryLegend}>
             Occasion for booking <Req />
           </legend>
-          <p className="mt-2 text-xs text-muted">Select all that apply.</p>
+          <p className="mt-2 text-xs text-charcoal">Select all that apply.</p>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             {occasionOptions.map((o) => (
               <label key={o.value} className={`${luxuryChoiceLabel} items-center gap-2`}>
@@ -237,7 +237,7 @@ export function ExperienceRequestForm() {
             Which service are you interested in? <Req />
           </legend>
           {showSixersNote ? (
-            <p className="mt-2 text-xs leading-relaxed text-muted">
+            <p className="mt-2 text-xs leading-relaxed text-charcoal">
               If you are interested in a 76ers Game Experience, view the home game schedule
               before submitting and include the game in your trip details:{" "}
               <a
@@ -348,7 +348,7 @@ export function ExperienceRequestForm() {
           <legend className={luxuryLegend}>
             Would you like the driver to wait between pick-up and drop-off? <Req />
           </legend>
-          <p className="mt-2 text-xs leading-relaxed text-muted">
+          <p className="mt-2 text-xs leading-relaxed text-charcoal">
             If the time between destinations is less than 3 hours, the driver will automatically
             wait and this time will be included in your estimate. Destinations outside of the
             Greater Philadelphia region may incur additional fees.
@@ -399,7 +399,7 @@ export function ExperienceRequestForm() {
           <legend className={luxuryLegend}>
             Special accommodation requests <Req />
           </legend>
-          <p className="mt-2 text-xs text-muted">
+          <p className="mt-2 text-xs text-charcoal">
             Select any that apply, or choose “No additional accommodations.”
           </p>
           <div className="mt-4 space-y-3">

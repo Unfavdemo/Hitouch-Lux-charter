@@ -1,60 +1,61 @@
-import Link from "next/link";
 import { FaqList } from "@/components/marketing/faq-list";
-import { Badge } from "@/components/ui/badge";
+import { MarketingCtaBand } from "@/components/marketing/marketing-cta-band";
+import { MarketingPageHero } from "@/components/marketing/marketing-page-hero";
+import { MarketingPageSection } from "@/components/marketing/marketing-page-section";
+import { JsonLdScript } from "@/components/seo/json-ld-script";
 import { Button } from "@/components/ui/button";
-import { Container } from "@/components/ui/container";
-import { Section } from "@/components/ui/section";
+import { aeoSnippets } from "@/content/aeo-snippets";
 import { faqItems } from "@/content/faq";
-import { site } from "@/content/site";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import { faqPageJsonLd } from "@/lib/seo/json-ld";
 
-/** @type {import('next').Metadata} */
-export const metadata = {
+export const metadata = buildPageMetadata({
   title: "FAQ",
   description:
-    "Answers about booking windows, airports, executive protection coordination, pricing, cancellations, and special requests for HiTouch Luxury Charter.",
-};
+    "Answers about curated experiences, booking windows, airports, executive protection, pricing, and special requests for HiTouch Luxury Charter.",
+  path: "/faq",
+});
 
 export default function FaqPage() {
+  const allFaq = [...aeoSnippets, ...faqItems];
+
   return (
-    <div className="pt-24">
-      <Section className="bg-page pb-8 pt-10">
-        <Container>
-          <Badge>Questions</Badge>
-          <h1 className="mt-4 max-w-3xl font-serif text-4xl text-heading sm:text-5xl">
-            Straight answers—before you step into the cabin.
-          </h1>
-          <p className="mt-6 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
-            If you do not see your scenario here, call the private line or route your note
-            through the contact page. For itinerary builds, use secure online booking so we have
-            the details to respond quickly.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button
-              href={site.moovsBookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="primary"
-            >
-              Reserve online
+    <>
+      <JsonLdScript data={faqPageJsonLd(allFaq)} />
+      <MarketingPageHero
+        eyebrow="Questions"
+        title="Straight answers—before you step into the cabin."
+        description="If you do not see your scenario here, call the private line or submit an experience request so we have the details to respond quickly."
+        actions={
+          <>
+            <Button href="/experience-request" variant="onLight">
+              Experience request
             </Button>
-            <Button href="/contact" variant="secondary">
+            <Button href="/contact" variant="onLightSecondary">
               Contact concierge
             </Button>
-          </div>
-        </Container>
-      </Section>
+          </>
+        }
+      />
 
-      <Section className="bg-surface pb-24">
-        <Container>
-          <div className="mx-auto max-w-3xl">
-            <FaqList items={faqItems} />
-          </div>
-          <p className="mx-auto mt-10 max-w-2xl text-center text-xs text-muted">
-            Policies referenced here are summarized for planning purposes. Executed services
-            are governed by written confirmations and executed agreements.
-          </p>
-        </Container>
-      </Section>
-    </div>
+      <MarketingPageSection tone="paper" className="!pb-24">
+        <div className="mx-auto max-w-3xl">
+          <FaqList items={faqItems} light />
+        </div>
+        <p className="mx-auto mt-10 max-w-2xl text-center text-xs text-light-muted">
+          Policies referenced here are summarized for planning purposes. Executed services are
+          governed by written confirmations and executed agreements.
+        </p>
+      </MarketingPageSection>
+
+      <MarketingCtaBand
+        title="Planning a curated evening?"
+        description="Browse signature packages or describe the mood—we architect the movement."
+        primaryHref="/experiences"
+        primaryLabel="View experiences"
+        secondaryHref="/book"
+        secondaryLabel="Get a trip estimate"
+      />
+    </>
   );
 }

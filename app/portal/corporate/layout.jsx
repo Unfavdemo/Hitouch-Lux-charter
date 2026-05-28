@@ -48,10 +48,10 @@ export default async function CorporatePortalLayout({ children }) {
             </div>
           ) : (
             <Link
-              href="/"
+              href="/login?mode=corporate"
               className="text-xs font-semibold uppercase tracking-wider text-muted hover:text-heading"
             >
-              ← Marketing site
+              Sign in
             </Link>
           )}
         </div>

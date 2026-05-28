@@ -1,3 +1,5 @@
+import { media } from "@/content/media";
+
 /**
  * Fleet catalog — aligned with Moovs vehicle classes (pricing: request quote).
  * Replace imageSrc with licensed HiTouch photography when available.
@@ -15,8 +17,7 @@ export const fleet = [
     partition: false,
     fromPriceUsd: null,
     requestQuote: true,
-    imageSrc:
-      "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1200&q=80",
+    imageSrc: media.luxurySedanInterior,
     imageAlt: "Luxury sedan cabin with leather seating and ambient lighting",
     width: 1200,
     height: 800,
@@ -41,8 +42,7 @@ export const fleet = [
     partition: false,
     fromPriceUsd: null,
     requestQuote: true,
-    imageSrc:
-      "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1200&q=80",
+    imageSrc: media.sedanAlt,
     imageAlt: "Black premium SUV in an urban setting",
     width: 1200,
     height: 800,
@@ -66,8 +66,7 @@ export const fleet = [
     partition: false,
     fromPriceUsd: null,
     requestQuote: true,
-    imageSrc:
-      "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80",
+    imageSrc: media.suv,
     imageAlt: "Large black SUV at dusk",
     width: 1200,
     height: 800,
@@ -91,8 +90,7 @@ export const fleet = [
     partition: false,
     fromPriceUsd: null,
     requestQuote: true,
-    imageSrc:
-      "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80",
+    imageSrc: media.sprinterAlt,
     imageAlt: "White passenger van on a city street",
     width: 1200,
     height: 800,
@@ -116,8 +114,7 @@ export const fleet = [
     partition: true,
     fromPriceUsd: null,
     requestQuote: true,
-    imageSrc:
-      "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1200&q=80",
+    imageSrc: media.sprinterInterior,
     imageAlt: "Premium passenger van cabin with leather seating",
     width: 1200,
     height: 800,
@@ -141,8 +138,7 @@ export const fleet = [
     partition: false,
     fromPriceUsd: null,
     requestQuote: true,
-    imageSrc:
-      "https://images.unsplash.com/photo-1563720360172-67b8f3dce741?auto=format&fit=crop&w=1200&q=80",
+    imageSrc: media.limousine,
     imageAlt: "Premium black SUV front three-quarter view",
     width: 1200,
     height: 800,
@@ -166,8 +162,7 @@ export const fleet = [
     partition: false,
     fromPriceUsd: null,
     requestQuote: true,
-    imageSrc:
-      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1200&q=80",
+    imageSrc: media.coach,
     imageAlt: "Large passenger van on the road",
     width: 1200,
     height: 800,

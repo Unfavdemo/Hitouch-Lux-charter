@@ -42,37 +42,55 @@ const base = (process.env.NEXT_PUBLIC_SITE_URL || `http://localhost:${port}`).re
 const u = process.env.ADMIN_USERNAME || "admin";
 const hasAdminPw = Boolean(process.env.ADMIN_PASSWORD?.trim());
 const hasAdminSecret = Boolean(process.env.ADMIN_SESSION_SECRET?.trim());
+const hasUserSecret = Boolean(
+  process.env.USER_SESSION_SECRET?.trim() || process.env.ADMIN_SESSION_SECRET?.trim(),
+);
 const hasPortalSecret = Boolean(process.env.CORPORATE_PORTAL_SESSION_SECRET?.trim());
 const hasDb = Boolean(process.env.DATABASE_URL?.trim());
 
 console.log("");
-console.log("HiTouch — local auth testing");
+console.log("HiTouch — local demo & auth");
 console.log("────────────────────────────");
 console.log("");
-console.log("1) Staff admin (username + password)");
+console.log("Seed full demo:  npm run seed:all");
+console.log("Demo password:   HitouchDemo2026!  (all seeded User accounts)");
+console.log("");
+console.log("Staff / driver (unified login)");
+console.log(`   ${base}/login`);
+console.log("   Staff:    ops-admin@hitouch-luxury.test  |  dispatch@hitouch-luxury.test");
+console.log("   Drivers:  driver-alpha@hitouch-luxury.test  (+ beta, gamma, delta)");
+console.log("");
+console.log("Legacy staff admin");
 console.log(`   ${base}/admin/login`);
-console.log(`   Username: ${u}  (from ADMIN_USERNAME or default admin)`);
+console.log(`   Username: ${u}`);
 console.log(
-  `   Password: ${hasAdminPw ? "(set in ADMIN_PASSWORD — type it on the form)" : "MISSING — set ADMIN_PASSWORD in .env"}`,
+  `   Password: ${hasAdminPw ? "(ADMIN_PASSWORD in .env)" : "MISSING — set ADMIN_PASSWORD"}`,
 );
 console.log(
-  `   Session:  ${hasAdminSecret ? "ADMIN_SESSION_SECRET is set" : "MISSING — set ADMIN_SESSION_SECRET in .env"}`,
-);
-console.log("");
-console.log("2) Corporate portal (magic link)");
-console.log(`   Seed demo leads + grants:  npm run seed:corporate-demo`);
-console.log(`   Storage: ${hasDb ? "Postgres (DATABASE_URL)" : "data/b2b-leads.json + data/corporate-portal.json"}`);
-console.log(
-  `   Portal session secret: ${hasPortalSecret ? "CORPORATE_PORTAL_SESSION_SECRET is set" : "MISSING — required for verify"}`,
+  `   User session: ${hasUserSecret ? "OK" : "MISSING — USER_SESSION_SECRET or ADMIN_SESSION_SECRET"}`,
 );
 console.log("");
-console.log("   Demo emails (after seed):");
+console.log("Corporate portal");
+console.log(`   ${base}/login?mode=corporate`);
+console.log(`   DB: ${hasDb ? "Postgres" : "file mode — limited ops"}`);
+console.log(
+  `   Portal secret: ${hasPortalSecret ? "OK" : "MISSING — CORPORATE_PORTAL_SESSION_SECRET"}`,
+);
+console.log("   Portal emails (after seed:corporate-demo or seed:all):");
 for (const em of DEMO_PORTAL_TEST_EMAILS) {
   console.log(`     • ${em}`);
 }
 console.log("");
-console.log("3) One-click portal (dev only)");
-console.log("   Add to .env:  DEV_AUTH_HELPER=1");
-console.log(`   Then open:     ${base}/dev/auth-test`);
-console.log("   (Or hit /api/dev/portal-magic-link?email=… — same guard.)");
+console.log("Ops pages (need DATABASE_URL)");
+console.log(`   ${base}/admin`);
+console.log(`   ${base}/admin/dispatch   live fleet map`);
+console.log(`   ${base}/admin/trips`);
+console.log(`   ${base}/admin/intake`);
+console.log(`   ${base}/admin/booking-inquiries`);
+console.log(`   ${base}/driver/dashboard`);
+console.log("");
+console.log("Dev helpers");
+console.log("   DEV_AUTH_HELPER=1  →  /dev/auth-test");
+console.log("   Smith demo POST:    x-hitouch-demo-webhook: 1  (no SMITH_AI_WEBHOOK_SECRET)");
+console.log("   Mock SMS/email:     watch the terminal running npm run dev");
 console.log("");

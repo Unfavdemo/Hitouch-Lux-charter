@@ -2,6 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
+import { safeAdminRedirect } from "@/lib/login-redirect";
 
 export function AdminLoginForm() {
   const searchParams = useSearchParams();
@@ -25,11 +26,7 @@ export function AdminLoginForm() {
         setMessage(data.message ?? "Sign-in failed.");
         return;
       }
-      const raw = searchParams.get("redirect");
-      const safe =
-        typeof raw === "string" && raw.startsWith("/admin") && !raw.startsWith("/admin/login")
-          ? raw
-          : "/admin";
+      const safe = safeAdminRedirect(searchParams.get("redirect"));
       // Full navigation avoids "Router action dispatched before initialization" after cookie auth.
       window.location.assign(safe);
     } catch {

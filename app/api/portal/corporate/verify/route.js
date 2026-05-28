@@ -8,24 +8,26 @@ import {
 } from "@/lib/corporate-portal-auth";
 
 export async function GET(request) {
+  const login = new URL("/login", request.url);
+  login.searchParams.set("mode", "corporate");
   const dash = new URL("/portal/corporate", request.url);
 
   if (!corporatePortalAuthConfigured()) {
-    dash.searchParams.set("corp_err", "portal_config");
-    return NextResponse.redirect(dash);
+    login.searchParams.set("corp_err", "portal_config");
+    return NextResponse.redirect(login);
   }
 
   const url = new URL(request.url);
   const token = url.searchParams.get("token");
   if (!token?.trim()) {
-    dash.searchParams.set("corp_err", "missing_token");
-    return NextResponse.redirect(dash);
+    login.searchParams.set("corp_err", "missing_token");
+    return NextResponse.redirect(login);
   }
 
   const grantId = await consumeMagicLinkToken(token.trim());
   if (!grantId) {
-    dash.searchParams.set("corp_err", "invalid_token");
-    return NextResponse.redirect(dash);
+    login.searchParams.set("corp_err", "invalid_token");
+    return NextResponse.redirect(login);
   }
 
   const sess = createCorporatePortalSessionToken(grantId);

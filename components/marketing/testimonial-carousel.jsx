@@ -46,7 +46,7 @@ export function TestimonialCarousel({ items, light = false }) {
         >
           “{item.quote}”
         </motion.blockquote>
-        <footer className={`mt-8 text-sm ${light ? "text-light-muted" : "text-muted"}`}>
+        <footer className={`mt-8 text-sm ${light ? "text-light-muted" : "text-charcoal"}`}>
           <span className={`font-medium ${light ? "text-light-ink" : "text-charcoal"}`}>
             {item.attribution}
           </span>

@@ -2,8 +2,6 @@
 
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-
 const ERR_COPY = {
   portal_config:
     "The portal is not fully configured on this server. Ask your HiTouch contact or try again later.",
@@ -47,7 +45,10 @@ export function CorporatePortalLoginForm({ initialErrorKey }) {
       }
       setClearedAfterSend(true);
       if (typeof window !== "undefined") {
-        window.history.replaceState(null, "", "/portal/corporate");
+        const params = new URLSearchParams(searchParams.toString());
+        params.set("mode", "corporate");
+        params.delete("corp_err");
+        window.history.replaceState(null, "", `/login?${params.toString()}`);
       }
     } catch {
       setMessage("Network error.");
@@ -57,11 +58,11 @@ export function CorporatePortalLoginForm({ initialErrorKey }) {
   }
 
   return (
-    <form className="mt-8 space-y-5" onSubmit={(e) => void onSubmit(e)}>
+    <form className="space-y-5" onSubmit={(e) => void onSubmit(e)}>
       <div>
         <label
           htmlFor="corp-portal-email"
-          className="block text-xs font-semibold uppercase tracking-wider text-muted"
+          className="block text-xs font-semibold uppercase tracking-wider text-zinc-400"
         >
           Work email
         </label>
@@ -72,47 +73,55 @@ export function CorporatePortalLoginForm({ initialErrorKey }) {
           autoComplete="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="mt-2 w-full rounded-md border border-accent/25 bg-paper px-3 py-2.5 text-sm text-light-ink outline-none ring-accent/25 focus:border-accent focus:ring-2"
+          className="mt-2 w-full rounded-md border border-white/15 bg-black/40 px-3 py-2.5 text-sm text-white outline-none ring-amber-200/30 focus:border-amber-200/50 focus:ring-2"
           required
         />
-        <p className="mt-2 text-xs leading-relaxed text-muted">
-          Use the email your HiTouch onboarding team enabled for portal access. We will email you a
-          one-time sign-in link.
-        </p>
       </div>
       {bannerErr ? (
-        <p className="rounded-md border border-amber-600/35 bg-amber-50/80 px-3 py-2 text-sm text-amber-950" role="alert">
+        <p
+          className="rounded-md border border-amber-500/35 bg-amber-950/40 px-3 py-2 text-sm text-amber-100"
+          role="alert"
+        >
           {bannerErr}
         </p>
       ) : null}
       {message ? (
-        <p className="rounded-md border border-accent/25 bg-accent-soft/30 px-3 py-2 text-sm text-heading" role="status">
+        <p
+          className="rounded-md border border-white/15 bg-white/5 px-3 py-2 text-sm text-zinc-200"
+          role="status"
+        >
           {message}
         </p>
       ) : null}
       {devMagicLinkUrl ? (
         <div
-          className="rounded-md border border-dashed border-accent/40 bg-accent-soft/20 px-3 py-3 text-sm"
+          className="rounded-md border border-dashed border-amber-200/35 bg-amber-200/5 px-3 py-3 text-sm"
           role="region"
           aria-label="Development sign-in link"
         >
-          <p className="font-semibold text-heading">Local testing (no email sent)</p>
-          <p className="mt-1 text-xs leading-relaxed text-muted">
+          <p className="font-semibold text-amber-100">Local testing (no email sent)</p>
+          <p className="mt-1 text-xs leading-relaxed text-zinc-400">
             This link appears only in development or when{" "}
-            <code className="rounded bg-paper/80 px-1 py-0.5 text-[11px]">CORPORATE_PORTAL_DEV_RETURN_LINK=true</code>.
-            It expires in 30 minutes and works once.
+            <code className="rounded bg-black/50 px-1 py-0.5 text-[11px]">
+              CORPORATE_PORTAL_DEV_RETURN_LINK=true
+            </code>
+            . It expires in 30 minutes and works once.
           </p>
           <a
             href={devMagicLinkUrl}
-            className="mt-3 block break-all font-medium text-accent-readable underline-offset-2 hover:underline"
+            className="mt-3 block break-all font-medium text-amber-200 underline-offset-2 hover:underline"
           >
             Open magic sign-in link
           </a>
         </div>
       ) : null}
-      <Button type="submit" variant="onLight" disabled={pending} className="w-full">
+      <button
+        type="submit"
+        disabled={pending}
+        className="w-full rounded-md bg-amber-200/90 px-4 py-2.5 text-sm font-semibold uppercase tracking-wider text-black transition hover:bg-amber-200 disabled:opacity-60"
+      >
         {pending ? "Sending link…" : "Email me a sign-in link"}
-      </Button>
+      </button>
     </form>
   );
 }

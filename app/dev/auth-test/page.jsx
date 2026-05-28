@@ -44,8 +44,8 @@ export default function DevAuthTestPage() {
             </li>
             <li>
               Open{" "}
-              <Link className="text-amber-200 underline-offset-2 hover:underline" href="/admin/login">
-                /admin/login
+              <Link className="text-amber-200 underline-offset-2 hover:underline" href="/login?mode=staff">
+                /login
               </Link>{" "}
               and sign in with those credentials.
             </li>

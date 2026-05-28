@@ -2,8 +2,8 @@
 
 export function AdminLogoutForm() {
   async function logout() {
-    await fetch("/api/admin/logout", { method: "POST" });
-    window.location.href = "/admin/login";
+    await fetch("/api/auth/logout", { method: "POST" });
+    window.location.href = "/login?mode=staff";
   }
 
   return (
