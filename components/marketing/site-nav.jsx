@@ -63,8 +63,8 @@ export function SiteNav({
     : "font-serif text-lg tracking-tight text-heading drop-shadow-[0_1px_14px_rgba(0,0,0,0.95)] sm:text-xl";
 
   const desktopLinkClass = solid
-    ? "text-[11px] font-medium uppercase tracking-[0.12em] text-charcoal transition-colors hover:text-heading"
-    : "text-[11px] font-medium uppercase tracking-[0.12em] text-heading drop-shadow-[0_1px_8px_rgba(0,0,0,0.75)] transition-colors hover:text-accent-readable";
+    ? "text-[11px] font-medium uppercase tracking-[0.08em] text-charcoal transition-colors hover:text-heading"
+    : "text-[11px] font-medium uppercase tracking-[0.08em] text-heading drop-shadow-[0_1px_8px_rgba(0,0,0,0.75)] transition-colors hover:text-accent-readable";
 
   const menuBtnClass = solid
     ? "inline-flex h-10 w-10 items-center justify-center rounded-md border border-border-subtle text-heading"
@@ -89,32 +89,31 @@ export function SiteNav({
     <header
       className={`fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top,0px)] transition-colors duration-300 ${shell}`}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3.5 sm:px-6 2xl:grid 2xl:grid-cols-[auto_1fr_auto] 2xl:items-center 2xl:gap-8 2xl:px-8">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3.5 sm:px-6 2xl:grid 2xl:max-w-[92rem] 2xl:grid-cols-[auto_1fr_auto] 2xl:items-center 2xl:gap-6 2xl:px-8">
         <Link
           href="/"
-          className={`${brandClass} min-w-0 shrink-0`}
+          className={`${brandClass} min-w-0 shrink-0 whitespace-nowrap`}
           title={brandName}
         >
-          <span className="2xl:hidden">{brandNameNav}</span>
-          <span className="hidden 2xl:inline">{brandName}</span>
+          {brandNameNav}
         </Link>
 
         <nav
-          className="hidden items-center justify-center gap-1 2xl:flex"
+          className="hidden min-w-0 items-center justify-center gap-0.5 2xl:flex"
           aria-label="Primary"
         >
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className={`${desktopLinkClass} whitespace-nowrap rounded-md px-2.5 py-2`}
+              className={`${desktopLinkClass} whitespace-nowrap rounded-md px-2 py-2`}
             >
               {l.label}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden shrink-0 items-center gap-3 2xl:flex">
+        <div className="hidden shrink-0 items-center gap-2 2xl:flex">
           <span aria-hidden className={`h-5 w-px shrink-0 ${dividerClass}`} />
           <Link href={signInHref} className={signInButtonClass}>
             {signInLabel}
@@ -130,7 +129,7 @@ export function SiteNav({
           )}
           <a href={`tel:${phoneTel}`} className={phoneClass} aria-label={`Call ${phoneDisplay}`}>
             <PhoneIcon className="h-3.5 w-3.5 shrink-0 opacity-70" />
-            <span>{phoneDisplay}</span>
+            <span className="hidden whitespace-nowrap min-[1700px]:inline">{phoneDisplay}</span>
           </a>
         </div>
 

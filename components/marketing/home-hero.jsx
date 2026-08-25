@@ -34,9 +34,13 @@ export function HomeHero({ site }) {
           initial={reduce ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, delay: reduce ? 0 : 0.05 }}
-          className="mt-5 max-w-4xl font-serif text-4xl font-normal leading-[1.08] tracking-tight text-heading text-hero-shadow sm:text-5xl lg:text-6xl"
+          className="mt-5 max-w-4xl font-serif text-[2.1rem] font-normal uppercase leading-[1.14] tracking-[0.06em] text-heading text-hero-shadow sm:text-5xl lg:text-6xl"
         >
-          {heroContent.headline}
+          {(heroContent.headlineLines ?? [heroContent.headline]).map((line) => (
+            <span key={line} className="block">
+              {line}
+            </span>
+          ))}
         </motion.h1>
         <motion.p
           initial={reduce ? false : { opacity: 0, y: 12 }}

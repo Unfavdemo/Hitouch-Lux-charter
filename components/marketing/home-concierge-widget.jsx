@@ -19,21 +19,32 @@ export function HomeConciergeWidget({ phoneTel, phoneDisplay, moovsBookingUrl })
           </p>
         </div>
 
-        <div className="mx-auto mt-10 flex max-w-lg flex-col items-center gap-4">
-          <Button
-            href={homeConcierge.primaryCta.href}
-            variant="onLight"
-            className="w-full justify-center px-10 py-3 sm:w-auto sm:min-w-[280px]"
-          >
-            {homeConcierge.primaryCta.label}
-          </Button>
-          <Button
-            href={homeConcierge.secondaryCta.href}
-            variant="onLightSecondary"
-            className="w-full justify-center sm:w-auto sm:min-w-[220px]"
-          >
-            {homeConcierge.secondaryCta.label}
-          </Button>
+        <div className="mx-auto mt-10 flex max-w-2xl flex-col items-center gap-4">
+          <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row">
+            <Button
+              href={homeConcierge.primaryCta.href}
+              variant="onLight"
+              className="justify-center px-8 py-3 sm:min-w-[240px]"
+            >
+              {homeConcierge.primaryCta.label}
+            </Button>
+            <Button
+              href={homeConcierge.secondaryCta.href}
+              variant="onLightSecondary"
+              className="justify-center sm:min-w-[220px]"
+            >
+              {homeConcierge.secondaryCta.label}
+            </Button>
+            {homeConcierge.membershipCta ? (
+              <Button
+                href={homeConcierge.membershipCta.href}
+                variant="onLightSecondary"
+                className="justify-center sm:min-w-[220px]"
+              >
+                {homeConcierge.membershipCta.label}
+              </Button>
+            ) : null}
+          </div>
           <p className="mt-2 text-center text-xs leading-relaxed text-light-muted">
             {homeConcierge.tertiaryNote}{" "}
             <a

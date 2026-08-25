@@ -1,3 +1,4 @@
+import { FounderStory } from "@/components/marketing/founder-story";
 import { HomeConciergeWidget } from "@/components/marketing/home-concierge-widget";
 import { HomeExperienceJourney } from "@/components/marketing/home-experience-journey";
 import { HomeExperiencePreview } from "@/components/marketing/home-experience-preview";
@@ -5,6 +6,8 @@ import { HomeHero } from "@/components/marketing/home-hero";
 import { HomeServicesBento } from "@/components/marketing/home-services-bento";
 import { HomeValueProps } from "@/components/marketing/home-value-props";
 import { FleetShowcase } from "@/components/marketing/fleet-showcase";
+import { LuxuryEyebrow } from "@/components/marketing/luxury-eyebrow";
+import { MarketingCtaBand } from "@/components/marketing/marketing-cta-band";
 import { MetricsStrip } from "@/components/marketing/metrics-strip";
 import { SuccessStory } from "@/components/marketing/success-story";
 import { TestimonialCarousel } from "@/components/marketing/testimonial-carousel";
@@ -13,7 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { aeoSnippets } from "@/content/aeo-snippets";
-import { featuredExperienceIds } from "@/content/home";
+import { brandStatement } from "@/content/home";
 import { fleet } from "@/content/fleet";
 import { metrics } from "@/content/metrics";
 import { industryAward, importedReviews } from "@/content/reviews";
@@ -21,32 +24,28 @@ import { site } from "@/content/site";
 import { testimonials } from "@/content/testimonials";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { faqPageJsonLd, itemListJsonLd } from "@/lib/seo/json-ld";
-import { experiencePackages } from "@/content/experiences";
+import { experienceCategories, experiences } from "@/content/experiences";
 
 export const metadata = buildPageMetadata({
-  title: "Curated luxury experiences & executive chauffeur",
+  title: "Private mobility & curated experiences",
   description:
-    "HiTouch Luxury Charter choreographs curated experiences in Philadelphia and the tri-state region—date nights, retreats, corporate evenings, and celebration movement with discreet chauffeurs.",
+    "Your time. Your experience. Your standard. HiTouch delivers private mobility and curated experiences in Philadelphia—game days, executive travel, escapes, and concierge-level service for people who expect more from how they move.",
   path: "/",
 });
 
 export default function HomePage() {
-  const experienceList = experiencePackages.map((p) => ({
-    name: p.title,
-    description: p.blurb,
-    url: p.href,
+  const experienceList = experiences.map((e) => ({
+    name: e.title,
+    description: e.cardBlurb,
+    url: `/experiences/${e.slug}`,
   }));
-
-  const featuredPackages = featuredExperienceIds
-    .map((id) => experiencePackages.find((p) => p.id === id))
-    .filter(Boolean);
 
   return (
     <>
       <JsonLdScript
         data={[
           faqPageJsonLd(aeoSnippets),
-          itemListJsonLd({ name: "Curated experiences", items: experienceList }),
+          itemListJsonLd({ name: "Private experiences", items: experienceList }),
         ]}
       />
       <HomeHero
@@ -56,13 +55,39 @@ export default function HomePage() {
         }}
       />
 
-      <HomeExperiencePreview packages={featuredPackages} />
+      <Section className="border-b border-light-ink/8 bg-cream py-16 lg:py-20">
+        <Container>
+          <div className="mx-auto max-w-3xl text-center">
+            <LuxuryEyebrow className="justify-center">{brandStatement.eyebrow}</LuxuryEyebrow>
+            <h2 className="luxury-display mt-6 text-3xl text-light-ink sm:text-4xl lg:text-[2.75rem]">
+              {brandStatement.headline}
+            </h2>
+            <p className="mt-5 text-sm leading-relaxed text-light-muted sm:text-base lg:text-lg">
+              {brandStatement.supporting}
+            </p>
+          </div>
+        </Container>
+      </Section>
 
-      <HomeExperienceJourney />
+      <HomeExperiencePreview categories={experienceCategories} />
+
+      <FounderStory />
 
       <HomeValueProps />
 
+      <HomeExperienceJourney />
+
       <HomeServicesBento />
+
+      <MarketingCtaBand
+        eyebrow="HiTouch Private Membership"
+        title="Transportation shouldn't be something you repeatedly arrange."
+        description="It should already be handled. Preferred fleet access, priority booking, concierge support, member pricing, and private HiTouch experiences—now accepting five Founding Memberships, by application."
+        primaryHref="/memberships"
+        primaryLabel="Request Membership"
+        secondaryHref="/memberships#founding"
+        secondaryLabel="Founding Membership"
+      />
 
       <Section className="bg-paper py-20 lg:py-28">
         <Container>
@@ -78,11 +103,11 @@ export default function HomePage() {
                 Guest stories
               </p>
               <h2 className="mt-4 font-serif text-3xl tracking-tight text-light-ink sm:text-4xl">
-                Evenings they still talk about
+                Once you&rsquo;re with HiTouch, you&rsquo;re taken care of.
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-light-muted sm:text-base">
-                From board weekends to wedding choreography—clients remember how the night felt,
-                not just that the car was on time.
+                From board weekends to game days—clients remember how the night felt, not just
+                that the car was on time.
               </p>
             </div>
             <TestimonialCarousel items={testimonials} light />
@@ -98,14 +123,14 @@ export default function HomePage() {
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
               <p className="text-[11px] font-semibold uppercase tracking-[var(--tracking-nav)] text-accent-readable">
-                The mobile salon
+                The fleet
               </p>
               <h2 className="mt-4 font-serif text-3xl font-normal leading-tight tracking-tight text-heading sm:text-4xl lg:text-5xl">
                 Your cabin is part of the experience—not an afterthought.
               </h2>
               <p className="mt-5 max-w-xl text-sm leading-relaxed text-foreground/80 sm:text-base">
-                Sedans, executive SUVs, and custom Sprinters—studio-prepared, detailed, and briefed
-                to match the tone of your evening.
+                Sedans, executive SUVs, and the Executive Sprinter—studio-prepared, detailed,
+                and briefed to match the tone of your day.
               </p>
             </div>
             <Button href="/fleet" variant="secondary" className="border-heading/35 text-heading hover:bg-white/10">

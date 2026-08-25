@@ -1,3 +1,4 @@
+import { FounderStory } from "@/components/marketing/founder-story";
 import { MarketingCtaBand } from "@/components/marketing/marketing-cta-band";
 import { MarketingFeatureCard } from "@/components/marketing/marketing-feature-card";
 import { MarketingPageHero } from "@/components/marketing/marketing-page-hero";
@@ -11,9 +12,9 @@ import { site } from "@/content/site";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata = buildPageMetadata({
-  title: "About HiTouch",
+  title: "About HiTouch | Why HiTouch exists",
   description:
-    "A Philadelphia studio for curated luxury experiences—discreet chauffeurs, staged cabins, and concierge-led choreography.",
+    "You don't just book a vehicle. You have HiTouch. Learn why HiTouch exists—private mobility and curated experiences built on reliability, relationships, and concierge-level attention to detail.",
   path: "/about",
 });
 
@@ -36,9 +37,9 @@ export default function AboutPage() {
   return (
     <>
       <MarketingPageHero
-        eyebrow="Our studio"
-        title="We choreograph how principals feel—not only where they go."
-        description="HiTouch Luxury Charter was built for clients who notice atmosphere: the temperature of the cabin, the calm tempo of a chauffeur who never rushes an arrival, the way a door opens exactly on cue."
+        eyebrow="About HiTouch"
+        title="You don't just book a vehicle. You have HiTouch."
+        description="Private mobility and curated experiences for people who value their time differently—built on reliability, relationships, access, and attention to detail."
         image={pageHeroes.about}
         imageAlt="Philadelphia skyline at dusk"
         actions={
@@ -95,7 +96,9 @@ export default function AboutPage() {
         </div>
       </MarketingPageSection>
 
-      <MarketingPageSection tone="dark">
+      <FounderStory />
+
+      <MarketingPageSection tone="dark" borderTop>
         <MarketingSectionHeading
           eyebrow="Operating standards"
           title="Non-negotiables on every experience."

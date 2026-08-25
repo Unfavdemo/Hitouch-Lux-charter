@@ -37,8 +37,14 @@ function typeBadge(type) {
     corporate: "bg-sky-500/15 text-sky-200",
     events: "bg-violet-500/15 text-violet-200",
     experience: "bg-rose-500/15 text-rose-200",
+    membership: "bg-amber-500/15 text-amber-200",
   };
-  const labels = { corporate: "Corporate", events: "Event", experience: "Experience" };
+  const labels = {
+    corporate: "Corporate",
+    events: "Event",
+    experience: "Experience",
+    membership: "Membership",
+  };
   return (
     <span
       className={`shrink-0 rounded px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider ${styles[type]}`}
@@ -97,7 +103,7 @@ export function AdminDashboard({ data, error }) {
         <StatCard
           label="Pending leads"
           value={leads.pendingTotal}
-          hint={`${leads.corporate} corporate · ${leads.events} events · ${leads.experience} experience`}
+          hint={`${leads.corporate} corporate · ${leads.events} events · ${leads.experience} experience · ${leads.membership ?? 0} membership`}
           href="/admin/corporate"
           accent={leads.pendingTotal > 0}
         />

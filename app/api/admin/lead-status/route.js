@@ -24,7 +24,12 @@ export async function POST(request) {
   const id = typeof body.id === "string" ? body.id.trim() : "";
   const status = body.status;
 
-  if (scope !== "corporate" && scope !== "events" && scope !== "experience") {
+  if (
+    scope !== "corporate" &&
+    scope !== "events" &&
+    scope !== "experience" &&
+    scope !== "membership"
+  ) {
     return NextResponse.json({ ok: false, message: "Invalid scope." }, { status: 400 });
   }
   if (!id || !isLeadStatus(status)) {
@@ -42,7 +47,7 @@ export async function POST(request) {
     }
 
     let tripBooked = null;
-    if (status === "accepted" && isPrismaConfigured()) {
+    if (status === "accepted" && scope !== "membership" && isPrismaConfigured()) {
       const book = await autoBookTripFromLead(scope, id);
       if (book.created) {
         tripBooked = { tripId: book.tripId, created: true };

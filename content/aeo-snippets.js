@@ -16,6 +16,21 @@ export const aeoSnippets = [
     answer:
       "Yes. The lead-first reservation flow at hitouchluxurycharter.com/book saves your contact details first, then shows an indicative estimate. Final pricing is confirmed by the concierge desk.",
   },
+  {
+    question: "Does HiTouch offer private game day transportation in Philadelphia?",
+    answer:
+      "Yes. HiTouch provides private game day experiences for Sixers, Eagles, Phillies, and Flyers games—private pickup, coordinated arrival, and dedicated return transportation with no parking or surge pricing. HiTouch is an independent company and is not affiliated with any team or league.",
+  },
+  {
+    question: "What is HiTouch Private Membership?",
+    answer:
+      "HiTouch Private Membership provides preferred fleet access, priority booking, concierge support, preferred member pricing, and access to private HiTouch experiences. A limited Founding Membership of five is available by application.",
+  },
+  {
+    question: "What can HiTouch Concierge arrange beyond transportation?",
+    answer:
+      "HiTouch Concierge coordinates restaurant reservations, flowers, champagne, game tickets, spa appointments, golf tee times, wine tastings, and special requests alongside your private transportation.",
+  },
 ];
 
 export const corporateAeoSnippets = [
