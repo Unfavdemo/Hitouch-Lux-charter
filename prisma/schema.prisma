@@ -110,6 +110,16 @@ model ExperienceLead {
   @@map("experience_leads")
 }
 
+model MembershipLead {
+  id         String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt  DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  status     String    @default("pending")
+  reviewedAt DateTime? @map("reviewed_at") @db.Timestamptz(6)
+  payload    Json
+
+  @@map("membership_leads")
+}
+
 model BookingInquiry {
   id          String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   createdAt   DateTime      @default(now()) @map("created_at") @db.Timestamptz(6)

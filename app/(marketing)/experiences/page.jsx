@@ -1,3 +1,4 @@
+import { ConciergePanel } from "@/components/marketing/concierge-panel";
 import { ExperiencePackageCard } from "@/components/marketing/experience-package-card";
 import { FeaturedSprinterSpotlight } from "@/components/marketing/featured-sprinter-spotlight";
 import { MarketingCtaBand } from "@/components/marketing/marketing-cta-band";
@@ -7,31 +8,42 @@ import { MarketingSectionHeading } from "@/components/marketing/marketing-sectio
 import { JsonLdScript } from "@/components/seo/json-ld-script";
 import { Button } from "@/components/ui/button";
 import {
-  experiencePackages,
+  experienceCategories,
+  experiences,
   experiencesHero,
   featuredSprinter,
+  getExperiencesByCategory,
+  teamDisclaimer,
 } from "@/content/experiences";
 import { pageHeroes } from "@/content/media";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { itemListJsonLd } from "@/lib/seo/json-ld";
 
 export const metadata = buildPageMetadata({
-  title: "Curated experiences",
+  title: "Private experiences | Game Day, Escape, Wellness, Leisure & Signature",
   description:
-    "Spa retreats, golf outings, date nights, winery days, and VIP artist transportation—choreographed by HiTouch Luxury Charter in Philadelphia.",
+    "Tell us the occasion. We'll handle the details. Private luxury experiences in Philadelphia—game day transportation, wine country tours, spa days, golf, fine dining, and fully bespoke Signature experiences.",
   path: "/experiences",
 });
 
+const sectionTones = {
+  "game-day": "dark",
+  escape: "cream",
+  wellness: "paper",
+  leisure: "cream",
+  signature: "dark",
+};
+
 export default function ExperiencesPage() {
-  const listItems = experiencePackages.map((p) => ({
-    name: p.title,
-    description: p.blurb,
-    url: p.href,
+  const listItems = experiences.map((e) => ({
+    name: e.title,
+    description: e.cardBlurb,
+    url: `/experiences/${e.slug}`,
   }));
 
   return (
     <>
-      <JsonLdScript data={itemListJsonLd({ name: "Curated experiences", items: listItems })} />
+      <JsonLdScript data={itemListJsonLd({ name: "Private experiences", items: listItems })} />
       <MarketingPageHero
         eyebrow={experiencesHero.eyebrow}
         title={experiencesHero.headline}
@@ -39,33 +51,88 @@ export default function ExperiencesPage() {
         image={pageHeroes.experiences}
         imageAlt="Relaxing spa atmosphere with soft lighting"
         actions={
-          <Button href="/experience-request" variant="primary">
-            Design a bespoke evening
-          </Button>
+          <>
+            <Button href="/experience-request" variant="primary">
+              Request Your Experience
+            </Button>
+            <Button href="/memberships" variant="outlineLight">
+              Explore Membership
+            </Button>
+          </>
         }
       />
 
-      <MarketingPageSection tone="paper">
+      {experienceCategories.map((category) => {
+        const tone = sectionTones[category.id] ?? "cream";
+        const light = tone !== "dark";
+        const items = getExperiencesByCategory(category.id);
+        return (
+          <MarketingPageSection
+            key={category.id}
+            id={category.id}
+            tone={tone}
+            className="scroll-mt-24"
+          >
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+              <MarketingSectionHeading
+                eyebrow={category.name}
+                title={category.tagline}
+                description={category.description}
+                light={light}
+              />
+              {category.id === "game-day" ? (
+                <Button
+                  href="/game-day"
+                  variant="secondary"
+                  className="shrink-0 border-heading/35 text-heading hover:bg-white/10"
+                >
+                  Explore Game Day
+                </Button>
+              ) : null}
+            </div>
+            <div
+              className={`mt-12 grid gap-6 sm:grid-cols-2 ${
+                items.length >= 3 ? "lg:grid-cols-3" : ""
+              } ${items.length === 1 ? "sm:grid-cols-1 lg:mx-auto lg:max-w-xl" : ""}`}
+            >
+              {items.map((exp, index) => (
+                <ExperiencePackageCard
+                  key={exp.id}
+                  pkg={{
+                    id: exp.id,
+                    title: exp.title,
+                    blurb: exp.cardBlurb,
+                    image: exp.image,
+                    alt: exp.alt,
+                    href: `/experiences/${exp.slug}`,
+                  }}
+                  index={index}
+                />
+              ))}
+            </div>
+            {category.id === "game-day" ? (
+              <p className="mt-8 max-w-3xl text-xs leading-relaxed text-on-dark-body/70">
+                {teamDisclaimer}
+              </p>
+            ) : null}
+          </MarketingPageSection>
+        );
+      })}
+
+      <MarketingPageSection tone="paper" borderTop>
+        <ConciergePanel />
+      </MarketingPageSection>
+
+      <MarketingPageSection tone="cream" borderTop>
         <FeaturedSprinterSpotlight sprinter={featuredSprinter} />
       </MarketingPageSection>
 
-      <MarketingPageSection tone="cream">
-        <MarketingSectionHeading
-          eyebrow="Signature packages"
-          title="Curated frames for principals who expect more than a transfer."
-        />
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {experiencePackages.map((pkg, index) => (
-              <ExperiencePackageCard key={pkg.id} pkg={pkg} index={index} />
-            ))}
-        </div>
-      </MarketingPageSection>
-
       <MarketingCtaBand
-        title="Designing something entirely bespoke?"
-        description="Share venues, timing, and preferences—our concierge desk responds with a choreographed proposal within 24–48 hours."
+        eyebrow="Transportation is only the beginning"
+        title="Tell us the occasion. We'll handle the details."
+        description="Share your vision, guest count, and timing—your concierge returns a complete proposal, from vehicles to reservations, within 24–48 hours."
         primaryHref="/experience-request"
-        primaryLabel="Custom experience request"
+        primaryLabel="Request Your Experience"
         secondaryHref="/contact"
         secondaryLabel="Speak with concierge"
       />

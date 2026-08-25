@@ -4,6 +4,7 @@ import {
   listCorporateLeads,
   listEventLeads,
   listExperienceLeads,
+  listMembershipLeads,
 } from "@/lib/lead-storage";
 import { isPrismaConfigured, prisma } from "@/lib/prisma";
 import { formatTripStatus, TripStatus, type TripStatusValue } from "@/lib/trip-status";
@@ -13,6 +14,7 @@ export type AdminDashboardData = {
     corporate: number;
     events: number;
     experience: number;
+    membership: number;
     pendingTotal: number;
   };
   ops: {
@@ -46,7 +48,7 @@ export type AdminDashboardData = {
   }[];
   pendingLeads: {
     id: string;
-    type: "corporate" | "events" | "experience";
+    type: "corporate" | "events" | "experience" | "membership";
     title: string;
     subtitle: string;
     createdAt: Date;
@@ -68,15 +70,17 @@ function endOfToday(): Date {
 }
 
 export async function getAdminDashboardData(): Promise<AdminDashboardData> {
-  const [corporate, events, experience] = await Promise.all([
+  const [corporate, events, experience, membership] = await Promise.all([
     listCorporateLeads(),
     listEventLeads(),
     listExperienceLeads(),
+    listMembershipLeads(),
   ]);
 
   const pendingCorporate = corporate.filter((l) => l.status === "pending");
   const pendingEvents = events.filter((l) => l.status === "pending");
   const pendingExperience = experience.filter((l) => l.status === "pending");
+  const pendingMembership = membership.filter((l) => l.status === "pending");
 
   const pendingLeads: AdminDashboardData["pendingLeads"] = [
     ...pendingCorporate.slice(0, 4).map((l) => ({
@@ -115,6 +119,20 @@ export async function getAdminDashboardData(): Promise<AdminDashboardData> {
         href: "/admin/experience",
       };
     }),
+    ...pendingMembership.slice(0, 4).map((l) => {
+      const name = [l.firstName, l.lastName]
+        .map((part) => String(part ?? "").trim())
+        .filter(Boolean)
+        .join(" ");
+      return {
+        id: String(l.id),
+        type: "membership" as const,
+        title: name || "Membership applicant",
+        subtitle: l.foundingInterest ? "Founding Membership application" : "Membership application",
+        createdAt: new Date(String(l.createdAt)),
+        href: "/admin/membership",
+      };
+    }),
   ]
     .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
     .slice(0, 8);
@@ -124,8 +142,12 @@ export async function getAdminDashboardData(): Promise<AdminDashboardData> {
       corporate: corporate.length,
       events: events.length,
       experience: experience.length,
+      membership: membership.length,
       pendingTotal:
-        pendingCorporate.length + pendingEvents.length + pendingExperience.length,
+        pendingCorporate.length +
+        pendingEvents.length +
+        pendingExperience.length +
+        pendingMembership.length,
     },
     ops: null,
     tripByStatus: [],

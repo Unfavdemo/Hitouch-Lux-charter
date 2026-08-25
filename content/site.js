@@ -2,8 +2,8 @@ export const site = {
   brandName: "HiTouch Luxury Charter",
   /** Shorter label for the fixed header on medium viewports */
   brandNameNav: "HiTouch Luxury",
-  tagline: "Where the journey is the occasion.",
-  shortTagline: "Curated luxury experiences, choreographed in motion.",
+  tagline: "You don't just book a vehicle. You have HiTouch.",
+  shortTagline: "Private mobility and curated experiences.",
   phoneDisplay: "215-650-7216",
   phoneTel: "+12156507216",
   email: "concierge@hitouchluxurycharter.com",
@@ -15,7 +15,7 @@ export const site = {
   moovsBookingUrl:
     "https://customer.moovs.app/hitouch-luxury-charter/request/new",
   primaryCta: {
-    label: "Plan experience",
+    label: "Request experience",
     href: "/experience-request",
   },
   signInCta: {
@@ -25,14 +25,16 @@ export const site = {
   partnerNote:
     "Proudly connected with select hospitality and aviation partner networks across the Mid-Atlantic.",
   nav: [
-    { label: "Experiences", href: "/experiences" },
-    { label: "Occasions", href: "/services" },
-    { label: "Fleet", href: "/fleet" },
+    { label: "Memberships", href: "/memberships" },
+    { label: "Executive Mobility", href: "/executive-mobility" },
+    { label: "Private Experiences", href: "/experiences" },
+    { label: "Game Day", href: "/game-day" },
     { label: "Corporate", href: "/corporate" },
-    { label: "Events", href: "/events" },
+    { label: "Airport", href: "/airport" },
   ],
   footerCompany: [
     { label: "About", href: "/about" },
+    { label: "Why HiTouch", href: "/about#why-hitouch" },
     { label: "FAQ", href: "/faq" },
     { label: "Contact", href: "/contact" },
   ],
@@ -40,4 +42,19 @@ export const site = {
     { label: "Privacy", href: "/privacy" },
     { label: "Terms", href: "/terms" },
   ],
+};
+
+/**
+ * Core brand voice — woven throughout the site.
+ * "You don't just book a vehicle. You have HiTouch."
+ */
+export const brandLines = {
+  core: "You don't just book a vehicle. You have HiTouch.",
+  responsibility: "Your plans. Our responsibility.",
+  oneCall: "One call. Every detail handled.",
+  timeValue: "For people who value their time differently.",
+  takenCareOf: "Once you're with HiTouch, you're taken care of.",
+  occasion: "Tell us the occasion. We'll handle the details.",
+  beginning: "Transportation is only the beginning.",
+  philosophy: "Service is the rent we pay for our time here on Earth.",
 };

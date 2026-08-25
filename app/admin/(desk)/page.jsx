@@ -11,7 +11,7 @@ export default async function AdminDashboardPage() {
   } catch (e) {
     error = e instanceof Error ? e.message : "Could not load dashboard.";
     data = {
-      leads: { corporate: 0, events: 0, experience: 0, pendingTotal: 0 },
+      leads: { corporate: 0, events: 0, experience: 0, membership: 0, pendingTotal: 0 },
       ops: null,
       tripByStatus: [],
       upcomingTrips: [],

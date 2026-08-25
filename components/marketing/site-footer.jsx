@@ -61,23 +61,43 @@ export function SiteFooter({ site: s }) {
             </p>
             <ul className="mt-4 space-y-2 text-sm text-charcoal">
               <li>
+                <Link className="hover:text-accent-readable" href="/memberships">
+                  Private Membership
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-accent-readable" href="/experiences">
+                  Private experiences
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-accent-readable" href="/game-day">
+                  Game Day
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-accent-readable" href="/executive-mobility">
+                  Executive mobility
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-accent-readable" href="/airport">
+                  Airport transfers
+                </Link>
+              </li>
+              <li>
                 <Link className="hover:text-accent-readable" href="/services">
                   Service catalog
                 </Link>
               </li>
               <li>
-                <Link className="hover:text-accent-readable" href="/experiences">
-                  Curated experiences
-                </Link>
-              </li>
-              <li>
                 <Link className="hover:text-accent-readable" href="/experience-request">
-                  Custom experience request
+                  Request an experience
                 </Link>
               </li>
               <li>
                 <Link className="hover:text-accent-readable" href="/book">
-                  Reserve & price inquiry
+                  Book transportation
                 </Link>
               </li>
               <li>

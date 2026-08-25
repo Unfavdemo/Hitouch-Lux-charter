@@ -4,7 +4,13 @@ import { redirect } from "next/navigation";
 import { AdminLogoutForm } from "@/components/admin/admin-logout-form";
 import { isValidAdminSession } from "@/lib/admin-auth";
 import { isValidAdminUserSession } from "@/lib/user-auth";
-import { listCorporateLeads, listEventLeads, listExperienceLeads, storageMode } from "@/lib/lead-storage";
+import {
+  listCorporateLeads,
+  listEventLeads,
+  listExperienceLeads,
+  listMembershipLeads,
+  storageMode,
+} from "@/lib/lead-storage";
 import { countOpenBookingInquiries } from "@/lib/booking/inquiry-admin";
 import { TripStatus } from "@/lib/trip-status";
 import { isPrismaConfigured, prisma } from "@/lib/prisma";
@@ -18,18 +24,21 @@ export default async function AdminDeskLayout({ children }) {
   let corpCount = 0;
   let eventCount = 0;
   let expCount = 0;
+  let membershipCount = 0;
   let intakeCount = 0;
   let bookingInquiryCount = 0;
   let activeTripCount = 0;
   try {
-    const [c, e, x] = await Promise.all([
+    const [c, e, x, m] = await Promise.all([
       listCorporateLeads(),
       listEventLeads(),
       listExperienceLeads(),
+      listMembershipLeads(),
     ]);
     corpCount = c.length;
     eventCount = e.length;
     expCount = x.length;
+    membershipCount = m.length;
   } catch {
     /* counts stay 0; pages may show errors */
   }
@@ -102,6 +111,15 @@ export default async function AdminDeskLayout({ children }) {
           Experience
           <span className="ml-1.5 rounded bg-white/10 px-1.5 py-0.5 text-[10px] text-zinc-400">
             {expCount}
+          </span>
+        </Link>
+        <Link
+          href="/admin/membership"
+          className="rounded-md border border-white/10 bg-white/5 px-3 py-2 text-zinc-200 hover:border-amber-200/40 hover:text-white"
+        >
+          Membership
+          <span className="ml-1.5 rounded bg-white/10 px-1.5 py-0.5 text-[10px] text-zinc-400">
+            {membershipCount}
           </span>
         </Link>
         <Link

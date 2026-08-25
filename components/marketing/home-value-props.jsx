@@ -1,4 +1,4 @@
-import { philosophyIntro, valuePillars } from "@/content/home";
+import { philosophyIntro, servicePromises } from "@/content/home";
 import { LuxuryEyebrow } from "@/components/marketing/luxury-eyebrow";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
@@ -16,31 +16,34 @@ export function HomeValueProps() {
           {philosophyIntro.supporting}
         </p>
 
-        <div className="mt-16 grid auto-rows-fr gap-6 md:grid-cols-12 md:gap-8">
-          {valuePillars.map((p) => {
-            const span =
-              p.span === "tall"
-                ? "md:col-span-7 md:row-span-2 md:min-h-[22rem]"
-                : p.span === "wide"
-                  ? "md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3"
-                  : "md:col-span-5";
-            return (
-              <article key={p.id} className={`luxury-card-light group flex flex-col justify-between p-8 lg:p-10 ${span}`}>
-                <div>
-                  <h3 className="font-serif text-2xl tracking-tight text-light-ink lg:text-[1.65rem]">
-                    {p.title}
-                  </h3>
-                  <p className="mt-5 max-w-prose text-sm leading-relaxed text-light-muted lg:text-base">
-                    {p.body}
-                  </p>
-                </div>
-                <div
-                  className="mt-10 h-px w-12 bg-gradient-to-r from-accent/90 to-accent/20 transition-all duration-500 group-hover:w-20"
+        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 md:gap-8">
+          {servicePromises.map((p, index) => (
+            <article
+              key={p.id}
+              className={`luxury-card-light group flex flex-col justify-between p-8 lg:p-9 ${
+                index === servicePromises.length - 1 ? "sm:col-span-2 lg:col-span-1" : ""
+              }`}
+            >
+              <div>
+                <p
+                  className="font-serif text-3xl leading-none text-accent/40 transition-colors duration-500 group-hover:text-accent/70"
                   aria-hidden
-                />
-              </article>
-            );
-          })}
+                >
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                <h3 className="mt-5 text-sm font-semibold uppercase tracking-[var(--tracking-brand)] text-light-ink">
+                  {p.title}
+                </h3>
+                <p className="mt-4 max-w-prose text-sm leading-relaxed text-light-muted lg:text-base">
+                  {p.body}
+                </p>
+              </div>
+              <div
+                className="mt-8 h-px w-12 bg-gradient-to-r from-accent/90 to-accent/20 transition-all duration-500 group-hover:w-20"
+                aria-hidden
+              />
+            </article>
+          ))}
         </div>
       </Container>
     </Section>
