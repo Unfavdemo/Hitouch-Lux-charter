@@ -91,6 +91,21 @@ export function itemListJsonLd({
   };
 }
 
+export function breadcrumbListJsonLd(
+  crumbs: Array<{ name: string; path: string }>,
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: crumbs.map((crumb, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: crumb.name,
+      item: absoluteUrl(crumb.path),
+    })),
+  };
+}
+
 export function aggregateRatingJsonLd({
   ratingValue,
   reviewCount,

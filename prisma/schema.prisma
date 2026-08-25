@@ -110,6 +110,53 @@ model ExperienceLead {
   @@map("experience_leads")
 }
 
+/// Per-experience landing page inquiries (one row per submitted inquiry form).
+model ExperienceInquiry {
+  id             String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt      DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  status         String    @default("pending")
+  reviewedAt     DateTime? @map("reviewed_at") @db.Timestamptz(6)
+  experienceSlug String    @map("experience_slug")
+  experienceName String    @map("experience_name")
+  categoryName   String    @map("category_name")
+  sourcePath     String?   @map("source_path")
+  contactName    String    @map("contact_name")
+  email          String
+  phone          String
+  preferredDate  String?   @map("preferred_date")
+  guestCount     Int?      @map("guest_count")
+  details        String?
+  conciergeAddOns Json?    @map("concierge_add_ons")
+  crmSyncedAt    DateTime? @map("crm_synced_at") @db.Timestamptz(6)
+
+  @@index([experienceSlug, createdAt])
+  @@index([status, createdAt])
+  @@map("experience_inquiries")
+}
+
+/// HiTouch Private Membership applications, including Founding Membership.
+model MembershipApplication {
+  id              String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt       DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  status          String    @default("pending")
+  reviewedAt      DateTime? @map("reviewed_at") @db.Timestamptz(6)
+  membershipType  String    @map("membership_type")
+  foundingInterest Boolean  @default(false) @map("founding_interest")
+  contactName     String    @map("contact_name")
+  email           String
+  phone           String
+  company         String?
+  city            String?
+  travelFrequency String?   @map("travel_frequency")
+  primaryNeeds    Json?     @map("primary_needs")
+  currentProvider String?   @map("current_provider")
+  notes           String?
+  crmSyncedAt     DateTime? @map("crm_synced_at") @db.Timestamptz(6)
+
+  @@index([status, createdAt])
+  @@map("membership_applications")
+}
+
 model BookingInquiry {
   id          String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   createdAt   DateTime      @default(now()) @map("created_at") @db.Timestamptz(6)

@@ -3,134 +3,122 @@ import { media } from "@/content/media";
 /** Landing page editorial copy & imagery (HiTouch Luxury Charter) */
 
 export const heroContent = {
-  eyebrow: "Curated luxury experiences · Philadelphia & tri-state",
-  headline: "The evening begins before you arrive.",
+  eyebrow: "Private mobility & curated experiences · Philadelphia",
+  headline: "Your time. Your experience. Your standard.",
   supporting:
-    "We choreograph atmosphere, timing, and arrival—so every chapter of your night feels intentional, not incidental.",
-  image: media.fineDiningHero,
-  imageAlt: "Elegant fine-dining table with candlelight and glassware",
-  primaryCta: { label: "Explore curated experiences", href: "/experiences" },
-  secondaryCta: { label: "Design your evening", href: "/experience-request" },
+    "Private mobility and curated experiences for people who expect more from how they move.",
+  image: media.cityNight,
+  imageAlt: "City skyline reflected on the river at dusk",
+  primaryCta: { label: "Request your experience", href: "/experience-request" },
+  secondaryCta: { label: "Book transportation", href: "/book" },
 };
 
 export const homeExperienceIntro = {
-  eyebrow: "Curated for you",
-  headline: "Experiences built around how you want to feel—not just where you need to go.",
+  eyebrow: "Private experiences",
+  headline: "Tell us the occasion. We'll handle the details.",
   supporting:
-    "Each package pairs discreet chauffeur service with venue timing, cabin staging, and concierge buffers. Pick a frame—or tell us the mood and we architect the rest.",
-  viewAllLabel: "View all experiences",
+    "Transportation is only the beginning. Game day, wine country, wellness, golf, dining, or something entirely your own—each with its own team, its own timing, and one person who owns all of it.",
+  viewAllLabel: "All experiences",
   viewAllHref: "/experiences",
 };
 
-/** Package ids shown on the home preview (order preserved) */
-export const featuredExperienceIds = ["date-night", "winery-brunch", "spa-retreat"];
-
 export const experienceJourney = {
-  eyebrow: "The HiTouch method",
-  headline: "Luxury is the sequence—not the sedan.",
+  eyebrow: "How it works",
+  headline: "One call. Every detail handled.",
   supporting:
-    "Transportation is the thread that ties your evening together. We design the cadence so you stay present from first pickup to last gesture.",
+    "You should not have to project-manage your own evening. Tell us the occasion once; we hold everything after that.",
   steps: [
     {
-      id: "listen",
-      title: "Listen & interpret",
-      body: "Occasion, guest list, energy level, and non-negotiables—captured in one concierge thread, not a generic form.",
+      id: "tell-us",
+      title: "Tell us the occasion",
+      body: "A call, a form, or a text. What it is, who is coming, and how you want it to feel. That is enough for us to start.",
     },
     {
-      id: "choreograph",
-      title: "Choreograph the arc",
-      body: "Venue buffers, cabin staging, multi-stop pacing, and contingency routes—mapped before wheels roll.",
+      id: "we-plan",
+      title: "We plan and confirm",
+      body: "Vehicle, timing, reservations, and the details you did not think to mention—returned to you in writing before anything is booked.",
     },
     {
-      id: "deliver",
-      title: "Deliver the arrival",
-      body: "Discreet chauffeurs, immaculate cabins, and timing that feels invisible until the door opens exactly when it should.",
+      id: "we-handle-it",
+      title: "We handle it",
+      body: "One chauffeur, one point of contact, and a plan that adjusts live. You are a guest, not the coordinator.",
     },
   ],
 };
 
-export const valuePillars = [
-  {
-    id: "atmosphere",
-    title: "Atmosphere, staged in motion",
-    body: "Climate, lighting, refreshments, and music are set to your brief—so the cabin reads as an extension of the venue, not a commute.",
-    span: "tall",
-  },
-  {
-    id: "discreet",
-    title: "Presence without performance",
-    body: "Chauffeurs trained in discretion and front-of-house poise. Executive protection and licensed security details on request.",
-    span: "default",
-  },
-  {
-    id: "cadence",
-    title: "Cadence you can trust",
-    body: "Flight-aware airport work, multi-venue weddings, road-show tempo—one team owns the clock so you own the room.",
-    span: "wide",
-  },
-];
-
 export const philosophyIntro = {
-  eyebrow: "Our promise",
+  eyebrow: "Our standard",
   headline:
-    "You are not booking a ride—you are commissioning an experience that begins at pickup and ends with a composed exit.",
+    "You don't just book a vehicle. You have HiTouch.",
   supporting:
-    "HiTouch Luxury Charter is a concierge-led studio for movement: we script arrivals, protect your privacy, and make the journey feel as considered as the destination.",
+    "We sell reliability, relationships, access, and attention to detail. The vehicle is how we deliver it—not what you are buying.",
 };
 
 export const servicesBento = [
   {
-    id: "celebration",
-    title: "Celebration choreography",
-    blurb: "Weddings, galas, and milestone weekends—multi-venue sequencing with guest movements treated like a performance.",
-    href: "/events",
-    image: media.wedding,
-    alt: "Elegant wedding celebration setting",
+    id: "game-day",
+    title: "Game day",
+    blurb: "Private pickup, coordinated arrival, and a chauffeur already waiting when you walk out.",
+    href: "/game-day",
+    image: media.arenaInterior,
+    alt: "Arena bowl lit before an event",
     layout: "large",
   },
   {
-    id: "corporate",
-    title: "Executive programs",
-    blurb: "Road shows and board evenings with consolidated reporting and cabins tuned for confidential conversation.",
-    href: "/corporate",
-    image: media.skyline,
-    alt: "Modern glass office towers at dusk",
+    id: "executive-mobility",
+    title: "Executive mobility",
+    blurb: "Recurring executive travel with a working cabin, consistent chauffeurs, and billing finance accepts.",
+    href: "/executive-mobility",
+    image: media.boardroomView,
+    alt: "Boardroom overlooking a city skyline",
     layout: "medium",
   },
   {
-    id: "leisure",
-    title: "Leisure & tasting days",
-    blurb: "Wine country, brunch circuits, and spa retreats—pacing that leaves room for the experience itself.",
+    id: "experiences",
+    title: "Private experiences",
+    blurb: "Wine country, wellness, golf, and dining—planned, booked, and paced around the occasion.",
     href: "/experiences",
-    image: media.winery,
-    alt: "Vineyard rows in soft light",
+    image: media.vineyardRows,
+    alt: "Vineyard rows in warm afternoon light",
     layout: "medium",
   },
   {
-    id: "arrival",
-    title: "Arrival & departure rituals",
-    blurb: "PHL, PNE, and private FBOs—meet-and-greet, luggage assist, and flight-aware timing that protects your buffer.",
-    href: "/services",
+    id: "airport",
+    title: "Airport",
+    blurb: "PHL, PNE, and the private terminals—flight-aware timing, meet-and-greet, and luggage handled.",
+    href: "/airport",
     image: media.airport,
-    alt: "Aircraft and airport runway at golden hour",
+    alt: "Aircraft on the tarmac at golden hour",
     layout: "banner",
   },
 ];
 
 export const conciergeStatus = {
-  label: "Experience concierge",
+  label: "Concierge desk",
   state: "available",
-  detail: "Live routing desk monitored · typical callback under 15 minutes during service hours",
+  detail: "Live desk monitored · typical callback under 15 minutes during service hours",
 };
 
 export const homeConcierge = {
-  eyebrow: "Begin your experience",
-  headline: "Tell us the occasion—we'll architect the movement.",
+  eyebrow: "Begin",
+  headline: "Tell us the occasion. We'll handle the details.",
   supporting:
-    "Share your vision, guest count, and timing. Our concierge team returns a choreographed proposal—vehicle class, route cadence, and cabin staging included.",
-  primaryCta: { label: "Request a curated experience", href: "/experience-request" },
-  secondaryCta: { label: "Get a trip estimate", href: "/book" },
+    "Share the occasion, the guest count, and the timing. We return a plan—vehicle, route, reservations, and the details you did not think to mention.",
+  primaryCta: { label: "Request your experience", href: "/experience-request" },
+  secondaryCta: { label: "Book transportation", href: "/book" },
   tertiaryNote: "Already know your itinerary? Reserve online for immediate scheduling.",
   tertiaryHref: null, // filled from site.moovsBookingUrl at runtime
   tertiaryLabel: "Reserve online",
+};
+
+export const membershipTeaser = {
+  eyebrow: "HiTouch Private Membership",
+  headline: "Transportation shouldn't be something you repeatedly arrange.",
+  supporting:
+    "It should already be handled. Preferred fleet access, priority booking, concierge support, member pricing, and private HiTouch experiences.",
+  note: "We are also launching a limited Founding Membership—five memberships, by application.",
+  primaryCta: { label: "Request membership", href: "/memberships/apply" },
+  secondaryCta: { label: "Membership details", href: "/memberships" },
+  image: media.handshake,
+  imageAlt: "Two people shaking hands in a bright office",
 };
