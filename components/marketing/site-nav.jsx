@@ -183,13 +183,6 @@ export function SiteNav({
         }`}
       >
         <div className="mx-auto flex max-w-6xl flex-col gap-0.5 px-4 py-4 sm:px-6">
-          <Link
-            href="/#experience"
-            className="rounded-lg px-3 py-3 text-sm font-medium tracking-wide text-charcoal hover:bg-surface hover:text-heading"
-            onClick={() => setOpen(false)}
-          >
-            Our philosophy
-          </Link>
           {links.map((l) => (
             <Link
               key={l.href}
@@ -200,6 +193,13 @@ export function SiteNav({
               {l.label}
             </Link>
           ))}
+          <Link
+            href="/why-hitouch"
+            className="rounded-lg px-3 py-3 text-sm font-medium tracking-wide text-charcoal hover:bg-surface hover:text-heading"
+            onClick={() => setOpen(false)}
+          >
+            Why HiTouch
+          </Link>
           <Link
             href={signInHref}
             className="mt-3 inline-flex items-center justify-center rounded-full border border-border-subtle px-4 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-heading hover:bg-surface"

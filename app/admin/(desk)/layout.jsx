@@ -4,7 +4,14 @@ import { redirect } from "next/navigation";
 import { AdminLogoutForm } from "@/components/admin/admin-logout-form";
 import { isValidAdminSession } from "@/lib/admin-auth";
 import { isValidAdminUserSession } from "@/lib/user-auth";
-import { listCorporateLeads, listEventLeads, listExperienceLeads, storageMode } from "@/lib/lead-storage";
+import {
+  listCorporateLeads,
+  listEventLeads,
+  listExperienceInquiries,
+  listExperienceLeads,
+  listMembershipApplications,
+  storageMode,
+} from "@/lib/lead-storage";
 import { countOpenBookingInquiries } from "@/lib/booking/inquiry-admin";
 import { TripStatus } from "@/lib/trip-status";
 import { isPrismaConfigured, prisma } from "@/lib/prisma";
@@ -18,18 +25,24 @@ export default async function AdminDeskLayout({ children }) {
   let corpCount = 0;
   let eventCount = 0;
   let expCount = 0;
+  let expInquiryCount = 0;
+  let membershipCount = 0;
   let intakeCount = 0;
   let bookingInquiryCount = 0;
   let activeTripCount = 0;
   try {
-    const [c, e, x] = await Promise.all([
+    const [c, e, x, xi, m] = await Promise.all([
       listCorporateLeads(),
       listEventLeads(),
       listExperienceLeads(),
+      listExperienceInquiries(),
+      listMembershipApplications(),
     ]);
     corpCount = c.length;
     eventCount = e.length;
     expCount = x.length;
+    expInquiryCount = xi.length;
+    membershipCount = m.length;
   } catch {
     /* counts stay 0; pages may show errors */
   }
@@ -76,6 +89,24 @@ export default async function AdminDeskLayout({ children }) {
           className="rounded-md border border-white/10 bg-white/5 px-3 py-2 text-zinc-200 hover:border-amber-200/40 hover:text-white"
         >
           Dashboard
+        </Link>
+        <Link
+          href="/admin/memberships"
+          className="rounded-md border border-white/10 bg-white/5 px-3 py-2 text-zinc-200 hover:border-amber-200/40 hover:text-white"
+        >
+          Memberships
+          <span className="ml-1.5 rounded bg-white/10 px-1.5 py-0.5 text-[10px] text-zinc-400">
+            {membershipCount}
+          </span>
+        </Link>
+        <Link
+          href="/admin/experience-inquiries"
+          className="rounded-md border border-white/10 bg-white/5 px-3 py-2 text-zinc-200 hover:border-amber-200/40 hover:text-white"
+        >
+          Experience inquiries
+          <span className="ml-1.5 rounded bg-white/10 px-1.5 py-0.5 text-[10px] text-zinc-400">
+            {expInquiryCount}
+          </span>
         </Link>
         <Link
           href="/admin/corporate"

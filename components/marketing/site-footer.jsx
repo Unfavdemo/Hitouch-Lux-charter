@@ -1,5 +1,20 @@
 import Link from "next/link";
+import { experiences } from "@/content/experiences";
 import { conciergeStatus } from "@/content/home";
+
+const serviceLinks = [
+  { label: "Memberships", href: "/memberships" },
+  { label: "Executive mobility", href: "/executive-mobility" },
+  { label: "Airport transfers", href: "/airport" },
+  { label: "Game day", href: "/game-day" },
+  { label: "Corporate accounts", href: "/corporate" },
+  { label: "Event coordination", href: "/events" },
+  { label: "HiTouch Concierge", href: "/concierge" },
+  { label: "Service catalog", href: "/services" },
+  { label: "Fleet", href: "/fleet" },
+  { label: "Book transportation", href: "/book" },
+  { label: "Corporate sign-in", href: "/login?mode=corporate" },
+];
 
 export function SiteFooter({ site: s }) {
   return (
@@ -31,7 +46,7 @@ export function SiteFooter({ site: s }) {
           </div>
         </div>
         <div className="grid gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-4">
             <p className="font-serif text-2xl tracking-tight text-heading">{s.brandName}</p>
             <p className="mt-2 text-sm text-accent-readable/95">{s.tagline}</p>
             <p className="mt-3 max-w-xl text-sm leading-relaxed text-charcoal">
@@ -57,62 +72,33 @@ export function SiteFooter({ site: s }) {
           </div>
           <div className="lg:col-span-2">
             <p className="text-[11px] font-semibold uppercase tracking-[var(--tracking-nav)] text-accent-readable">
+              Services
+            </p>
+            <ul className="mt-4 space-y-2 text-sm text-charcoal">
+              {serviceLinks.map((l) => (
+                <li key={l.href}>
+                  <Link className="hover:text-accent-readable" href={l.href}>
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="lg:col-span-2">
+            <p className="text-[11px] font-semibold uppercase tracking-[var(--tracking-nav)] text-accent-readable">
               Experiences
             </p>
             <ul className="mt-4 space-y-2 text-sm text-charcoal">
-              <li>
-                <Link className="hover:text-accent-readable" href="/services">
-                  Service catalog
-                </Link>
-              </li>
-              <li>
-                <Link className="hover:text-accent-readable" href="/experiences">
-                  Curated experiences
-                </Link>
-              </li>
-              <li>
-                <Link className="hover:text-accent-readable" href="/experience-request">
-                  Custom experience request
-                </Link>
-              </li>
-              <li>
-                <Link className="hover:text-accent-readable" href="/book">
-                  Reserve & price inquiry
-                </Link>
-              </li>
-              <li>
-                <a
-                  className="hover:text-accent-readable"
-                  href={s.moovsBookingUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Reserve online
-                </a>
-              </li>
-              <li>
-                <Link className="hover:text-accent-readable" href="/fleet">
-                  Fleet
-                </Link>
-              </li>
-              <li>
-                <Link className="hover:text-accent-readable" href="/corporate">
-                  Corporate accounts
-                </Link>
-              </li>
-              <li>
-                <Link className="hover:text-accent-readable" href="/login?mode=corporate">
-                  Corporate client sign-in
-                </Link>
-              </li>
-              <li>
-                <Link className="hover:text-accent-readable" href="/events">
-                  Event coordination
-                </Link>
-              </li>
+              {experiences.map((e) => (
+                <li key={e.slug}>
+                  <Link className="hover:text-accent-readable" href={e.href}>
+                    {e.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-2">
             <p className="text-[11px] font-semibold uppercase tracking-[var(--tracking-nav)] text-accent-readable">
               Connect
             </p>

@@ -20,14 +20,14 @@ export function HomeServicesBento() {
       <Container>
         <div className="max-w-2xl">
           <p className="text-[11px] font-semibold uppercase tracking-[var(--tracking-brand)] text-accent">
-            Occasions we choreograph
+            How people use HiTouch
           </p>
           <h2 className="mt-4 font-serif text-3xl font-normal tracking-tight text-light-ink sm:text-4xl">
-            A frame for every chapter of your evening.
+            One relationship. Every way you move.
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-light-muted sm:text-base">
-            Celebrations, executive programs, tasting days, and arrival rituals—each led by one
-            concierge thread from first brief to final door.
+            Game day, executive mobility, private experiences, and airport service—handled by the
+            same team through one thread.
           </p>
         </div>
 
@@ -54,7 +54,7 @@ export function HomeServicesBento() {
                   {tile.blurb}
                 </p>
                 <span className="mt-4 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[var(--tracking-nav)] text-heading">
-                  View occasion
+                  Explore
                   <span aria-hidden className="transition-transform group-hover:translate-x-1">
                     →
                   </span>

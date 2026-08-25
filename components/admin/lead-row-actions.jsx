@@ -9,7 +9,12 @@ function badgeClass(status) {
 }
 
 /**
- * @param {{ scope: "corporate" | "events" | "experience"; id: string; status: string; reviewedAt?: string | null }} props
+ * @param {{
+ *   scope: "corporate" | "events" | "experience" | "experience-inquiry" | "membership";
+ *   id: string;
+ *   status: string;
+ *   reviewedAt?: string | null;
+ * }} props
  */
 export function LeadRowActions({ scope, id, status: initialStatus, reviewedAt }) {
   const [status, setStatus] = useState(initialStatus);

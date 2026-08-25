@@ -4,7 +4,7 @@ import { autoBookTripFromLead } from "@/lib/auto-book-from-lead";
 import { getAdminAccess } from "@/lib/admin-session";
 import { notifyLeadStatusChange } from "@/lib/lead-notify";
 import { isLeadStatus } from "@/lib/lead-status";
-import { updateLeadStatus } from "@/lib/lead-storage";
+import { isLeadScope, updateLeadStatus } from "@/lib/lead-storage";
 import { isPrismaConfigured } from "@/lib/prisma";
 
 export async function POST(request) {
@@ -24,7 +24,7 @@ export async function POST(request) {
   const id = typeof body.id === "string" ? body.id.trim() : "";
   const status = body.status;
 
-  if (scope !== "corporate" && scope !== "events" && scope !== "experience") {
+  if (!isLeadScope(scope)) {
     return NextResponse.json({ ok: false, message: "Invalid scope." }, { status: 400 });
   }
   if (!id || !isLeadStatus(status)) {

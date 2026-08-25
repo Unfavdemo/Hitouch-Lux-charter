@@ -1,7 +1,15 @@
 import { createCorporateCompany, createTrip } from "@/lib/trip-service";
 import { isPrismaConfigured, prisma } from "@/lib/prisma";
 
-export type LeadScope = "corporate" | "events" | "experience";
+export type LeadScope =
+  | "corporate"
+  | "events"
+  | "experience"
+  | "experience-inquiry"
+  | "membership";
+
+/** Scopes that describe a concrete trip and can therefore be auto-booked. */
+const BOOKABLE_SCOPES = new Set<LeadScope>(["corporate", "events", "experience"]);
 
 export type AutoBookResult =
   | { created: true; tripId: string; alreadyExisted: false }
@@ -178,6 +186,15 @@ export async function autoBookTripFromLead(
 ): Promise<AutoBookResult> {
   if (!isPrismaConfigured()) {
     return { created: false, skipped: true, reason: "Database not configured." };
+  }
+
+  if (!BOOKABLE_SCOPES.has(scope)) {
+    return {
+      created: false,
+      skipped: true,
+      reason:
+        "This lead type is a conversation, not an itinerary. Create the trip manually once details are agreed.",
+    };
   }
 
   const existing = await findExistingTrip(scope, leadId);

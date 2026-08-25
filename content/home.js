@@ -46,14 +46,6 @@ export const experienceJourney = {
   ],
 };
 
-export const philosophyIntro = {
-  eyebrow: "Our standard",
-  headline:
-    "You don't just book a vehicle. You have HiTouch.",
-  supporting:
-    "We sell reliability, relationships, access, and attention to detail. The vehicle is how we deliver it—not what you are buying.",
-};
-
 export const servicesBento = [
   {
     id: "game-day",
