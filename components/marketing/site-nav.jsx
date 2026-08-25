@@ -92,11 +92,10 @@ export function SiteNav({
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3.5 sm:px-6 2xl:grid 2xl:grid-cols-[auto_1fr_auto] 2xl:items-center 2xl:gap-8 2xl:px-8">
         <Link
           href="/"
-          className={`${brandClass} min-w-0 shrink-0`}
+          className={`${brandClass} min-w-0 shrink-0 whitespace-nowrap`}
           title={brandName}
         >
-          <span className="2xl:hidden">{brandNameNav}</span>
-          <span className="hidden 2xl:inline">{brandName}</span>
+          {brandNameNav}
         </Link>
 
         <nav
@@ -130,7 +129,7 @@ export function SiteNav({
           )}
           <a href={`tel:${phoneTel}`} className={phoneClass} aria-label={`Call ${phoneDisplay}`}>
             <PhoneIcon className="h-3.5 w-3.5 shrink-0 opacity-70" />
-            <span>{phoneDisplay}</span>
+            <span className="hidden whitespace-nowrap min-[1700px]:inline">{phoneDisplay}</span>
           </a>
         </div>
 
