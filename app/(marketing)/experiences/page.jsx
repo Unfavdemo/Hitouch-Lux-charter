@@ -34,6 +34,14 @@ const sectionTones = {
   signature: "dark",
 };
 
+/** Keep each category's card row balanced rather than leaving orphans. */
+function gridClass(count) {
+  if (count === 1) return "mx-auto max-w-xl";
+  if (count === 2) return "sm:grid-cols-2 lg:mx-auto lg:max-w-4xl";
+  if (count === 4) return "sm:grid-cols-2 lg:grid-cols-4";
+  return "sm:grid-cols-2 lg:grid-cols-3";
+}
+
 export default function ExperiencesPage() {
   const listItems = experiences.map((e) => ({
     name: e.title,
@@ -90,11 +98,7 @@ export default function ExperiencesPage() {
                 </Button>
               ) : null}
             </div>
-            <div
-              className={`mt-12 grid gap-6 sm:grid-cols-2 ${
-                items.length >= 3 ? "lg:grid-cols-3" : ""
-              } ${items.length === 1 ? "sm:grid-cols-1 lg:mx-auto lg:max-w-xl" : ""}`}
-            >
+            <div className={`mt-12 grid gap-6 ${gridClass(items.length)}`}>
               {items.map((exp, index) => (
                 <ExperiencePackageCard
                   key={exp.id}
