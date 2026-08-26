@@ -111,7 +111,7 @@ export default function GameDayPage() {
             />
           ))}
         </div>
-        <p className="mt-10 max-w-3xl text-xs leading-relaxed text-on-dark-body/70">
+        <p className="mt-10 max-w-3xl text-xs leading-relaxed text-on-dark-muted">
           {teamDisclaimer}
         </p>
       </MarketingPageSection>

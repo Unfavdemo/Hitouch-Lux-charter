@@ -128,7 +128,7 @@ export default function HomePage() {
               <h2 className="mt-4 font-serif text-3xl font-normal leading-tight tracking-tight text-heading sm:text-4xl lg:text-5xl">
                 Your cabin is part of the experience—not an afterthought.
               </h2>
-              <p className="mt-5 max-w-xl text-sm leading-relaxed text-foreground/80 sm:text-base">
+              <p className="mt-5 max-w-xl text-sm leading-relaxed text-charcoal sm:text-base">
                 Sedans, executive SUVs, and the Executive Sprinter—studio-prepared, detailed,
                 and briefed to match the tone of your day.
               </p>

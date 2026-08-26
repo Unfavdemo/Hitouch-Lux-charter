@@ -115,7 +115,7 @@ export default function ExperiencesPage() {
               ))}
             </div>
             {category.id === "game-day" ? (
-              <p className="mt-8 max-w-3xl text-xs leading-relaxed text-on-dark-body/70">
+              <p className="mt-8 max-w-3xl text-xs leading-relaxed text-on-dark-muted">
                 {teamDisclaimer}
               </p>
             ) : null}

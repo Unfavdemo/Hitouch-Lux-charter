@@ -3,8 +3,8 @@ export function FaqList({ items, light = false }) {
     ? "border-light-ink/10 bg-gradient-to-b from-paper to-cream"
     : "border-border-subtle bg-gradient-to-b from-surface to-page";
   const openBg = light ? "open:bg-white/90" : "open:bg-page/70";
-  const questionClass = light ? "text-light-ink" : "text-charcoal";
-  const answerClass = light ? "text-light-muted" : "text-charcoal";
+  const questionClass = light ? "text-light-ink" : "text-heading";
+  const answerClass = light ? "text-light-muted" : "text-on-dark-body";
   const toggleClass = light ? "text-accent" : "text-accent-readable";
   const divideClass = light ? "divide-light-ink/10" : "divide-border-subtle";
 

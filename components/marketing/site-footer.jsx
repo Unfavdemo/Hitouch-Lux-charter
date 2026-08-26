@@ -165,7 +165,7 @@ export function SiteFooter({ site: s }) {
             </ul>
           </div>
         </div>
-        <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-8 text-xs text-charcoal/90 lg:flex-row lg:flex-wrap lg:items-center lg:justify-between">
+        <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-8 text-xs text-charcoal lg:flex-row lg:flex-wrap lg:items-center lg:justify-between">
           <p>
             © {new Date().getFullYear()} {s.brandName}. All rights reserved.
           </p>
@@ -176,7 +176,7 @@ export function SiteFooter({ site: s }) {
               </Link>
             ))}
           </div>
-          <p className="max-w-xl text-charcoal/80 lg:text-right">
+          <p className="max-w-xl text-charcoal lg:text-right">
             Licensed, insured chauffeur service. Executive protection details available upon
             request and subject to jurisdictional compliance.
           </p>

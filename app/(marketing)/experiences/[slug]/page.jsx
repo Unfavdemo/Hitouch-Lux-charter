@@ -113,7 +113,7 @@ export default async function ExperienceLandingPage({ params }) {
 
             <p className="mt-10 font-serif text-2xl text-light-ink">{exp.closingLine}</p>
             {exp.disclaimer ? (
-              <p className="mt-6 max-w-xl text-xs leading-relaxed text-light-muted/80">
+              <p className="mt-6 max-w-xl text-xs leading-relaxed text-light-muted">
                 {teamDisclaimer}
               </p>
             ) : null}

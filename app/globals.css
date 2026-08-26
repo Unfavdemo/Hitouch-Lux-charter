@@ -4,11 +4,11 @@
 :root {
   /* Dark canvas: midnight navy, obsidian */
   --background: #050810;
-  --foreground: #d8d4cc;
+  --foreground: #e8e4dc;
   --surface: #0c1526;
   --field: #060b14;
-  --muted: #9aa3b5;
-  --charcoal: #c8cdd8;
+  --muted: #b4bcc8;
+  --charcoal: #d8dce4;
   --heading: #faf8f4;
   --midnight: #020617;
   /* Champagne gold — editorial accent */
@@ -22,7 +22,7 @@
   --cream: #f7f5f0;
   --paper: #ffffff;
   --light-ink: #0a1628;
-  --light-muted: #3f4d5e;
+  --light-muted: #334155;
   --charcoal-footer: #141b26;
 }
 
@@ -162,7 +162,11 @@
   }
 
   .text-on-dark-body {
-    color: color-mix(in srgb, var(--charcoal) 95%, var(--foreground));
+    color: var(--foreground);
+  }
+
+  .text-on-dark-muted {
+    color: var(--muted);
   }
 
   .text-hero-shadow {
@@ -261,11 +265,11 @@
   }
 
   .luxury-card-glass {
-    @apply relative overflow-hidden rounded-[var(--radius-card-lg)] border border-white/10;
+    @apply relative overflow-hidden rounded-[var(--radius-card-lg)] border border-white/14;
     background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.06) 0%,
-      rgba(255, 255, 255, 0.02) 100%
+      160deg,
+      rgba(18, 28, 48, 0.92) 0%,
+      rgba(8, 14, 28, 0.96) 100%
     );
     backdrop-filter: blur(12px);
     box-shadow: var(--shadow-luxury-dark);
