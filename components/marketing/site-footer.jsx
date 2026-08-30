@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandLogo } from "@/components/marketing/brand-logo";
 
 export function SiteFooter({ site: s }) {
   return (
@@ -6,8 +7,14 @@ export function SiteFooter({ site: s }) {
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-6">
-            <p className="font-serif text-xl tracking-tight text-heading sm:text-2xl">{s.brandName}</p>
-            <p className="mt-2 text-sm text-accent-readable">{s.tagline}</p>
+            <Link href="/" className="inline-block">
+              {s.logoSrc ? (
+                <BrandLogo src={s.logoSrc} alt={s.logoAlt ?? s.brandName} className="h-20 w-auto sm:h-24" />
+              ) : (
+                <p className="font-serif text-xl tracking-tight text-heading sm:text-2xl">{s.brandName}</p>
+              )}
+            </Link>
+            <p className="mt-3 text-sm text-accent-readable">{s.tagline}</p>
             <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-charcoal">
               <a className="hover:text-accent-readable" href={`tel:${s.phoneTel}`}>
                 {s.phoneDisplay}

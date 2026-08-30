@@ -2,6 +2,8 @@ export const site = {
   brandName: "HiTouch Luxury Charter",
   /** Shorter label for the fixed header on medium viewports */
   brandNameNav: "HiTouch Luxury",
+  logoSrc: "/images/hitouch-logo.jpg",
+  logoAlt: "HiTouch Luxury Charter Services",
   tagline: "You don't just book a vehicle. You have HiTouch.",
   shortTagline: "Private mobility and curated experiences.",
   phoneDisplay: "215-650-7216",

@@ -11,6 +11,8 @@ export default function MarketingLayout({ children }) {
       <SiteNav
         brandName={site.brandName}
         brandNameNav={site.brandNameNav}
+        logoSrc={site.logoSrc}
+        logoAlt={site.logoAlt}
         links={site.nav}
         phoneTel={site.phoneTel}
         phoneDisplay={site.phoneDisplay}

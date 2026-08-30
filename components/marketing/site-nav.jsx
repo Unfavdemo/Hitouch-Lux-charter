@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { BrandLogo } from "@/components/marketing/brand-logo";
 
 function PhoneIcon({ className }) {
   return (
@@ -19,6 +20,8 @@ function PhoneIcon({ className }) {
 export function SiteNav({
   brandName,
   brandNameNav = brandName,
+  logoSrc,
+  logoAlt,
   links,
   phoneTel,
   phoneDisplay,
@@ -58,9 +61,7 @@ export function SiteNav({
     ? "border-b border-border-subtle bg-page/95 shadow-sm backdrop-blur-md"
     : "bg-transparent";
 
-  const brandClass = solid
-    ? "font-serif text-lg tracking-tight text-heading sm:text-xl"
-    : "font-serif text-lg tracking-tight text-heading drop-shadow-[0_1px_14px_rgba(0,0,0,0.95)] sm:text-xl";
+  const brandClass = "inline-flex min-w-0 shrink-0 items-center";
 
   const desktopLinkClass = solid
     ? "text-[11px] font-medium uppercase tracking-[0.08em] text-charcoal transition-colors hover:text-heading"
@@ -92,10 +93,20 @@ export function SiteNav({
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3.5 sm:px-6 2xl:grid 2xl:max-w-[92rem] 2xl:grid-cols-[auto_1fr_auto] 2xl:items-center 2xl:gap-6 2xl:px-8">
         <Link
           href="/"
-          className={`${brandClass} min-w-0 shrink-0 whitespace-nowrap`}
+          className={`${brandClass}`}
           title={brandName}
         >
-          {brandNameNav}
+          {logoSrc ? (
+            <BrandLogo
+              src={logoSrc}
+              alt={logoAlt ?? brandName}
+              className="h-9 w-auto sm:h-10"
+              priority
+            />
+          ) : (
+            <span className="font-serif text-lg tracking-tight text-heading sm:text-xl">{brandNameNav}</span>
+          )}
+          <span className="sr-only">{brandName}</span>
         </Link>
 
         <nav
