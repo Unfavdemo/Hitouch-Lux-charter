@@ -22,19 +22,19 @@ export function FleetVehicleCard({ vehicle }) {
         <p className="mt-2 text-sm leading-relaxed text-light-muted">{vehicle.tagline}</p>
         <dl className="mt-5 grid grid-cols-2 gap-x-4 gap-y-4 border-t border-light-ink/10 pt-5 text-sm">
           <div>
-            <dt className="text-[10px] font-semibold uppercase tracking-[var(--tracking-nav)] text-accent">
+            <dt className="text-[10px] font-semibold uppercase tracking-[var(--tracking-nav)] text-accent-on-light">
               Seats
             </dt>
             <dd className="mt-1 font-medium text-light-ink">{vehicle.passengers}</dd>
           </div>
           <div>
-            <dt className="text-[10px] font-semibold uppercase tracking-[var(--tracking-nav)] text-accent">
+            <dt className="text-[10px] font-semibold uppercase tracking-[var(--tracking-nav)] text-accent-on-light">
               Luggage
             </dt>
             <dd className="mt-1 font-medium text-light-ink">{vehicle.luggage} bags</dd>
           </div>
           <div>
-            <dt className="text-[10px] font-semibold uppercase tracking-[var(--tracking-nav)] text-accent">
+            <dt className="text-[10px] font-semibold uppercase tracking-[var(--tracking-nav)] text-accent-on-light">
               Wi‑Fi
             </dt>
             <dd className="mt-1 font-medium text-light-ink">
@@ -42,7 +42,7 @@ export function FleetVehicleCard({ vehicle }) {
             </dd>
           </div>
           <div>
-            <dt className="text-[10px] font-semibold uppercase tracking-[var(--tracking-nav)] text-accent">
+            <dt className="text-[10px] font-semibold uppercase tracking-[var(--tracking-nav)] text-accent-on-light">
               Partition
             </dt>
             <dd className="mt-1 font-medium text-light-ink">

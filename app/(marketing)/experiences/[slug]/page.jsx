@@ -94,7 +94,7 @@ export default async function ExperienceLandingPage({ params }) {
             </ul>
 
             <div className="mt-12 rounded-[var(--radius-card)] border border-light-ink/10 bg-paper/70 p-6 sm:p-8">
-              <p className="text-[11px] font-semibold uppercase tracking-[var(--tracking-brand)] text-accent">
+              <p className="text-[11px] font-semibold uppercase tracking-[var(--tracking-brand)] text-accent-on-light">
                 HiTouch Concierge additions
               </p>
               <p className="mt-3 text-sm leading-relaxed text-light-muted">

@@ -167,7 +167,7 @@ export function BookingWizard({ moovsBookingUrl }) {
         {step === 2 && "Trip preferences"}
         {step === 3 && "Indicative estimate"}
       </h2>
-      <p className="mt-2 max-w-xl text-sm leading-relaxed text-charcoal">
+      <p className="mt-2 max-w-xl text-sm leading-relaxed text-on-dark-muted">
         {step === 1 &&
           "We save your information first so our concierge can follow up—even if you pause before viewing pricing."}
         {step === 2 && "Tell us about your movement. Estimates are for planning; final pricing is confirmed by the desk."}
@@ -270,7 +270,7 @@ export function BookingWizard({ moovsBookingUrl }) {
             <p className="text-[11px] font-semibold uppercase tracking-[var(--tracking-nav)] text-accent-readable">
               {quote.estimateLabel}
             </p>
-            <ul className="mt-4 space-y-2 text-sm text-charcoal">
+            <ul className="mt-4 space-y-2 text-sm text-on-dark-muted">
               {quote.lineItems.map((item) => (
                 <li key={item.label} className="flex justify-between gap-4">
                   <span>{item.label}</span>
@@ -282,7 +282,7 @@ export function BookingWizard({ moovsBookingUrl }) {
               <span>Estimated total</span>
               <span>{formatUsd(quote.subtotalCents)}</span>
             </p>
-            <p className="mt-4 text-xs leading-relaxed text-charcoal">{quote.disclaimer}</p>
+            <p className="mt-4 text-xs leading-relaxed text-on-dark-muted">{quote.disclaimer}</p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Button type="button" variant="primary" disabled={pending} onClick={() => void onComplete()}>

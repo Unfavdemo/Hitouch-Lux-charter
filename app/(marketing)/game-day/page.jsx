@@ -71,7 +71,7 @@ export default function GameDayPage() {
           <h2 className="luxury-display text-3xl text-light-ink sm:text-4xl">
             {gameDayHub.promise}
           </h2>
-          <p className="mt-6 font-serif text-2xl text-accent sm:text-3xl">{gameDayHub.closing}</p>
+          <p className="mt-6 font-serif text-2xl text-accent-on-light sm:text-3xl">{gameDayHub.closing}</p>
         </div>
         <ol className="mx-auto mt-16 grid max-w-5xl gap-8 md:grid-cols-3 md:gap-6">
           {gameDaySteps.map((step, index) => (

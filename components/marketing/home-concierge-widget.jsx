@@ -5,10 +5,10 @@ import { Section } from "@/components/ui/section";
 
 export function HomeConciergeWidget({ phoneTel, phoneDisplay, moovsBookingUrl }) {
   return (
-    <Section className="border-y border-light-ink/8 bg-cream py-20 lg:py-28">
+    <Section className="border-y border-light-ink/8 bg-cream py-14 lg:py-20">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-[11px] font-semibold uppercase tracking-[var(--tracking-brand)] text-accent">
+          <p className="text-[11px] font-semibold uppercase tracking-[var(--tracking-brand)] text-accent-on-light">
             {homeConcierge.eyebrow}
           </p>
           <h2 className="mt-4 font-serif text-3xl tracking-tight text-light-ink sm:text-4xl">
@@ -48,7 +48,7 @@ export function HomeConciergeWidget({ phoneTel, phoneDisplay, moovsBookingUrl })
           <p className="mt-2 text-center text-xs leading-relaxed text-light-muted">
             {homeConcierge.tertiaryNote}{" "}
             <a
-              className="font-medium text-light-ink underline decoration-accent/50 underline-offset-4 transition hover:text-accent"
+              className="font-medium text-light-ink underline decoration-accent-on-light/50 underline-offset-4 transition hover:text-accent-on-light"
               href={moovsBookingUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -59,7 +59,7 @@ export function HomeConciergeWidget({ phoneTel, phoneDisplay, moovsBookingUrl })
           <p className="text-center text-sm text-light-muted">
             Private line{" "}
             <a
-              className="font-medium text-light-ink underline decoration-accent/50 underline-offset-4 transition hover:text-accent"
+              className="font-medium text-light-ink underline decoration-accent-on-light/50 underline-offset-4 transition hover:text-accent-on-light"
               href={`tel:${phoneTel}`}
             >
               {phoneDisplay}

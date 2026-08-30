@@ -5,7 +5,7 @@ export function FaqList({ items, light = false }) {
   const openBg = light ? "open:bg-white/90" : "open:bg-page/70";
   const questionClass = light ? "text-light-ink" : "text-heading";
   const answerClass = light ? "text-light-muted" : "text-on-dark-body";
-  const toggleClass = light ? "text-accent" : "text-accent-readable";
+  const toggleClass = light ? "text-accent-on-light" : "text-accent-readable";
   const divideClass = light ? "divide-light-ink/10" : "divide-border-subtle";
 
   return (
@@ -26,7 +26,7 @@ export function FaqList({ items, light = false }) {
               <span
                 className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-sm transition-all duration-300 group-open:rotate-45 ${
                   light
-                    ? "border-accent/30 bg-accent/5 text-accent"
+                    ? "border-accent-on-light/35 bg-accent-on-light/8 text-accent-on-light"
                     : "border-accent/40 bg-accent/10 text-accent-readable"
                 }`}
                 aria-hidden

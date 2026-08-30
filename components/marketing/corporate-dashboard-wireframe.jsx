@@ -14,13 +14,13 @@ export function CorporateDashboardWireframe() {
         <p className="text-[11px] font-semibold uppercase tracking-[var(--tracking-nav)] text-accent-readable">
           Corporate client portal — preview
         </p>
-        <p className="mt-1 text-sm text-charcoal">
+        <p className="mt-1 text-sm text-on-dark-muted">
           Wireframe of the signed-in experience for onboarded accounts.
         </p>
       </div>
       <div className="grid lg:grid-cols-[12rem_1fr]">
         <aside className="hidden border-r border-white/10 bg-page/40 p-4 lg:block">
-          <nav className="space-y-2 text-xs uppercase tracking-widest text-charcoal">
+          <nav className="space-y-2 text-xs uppercase tracking-widest text-on-dark-muted">
             <p className="rounded-md bg-accent-soft/30 px-3 py-2 text-accent-readable">Trips</p>
             <p className="px-3 py-2">Invoices</p>
             <p className="px-3 py-2">Playbooks</p>
@@ -41,7 +41,7 @@ export function CorporateDashboardWireframe() {
                 className="flex flex-wrap items-center justify-between gap-2 rounded-md border border-white/10 bg-surface/80 px-4 py-3 text-sm"
               >
                 <span className="text-heading">{trip.principal}</span>
-                <span className="text-charcoal">{trip.window}</span>
+                <span className="text-on-dark-muted">{trip.window}</span>
                 <span className="text-[10px] font-semibold uppercase tracking-widest text-accent-readable">
                   {trip.status}
                 </span>
@@ -54,7 +54,7 @@ export function CorporateDashboardWireframe() {
             </Button>
             <Link
               href="/corporate"
-              className="inline-flex items-center text-sm text-charcoal underline decoration-accent/40 underline-offset-4 hover:text-heading"
+              className="inline-flex items-center text-sm text-on-dark-muted underline decoration-accent/40 underline-offset-4 hover:text-heading"
             >
               Submit account intake
             </Link>

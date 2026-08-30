@@ -55,7 +55,7 @@ export function FloatingComms({ site }) {
         >
           <div className="rounded-lg border border-accent/20 bg-surface p-4 shadow-xl shadow-black/50">
             <p className="font-serif text-lg text-heading">Concierge desk</p>
-            <p className="mt-2 text-sm text-charcoal">
+            <p className="mt-2 text-sm text-on-dark-body">
               Live chat integration is not connected. For immediate assistance,
               call or open the contact drawer.
             </p>
@@ -124,15 +124,15 @@ export function FloatingComms({ site }) {
               </p>
               <button
                 type="button"
-                className="rounded-md border border-border-subtle px-2 py-1 text-xs uppercase tracking-widest text-charcoal hover:text-accent-readable"
+                className="rounded-md border border-border-subtle px-2 py-1 text-xs uppercase tracking-widest text-on-dark-muted hover:text-accent-readable"
                 onClick={closeDrawer}
               >
                 Close
               </button>
             </div>
-            <div className="flex-1 space-y-6 overflow-y-auto px-5 py-6 text-sm text-charcoal">
+            <div className="flex-1 space-y-6 overflow-y-auto px-5 py-6 text-sm text-on-dark-body">
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[var(--tracking-brand)] text-charcoal">
+                <p className="text-[11px] font-semibold uppercase tracking-[var(--tracking-brand)] text-on-dark-muted">
                   Phone
                 </p>
                 <a
@@ -143,7 +143,7 @@ export function FloatingComms({ site }) {
                 </a>
               </div>
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[var(--tracking-brand)] text-charcoal">
+                <p className="text-[11px] font-semibold uppercase tracking-[var(--tracking-brand)] text-on-dark-muted">
                   Email
                 </p>
                 <a

@@ -1,5 +1,4 @@
 import { FloatingComms } from "@/components/marketing/floating-comms";
-import { PartnerLogoMarquee } from "@/components/marketing/partner-logo-marquee";
 import { SiteFooter } from "@/components/marketing/site-footer";
 import { SiteNav } from "@/components/marketing/site-nav";
 import { SmithAiBridge } from "@/components/marketing/smith-ai-bridge";
@@ -22,7 +21,6 @@ export default function MarketingLayout({ children }) {
       <main id="main" className="flex min-w-0 flex-1 flex-col overflow-x-hidden">
         {children}
       </main>
-      <PartnerLogoMarquee />
       <SiteFooter site={site} />
       <SmithAiBridge />
       <SmithDemoCallout />

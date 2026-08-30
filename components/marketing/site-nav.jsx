@@ -183,11 +183,11 @@ export function SiteNav({
       >
         <div className="mx-auto flex max-w-6xl flex-col gap-0.5 px-4 py-4 sm:px-6">
           <Link
-            href="/#experience"
+            href="/about#why-hitouch"
             className="rounded-lg px-3 py-3 text-sm font-medium tracking-wide text-charcoal hover:bg-surface hover:text-heading"
             onClick={() => setOpen(false)}
           >
-            Our philosophy
+            Why HiTouch
           </Link>
           {links.map((l) => (
             <Link

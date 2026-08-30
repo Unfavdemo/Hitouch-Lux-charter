@@ -21,6 +21,7 @@ const marketingPaths = [
   "/privacy",
   "/services",
   "/terms",
+  "/testimonials",
 ];
 
 const highPriorityPaths = new Set([

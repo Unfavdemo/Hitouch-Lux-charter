@@ -102,7 +102,7 @@ export function FleetShowcase({ vehicles }) {
           >
             Prev
           </button>
-          <p className="text-xs font-medium text-charcoal">
+          <p className="text-xs font-medium text-on-dark-muted">
             {index + 1} / {vehicles.length}
           </p>
           <button
@@ -184,7 +184,7 @@ export function FleetShowcase({ vehicles }) {
                 {detail.highlights.map((h) => (
                   <li
                     key={h}
-                    className="rounded-md border border-white/10 bg-midnight/50 px-3 py-2 text-sm text-charcoal"
+                    className="rounded-md border border-white/10 bg-midnight/50 px-3 py-2 text-sm text-on-dark-body"
                   >
                     {h}
                   </li>

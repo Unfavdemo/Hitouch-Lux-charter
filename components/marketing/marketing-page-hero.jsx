@@ -1,18 +1,6 @@
-"use client";
-
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
 import { LuxuryEyebrow } from "@/components/marketing/luxury-eyebrow";
 import { Container } from "@/components/ui/container";
-
-const fade = (reduce, delay = 0) =>
-  reduce
-    ? {}
-    : {
-        initial: { opacity: 0, y: 18 },
-        animate: { opacity: 1, y: 0 },
-        transition: { duration: 0.75, delay, ease: [0.22, 1, 0.36, 1] },
-      };
 
 export function MarketingPageHero({
   eyebrow,
@@ -23,7 +11,6 @@ export function MarketingPageHero({
   actions,
   variant = "image",
 }) {
-  const reduce = useReducedMotion();
   const isImage = variant === "image" && image;
 
   return (
@@ -65,31 +52,27 @@ export function MarketingPageHero({
             aria-hidden
           />
           <div className="min-w-0 flex-1">
-            <motion.div {...fade(reduce, 0)}>
+            <div className="luxury-reveal">
               <LuxuryEyebrow light={!isImage}>{eyebrow}</LuxuryEyebrow>
-            </motion.div>
-            <motion.h1
-              {...fade(reduce, 0.06)}
-              className={`luxury-display mt-6 max-w-3xl text-4xl leading-[1.08] sm:text-5xl lg:text-[3.35rem] ${
+            </div>
+            <h1
+              className={`luxury-reveal luxury-reveal-delay-1 luxury-display mt-6 max-w-3xl text-4xl leading-[1.08] sm:text-5xl lg:text-[3.35rem] ${
                 isImage ? "text-heading text-hero-shadow" : "text-light-ink"
               }`}
             >
               {title}
-            </motion.h1>
+            </h1>
             {description ? (
-              <motion.p
-                {...fade(reduce, 0.12)}
-                className={`mt-6 max-w-2xl text-base leading-relaxed sm:text-lg ${
+              <p
+                className={`luxury-reveal luxury-reveal-delay-2 mt-6 max-w-2xl text-base leading-relaxed sm:text-lg ${
                   isImage ? "text-on-dark-body" : "text-light-muted"
                 }`}
               >
                 {description}
-              </motion.p>
+              </p>
             ) : null}
             {actions ? (
-              <motion.div {...fade(reduce, 0.18)} className="mt-10 flex flex-wrap gap-3">
-                {actions}
-              </motion.div>
+              <div className="luxury-reveal luxury-reveal-delay-3 mt-10 flex flex-wrap gap-3">{actions}</div>
             ) : null}
           </div>
         </div>

@@ -16,10 +16,10 @@ function cellClass(layout) {
 
 export function HomeServicesBento() {
   return (
-    <Section className="bg-paper py-20 lg:py-28">
+    <Section className="bg-paper py-14 lg:py-20">
       <Container>
         <div className="max-w-2xl">
-          <p className="text-[11px] font-semibold uppercase tracking-[var(--tracking-brand)] text-accent">
+          <p className="text-[11px] font-semibold uppercase tracking-[var(--tracking-brand)] text-accent-on-light">
             How people use HiTouch
           </p>
           <h2 className="mt-4 font-serif text-3xl font-normal tracking-tight text-light-ink sm:text-4xl">

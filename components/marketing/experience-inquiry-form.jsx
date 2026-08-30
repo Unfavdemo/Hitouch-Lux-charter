@@ -83,7 +83,7 @@ export function ExperienceInquiryForm({ experienceSlug, experienceTitle }) {
         Begin your inquiry
       </p>
       <h3 className="mt-3 font-serif text-2xl text-heading">{experienceTitle}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-charcoal">
+      <p className="mt-2 text-sm leading-relaxed text-on-dark-muted">
         Tell us the occasion. We&rsquo;ll handle the details—your concierge responds within 24
         hours.
       </p>

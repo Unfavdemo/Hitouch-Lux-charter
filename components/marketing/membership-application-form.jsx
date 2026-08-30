@@ -108,7 +108,7 @@ export function MembershipApplicationForm() {
         Membership application
       </p>
       <h3 className="mt-3 font-serif text-2xl text-heading">Request Membership</h3>
-      <p className="mt-2 text-sm leading-relaxed text-charcoal">
+      <p className="mt-2 text-sm leading-relaxed text-on-dark-muted">
         Applications are reviewed personally. Tell us how you move—we&rsquo;ll design the
         relationship around it.
       </p>
@@ -241,7 +241,7 @@ export function MembershipApplicationForm() {
               </select>
             </div>
           </div>
-          <p className="mt-6 text-xs text-charcoal">Primary needs—select all that apply.</p>
+          <p className="mt-6 text-xs text-on-dark-muted">Primary needs—select all that apply.</p>
           <div className="mt-3 grid gap-3 sm:grid-cols-2">
             {needOptions.map((o) => (
               <label key={o.value} className={`${luxuryChoiceLabel} items-center gap-2`}>

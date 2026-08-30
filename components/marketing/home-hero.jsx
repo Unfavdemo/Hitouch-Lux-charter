@@ -1,13 +1,8 @@
-"use client";
-
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
 import { heroContent } from "@/content/home";
 import { Button } from "@/components/ui/button";
 
 export function HomeHero({ site }) {
-  const reduce = useReducedMotion();
-
   return (
     <section className="relative overflow-hidden bg-midnight text-foreground md:min-h-[min(92vh,52rem)]">
       <Image
@@ -22,40 +17,20 @@ export function HomeHero({ site }) {
       <div className="absolute inset-0 bg-gradient-to-r from-midnight/85 via-midnight/30 to-midnight/55" />
 
       <div className="relative mx-auto flex max-w-6xl flex-col justify-start px-4 pb-16 pt-28 sm:px-6 sm:pb-20 md:min-h-[min(92vh,52rem)] md:justify-end md:pb-24 md:pt-36 lg:px-8 lg:pb-28 lg:pt-40">
-        <motion.p
-          initial={reduce ? false : { opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-[11px] font-semibold uppercase tracking-[var(--tracking-nav)] text-accent-readable"
-        >
+        <p className="luxury-reveal text-[11px] font-semibold uppercase tracking-[var(--tracking-nav)] text-accent-readable">
           {heroContent.eyebrow}
-        </motion.p>
-        <motion.h1
-          initial={reduce ? false : { opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: reduce ? 0 : 0.05 }}
-          className="mt-5 max-w-4xl font-serif text-[2.1rem] font-normal uppercase leading-[1.14] tracking-[0.06em] text-heading text-hero-shadow sm:text-5xl lg:text-6xl"
-        >
+        </p>
+        <h1 className="luxury-reveal luxury-reveal-delay-1 mt-5 max-w-4xl font-serif text-[2.1rem] font-normal uppercase leading-[1.14] tracking-[0.06em] text-heading text-hero-shadow sm:text-5xl lg:text-6xl">
           {(heroContent.headlineLines ?? [heroContent.headline]).map((line) => (
             <span key={line} className="block">
               {line}
             </span>
           ))}
-        </motion.h1>
-        <motion.p
-          initial={reduce ? false : { opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: reduce ? 0 : 0.1 }}
-          className="mt-8 max-w-2xl text-base leading-relaxed text-on-dark-body sm:text-lg lg:text-xl"
-        >
+        </h1>
+        <p className="luxury-reveal luxury-reveal-delay-2 mt-8 max-w-2xl text-base leading-relaxed text-on-dark-body sm:text-lg lg:text-xl">
           {heroContent.supporting}
-        </motion.p>
-        <motion.div
-          initial={reduce ? false : { opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: reduce ? 0 : 0.15 }}
-          className="mt-12 flex max-w-xl flex-col gap-4 sm:flex-row sm:items-center"
-        >
+        </p>
+        <div className="luxury-reveal luxury-reveal-delay-3 mt-12 flex max-w-xl flex-col gap-4 sm:flex-row sm:items-center">
           <Button
             href={heroContent.primaryCta.href}
             variant="primary"
@@ -70,21 +45,16 @@ export function HomeHero({ site }) {
           >
             {heroContent.secondaryCta.label}
           </Button>
-        </motion.div>
-        <motion.p
-          initial={reduce ? false : { opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: reduce ? 0 : 0.22 }}
-          className="mt-6 text-sm text-charcoal"
-        >
+        </div>
+        <p className="luxury-reveal luxury-reveal-delay-3 mt-6 text-sm text-on-dark-muted">
           Experience concierge{" "}
           <a
-            className="font-medium text-heading underline decoration-accent/60 underline-offset-4"
+            className="font-medium text-heading underline decoration-accent-readable/70 underline-offset-4"
             href={`tel:${site.phoneTel}`}
           >
             {site.phoneDisplay}
           </a>
-        </motion.p>
+        </p>
       </div>
     </section>
   );

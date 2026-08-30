@@ -34,7 +34,7 @@ export function CorporatePartnerPathway() {
               Phase {idx + 1}
             </span>
             <h3 className="mt-3 font-serif text-xl text-heading">{step.title}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-charcoal">{step.detail}</p>
+            <p className="mt-3 text-sm leading-relaxed text-on-dark-body">{step.detail}</p>
           </Card>
         ))}
       </div>

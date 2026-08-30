@@ -25,18 +25,25 @@ export const site = {
   partnerNote:
     "Proudly connected with select hospitality and aviation partner networks across the Mid-Atlantic.",
   nav: [
+    { label: "Fleet", href: "/fleet" },
     { label: "Memberships", href: "/memberships" },
     { label: "Executive Mobility", href: "/executive-mobility" },
     { label: "Private Experiences", href: "/experiences" },
-    { label: "Game Day", href: "/game-day" },
+    { label: "Testimonials", href: "/testimonials" },
     { label: "Corporate", href: "/corporate" },
-    { label: "Airport", href: "/airport" },
   ],
   footerCompany: [
     { label: "About", href: "/about" },
-    { label: "Why HiTouch", href: "/about#why-hitouch" },
+    { label: "Testimonials", href: "/testimonials" },
     { label: "FAQ", href: "/faq" },
     { label: "Contact", href: "/contact" },
+  ],
+  footerExplore: [
+    { label: "Fleet", href: "/fleet" },
+    { label: "Private experiences", href: "/experiences" },
+    { label: "Memberships", href: "/memberships" },
+    { label: "Book transportation", href: "/book" },
+    { label: "Corporate", href: "/corporate" },
   ],
   footerLegal: [
     { label: "Privacy", href: "/privacy" },
