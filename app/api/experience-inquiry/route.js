@@ -46,7 +46,7 @@ export async function POST(request) {
     lastName: String(b.lastName).trim(),
     email: String(b.email).trim(),
     phone: String(b.phone).trim(),
-    /* Mapped into the shared experience-lead shape for the admin desk */
+    /* Mapped into the shared experience-lead shape for Airtable + admin desk */
     serviceInterest: experience.title,
     pickupDate: typeof b.preferredDate === "string" ? b.preferredDate : "",
     guestCount: typeof b.guestCount === "string" ? b.guestCount : "",
