@@ -12,11 +12,13 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
-  luxuryChoiceLabel,
+  luxuryCheck,
+  luxuryChoiceCard,
   luxuryFieldInput,
   luxuryFieldLabel,
   luxuryFieldset,
   luxuryLegend,
+  luxuryRadio,
   luxuryRequiredMark,
 } from "@/components/ui/luxury-form";
 
@@ -27,11 +29,6 @@ function Req() {
     </span>
   );
 }
-
-const checkClass =
-  "h-4 w-4 shrink-0 rounded border border-accent/35 bg-field accent-accent";
-const radioClass =
-  "mt-1 h-4 w-4 shrink-0 border border-accent/35 bg-field accent-accent";
 
 export function ExperienceRequestForm() {
   const [pending, setPending] = useState(false);
@@ -139,6 +136,19 @@ export function ExperienceRequestForm() {
 
   return (
     <Card className="relative overflow-hidden p-6 sm:p-8 before:pointer-events-none before:absolute before:inset-x-8 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-accent/80 before:to-transparent">
+      <div className="mb-8">
+        <p className="text-[11px] font-semibold uppercase tracking-[var(--tracking-nav)] text-accent-readable">
+          Experience request
+        </p>
+        <h3 className="mt-3 font-serif text-2xl text-heading sm:text-3xl">
+          Design your evening with us
+        </h3>
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-on-dark-muted">
+          Fields marked with <Req /> are required. Submit once—your concierge replies within 24–48
+          hours with a choreographed proposal.
+        </p>
+      </div>
+
       <form className="space-y-10" onSubmit={(ev) => void onSubmit(ev)}>
         <fieldset className={luxuryFieldset}>
           <legend className={luxuryLegend}>Contact</legend>
@@ -203,21 +213,21 @@ export function ExperienceRequestForm() {
           <p className="mt-2 text-xs text-on-dark-muted">Select all that apply.</p>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             {occasionOptions.map((o) => (
-              <label key={o.value} className={`${luxuryChoiceLabel} items-center gap-2`}>
-                <input type="checkbox" name="occasion" value={o.value} className={checkClass} />
-                {o.label}
+              <label key={o.value} className={luxuryChoiceCard}>
+                <input type="checkbox" name="occasion" value={o.value} className={luxuryCheck} />
+                <span>{o.label}</span>
               </label>
             ))}
-            <label className={`${luxuryChoiceLabel} items-center gap-2 sm:col-span-2`}>
+            <label className={`${luxuryChoiceCard} sm:col-span-2`}>
               <input
                 type="checkbox"
                 name="occasion"
                 value="Other"
-                className={checkClass}
+                className={luxuryCheck}
                 checked={occasionOtherChecked}
                 onChange={(e) => setOccasionOtherChecked(e.target.checked)}
               />
-              Other
+              <span>Other</span>
             </label>
           </div>
           {occasionOtherChecked ? (
@@ -253,12 +263,12 @@ export function ExperienceRequestForm() {
           ) : null}
           <div className="mt-4 space-y-3">
             {serviceInterestOptions.map((o) => (
-              <label key={o.value} className={luxuryChoiceLabel}>
+              <label key={o.value} className={luxuryChoiceCard}>
                 <input
                   type="radio"
                   name="serviceInterest"
                   value={o.value}
-                  className={radioClass}
+                  className={luxuryRadio}
                   checked={serviceInterest === o.value}
                   onChange={() => {
                     setServiceInterest(o.value);
@@ -268,12 +278,12 @@ export function ExperienceRequestForm() {
                 <span>{o.label}</span>
               </label>
             ))}
-            <label className={luxuryChoiceLabel}>
+            <label className={luxuryChoiceCard}>
               <input
                 type="radio"
                 name="serviceInterest"
                 value="other"
-                className={radioClass}
+                className={luxuryRadio}
                 checked={serviceInterest === "other"}
                 onChange={() => {
                   setServiceInterest("other");
@@ -302,13 +312,25 @@ export function ExperienceRequestForm() {
               <label className={luxuryFieldLabel} htmlFor="erf-pickupDate">
                 Pick-up / departure date <Req />
               </label>
-              <input id="erf-pickupDate" name="pickupDate" type="date" required className={luxuryFieldInput} />
+              <input
+                id="erf-pickupDate"
+                name="pickupDate"
+                type="date"
+                required
+                className={`${luxuryFieldInput} luxury-date`}
+              />
             </div>
             <div>
               <label className={luxuryFieldLabel} htmlFor="erf-pickupTime">
                 Pick-up time <Req />
               </label>
-              <input id="erf-pickupTime" name="pickupTime" type="time" required className={luxuryFieldInput} />
+              <input
+                id="erf-pickupTime"
+                name="pickupTime"
+                type="time"
+                required
+                className={`${luxuryFieldInput} luxury-time`}
+              />
             </div>
             <div className="sm:col-span-2">
               <label className={luxuryFieldLabel} htmlFor="erf-pickupAddress">
@@ -333,13 +355,25 @@ export function ExperienceRequestForm() {
               <label className={luxuryFieldLabel} htmlFor="erf-returnDate">
                 Drop-off / return date <Req />
               </label>
-              <input id="erf-returnDate" name="returnDate" type="date" required className={luxuryFieldInput} />
+              <input
+                id="erf-returnDate"
+                name="returnDate"
+                type="date"
+                required
+                className={`${luxuryFieldInput} luxury-date`}
+              />
             </div>
             <div>
               <label className={luxuryFieldLabel} htmlFor="erf-returnTime">
                 Return time <Req />
               </label>
-              <input id="erf-returnTime" name="returnTime" type="time" required className={luxuryFieldInput} />
+              <input
+                id="erf-returnTime"
+                name="returnTime"
+                type="time"
+                required
+                className={`${luxuryFieldInput} luxury-time`}
+              />
             </div>
           </div>
         </fieldset>
@@ -353,11 +387,11 @@ export function ExperienceRequestForm() {
             wait and this time will be included in your estimate. Destinations outside of the
             Greater Philadelphia region may incur additional fees.
           </p>
-          <div className="mt-4 flex flex-wrap gap-4">
+          <div className="mt-4 grid gap-3 sm:grid-cols-3">
             {driverWaitOptions.map((o) => (
-              <label key={o.value} className={`${luxuryChoiceLabel} items-center gap-2`}>
-                <input type="radio" name="driverWait" value={o.value} required className={radioClass} />
-                {o.label}
+              <label key={o.value} className={luxuryChoiceCard}>
+                <input type="radio" name="driverWait" value={o.value} required className={luxuryRadio} />
+                <span>{o.label}</span>
               </label>
             ))}
           </div>
@@ -369,8 +403,8 @@ export function ExperienceRequestForm() {
           </legend>
           <div className="mt-4 space-y-3">
             {guestCountOptions.map((o) => (
-              <label key={o.value} className={luxuryChoiceLabel}>
-                <input type="radio" name="guestCount" value={o.value} required className={radioClass} />
+              <label key={o.value} className={luxuryChoiceCard}>
+                <input type="radio" name="guestCount" value={o.value} required className={luxuryRadio} />
                 <span>{o.label}</span>
               </label>
             ))}
@@ -404,8 +438,8 @@ export function ExperienceRequestForm() {
           </p>
           <div className="mt-4 space-y-3">
             {accommodationOptions.map((o) => (
-              <label key={o.value} className={luxuryChoiceLabel}>
-                <input type="checkbox" name="accommodation" value={o.value} className={checkClass} />
+              <label key={o.value} className={luxuryChoiceCard}>
+                <input type="checkbox" name="accommodation" value={o.value} className={luxuryCheck} />
                 <span>{o.label}</span>
               </label>
             ))}

@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import {
   luxuryFieldInput,
   luxuryFieldLabel,
+  luxuryFieldSelect,
   luxuryRequiredMark,
 } from "@/components/ui/luxury-form";
 
@@ -21,8 +22,7 @@ const guestOptions = ["1–2", "3–6", "7–10", "11–14", "15+"];
 
 /**
  * Lightweight inquiry form embedded on each experience landing page.
- * Submissions flow into the experience lead pipeline (CRM) tagged with the
- * experience slug so the concierge desk knows exactly what was requested.
+ * Submissions flow into Airtable Experience Leads tagged with the experience.
  */
 export function ExperienceInquiryForm({ experienceSlug, experienceTitle }) {
   const [pending, setPending] = useState(false);
@@ -147,7 +147,7 @@ export function ExperienceInquiryForm({ experienceSlug, experienceTitle }) {
               id={`${idPrefix}-preferredDate`}
               name="preferredDate"
               type="date"
-              className={luxuryFieldInput}
+              className={`${luxuryFieldInput} luxury-date`}
             />
           </div>
           <div>
@@ -157,7 +157,7 @@ export function ExperienceInquiryForm({ experienceSlug, experienceTitle }) {
             <select
               id={`${idPrefix}-guestCount`}
               name="guestCount"
-              className={luxuryFieldInput}
+              className={luxuryFieldSelect}
               defaultValue=""
             >
               <option value="" disabled>
@@ -195,7 +195,12 @@ export function ExperienceInquiryForm({ experienceSlug, experienceTitle }) {
             {message}
           </p>
         ) : null}
-        <Button type="submit" variant="primary" disabled={pending} className="w-full justify-center sm:w-auto sm:min-w-[220px]">
+        <Button
+          type="submit"
+          variant="primary"
+          disabled={pending}
+          className="w-full justify-center sm:w-auto sm:min-w-[220px]"
+        >
           {pending ? "Submitting…" : "Request This Experience"}
         </Button>
       </form>
