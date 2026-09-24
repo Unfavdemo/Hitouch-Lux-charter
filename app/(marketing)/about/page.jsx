@@ -1,3 +1,4 @@
+import { AboutTeamGallery } from "@/components/marketing/about-team-gallery";
 import { FounderStory } from "@/components/marketing/founder-story";
 import { MarketingCtaBand } from "@/components/marketing/marketing-cta-band";
 import { MarketingFeatureCard } from "@/components/marketing/marketing-feature-card";
@@ -41,7 +42,7 @@ export default function AboutPage() {
         title="You don't just book a vehicle. You have HiTouch."
         description="Private mobility and curated experiences for people who value their time differently—built on reliability, relationships, access, and attention to detail."
         image={pageHeroes.about}
-        imageAlt="Philadelphia skyline at dusk"
+        imageAlt="HiTouch team in front of a branded black SUV"
         actions={
           <>
             <Button href="/experience-request" variant="primary">
@@ -53,6 +54,15 @@ export default function AboutPage() {
           </>
         }
       />
+
+      <MarketingPageSection tone="cream">
+        <MarketingSectionHeading
+          eyebrow="The people behind the curb"
+          title="Presented, prepared, and already watching the clock."
+          description="Owned photography of the HiTouch team and door service—the same standard guests meet on every assignment."
+        />
+        <AboutTeamGallery />
+      </MarketingPageSection>
 
       <MarketingPageSection tone="paper">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-start">

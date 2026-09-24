@@ -1,4 +1,4 @@
-import { media } from "@/content/media";
+import { media, owned } from "@/content/media";
 
 /** Landing page editorial copy & imagery (HiTouch Luxury Charter) */
 
@@ -102,8 +102,8 @@ export const founderStory = {
   ],
   quote: "Service is the rent we pay for our time here on Earth.",
   quoteLabel: "The HiTouch philosophy",
-  image: media.phillySkyline,
-  imageAlt: "HiTouch Suburban at the curb with gold brand mark",
+  image: owned.teamPortrait,
+  imageAlt: "HiTouch principals with branded fleet behind them",
 };
 
 export const servicesBento = [
@@ -130,8 +130,8 @@ export const servicesBento = [
     title: "Executive Mobility",
     blurb: "Executive car service for principals and teams—punctual, discreet, and consistent.",
     href: "/executive-mobility",
-    image: media.skyline,
-    alt: "HiTouch team in front of a branded black SUV",
+    image: owned.doorService,
+    alt: "HiTouch chauffeur opening the rear door of a branded black SUV",
     layout: "medium",
   },
   {

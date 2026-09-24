@@ -44,6 +44,11 @@ export const fleet = [
     requestQuote: true,
     imageSrc: owned.tahoeHero,
     imageAlt: "HiTouch black SUV with VIP boarding on a city curb",
+    gallery: [
+      { src: owned.tahoeHero, alt: "VIP boarding a HiTouch black SUV" },
+      { src: owned.tahoeBadge, alt: "HiTouch gold mark on tinted SUV glass" },
+      { src: owned.boarding, alt: "Guest stepping from a HiTouch SUV with team at the curb" },
+    ],
     width: 1200,
     height: 800,
     detailIntro:
@@ -68,6 +73,12 @@ export const fleet = [
     requestQuote: true,
     imageSrc: owned.suburbanHero,
     imageAlt: "Tinted black 2025 Chevy Suburban with HiTouch mark at the curb",
+    gallery: [
+      { src: owned.suburbanHero, alt: "2025 Suburban Premier at the curb with HiTouch mark" },
+      { src: owned.suburbanBadge, alt: "HiTouch mark on Suburban rear glass" },
+      { src: owned.suburbanCabin, alt: "Suburban cabin with digital dash and leather seating" },
+      { src: owned.fleetPair, alt: "Two HiTouch black SUVs lined up on a city street" },
+    ],
     width: 1200,
     height: 800,
     detailIntro:
