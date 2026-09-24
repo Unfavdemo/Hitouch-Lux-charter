@@ -1,6 +1,6 @@
 /**
- * Centralized marketing imagery — Unsplash photo slugs verified HTTP 200.
- * Replace with HiTouch-owned assets in /public when available.
+ * Centralized marketing imagery.
+ * Owned HiTouch assets live under /public/images; Unsplash remains only where we lack a shoot.
  */
 
 const BASE = "https://images.unsplash.com";
@@ -11,10 +11,27 @@ export function unsplashPhoto(slug, { w = 1200, q = 80 } = {}) {
   return `${BASE}/${path}?auto=format&fit=crop&w=${w}&q=${q}`;
 }
 
-/** Curated library (all URLs tested) */
+/** Owned photography from the HiTouch fleet / team shoot */
+export const owned = {
+  boarding: "/images/marketing/hero/boarding.jpg",
+  fleetPair: "/images/marketing/hero/fleet-pair.jpg",
+  suburbanCurb: "/images/marketing/hero/suburban-curb.jpg",
+  doorService: "/images/marketing/services/door-service.jpg",
+  team: "/images/marketing/about/team.jpg",
+  teamPortrait: "/images/marketing/about/team-portrait.jpg",
+  teamFull: "/images/marketing/about/team-full.jpg",
+  suburbanHero: "/images/fleet/chevy-suburban-2025/hero.jpg",
+  suburbanBadge: "/images/fleet/chevy-suburban-2025/gallery-1.jpg",
+  suburbanCabin: "/images/fleet/chevy-suburban-2025/gallery-2.jpg",
+  tahoeHero: "/images/fleet/chevy-tahoe-2024/hero.jpg",
+  tahoeBadge: "/images/fleet/chevy-tahoe-2024/gallery-1.jpg",
+};
+
+/** Curated library */
 export const media = {
+  /* Owned where the shoot covers the subject */
   fineDining: unsplashPhoto("photo-1414235077428-338989a2e8c0"),
-  fineDiningHero: unsplashPhoto("photo-1414235077428-338989a2e8c0", { w: 2400, q: 85 }),
+  fineDiningHero: owned.boarding,
   spa: unsplashPhoto("photo-1540555700478-4be289fbecef"),
   golf: unsplashPhoto("photo-1593111774240-d529f12cf4bb"),
   winery: unsplashPhoto("photo-1506377247377-2a5b3b417ebb"),
@@ -24,11 +41,11 @@ export const media = {
   luxurySedanInterior: unsplashPhoto("photo-1618843479313-40f8afb4b4d8"),
   wedding: unsplashPhoto("photo-1519741497674-611481863552"),
   weddingHero: unsplashPhoto("photo-1519741497674-611481863552", { w: 2000 }),
-  skyline: unsplashPhoto("photo-1486406146926-c627a92ad1ab"),
-  skylineHero: unsplashPhoto("photo-1486406146926-c627a92ad1ab", { w: 2000 }),
+  skyline: owned.team,
+  skylineHero: owned.team,
   airport: unsplashPhoto("photo-1436491865332-7a61a109cc05"),
-  sedanAlt: unsplashPhoto("photo-1519641471654-76ce0107ad1b"),
-  suv: unsplashPhoto("photo-1533473359331-0135ef1b58bf"),
+  sedanAlt: owned.tahoeHero,
+  suv: owned.suburbanHero,
   sprinterAlt: unsplashPhoto("photo-1544620347-c4fd4a3d5957"),
   limousine: unsplashPhoto("photo-1563720360172-67b8f3dce741"),
   coach: unsplashPhoto("photo-1558618666-fcd25c85cd64"),
@@ -58,21 +75,21 @@ export const media = {
   spaMassage: unsplashPhoto("photo-1600334129128-685c5582fd35"),
   yogaGroup: unsplashPhoto("photo-1544367567-0f2fcb009e0b"),
 
-  /* Philadelphia lifestyle */
-  phillySkyline: unsplashPhoto("photo-1569761316261-9a8696fa2ca3"),
+  /* Philadelphia / brand lifestyle */
+  phillySkyline: owned.suburbanCurb,
 };
 
 /** Interior page hero backgrounds */
 export const pageHeroes = {
-  about: media.skylineHero,
-  services: unsplashPhoto("photo-1506377247377-2a5b3b417ebb", { w: 2000 }),
-  fleet: unsplashPhoto("photo-1618843479313-40f8afb4b4d8", { w: 2000, q: 85 }),
+  about: owned.team,
+  services: owned.doorService,
+  fleet: owned.suburbanCurb,
   events: media.weddingHero,
-  corporate: media.skylineHero,
+  corporate: owned.fleetPair,
   experiences: unsplashPhoto("photo-1540555700478-4be289fbecef", { w: 2000 }),
-  experienceRequest: unsplashPhoto("photo-1414235077428-338989a2e8c0", { w: 2000 }),
+  experienceRequest: owned.boarding,
   gameDay: unsplashPhoto("photo-1459865264687-595d652de67e", { w: 2000 }),
   memberships: unsplashPhoto("photo-1684602166069-c45e86b5291e", { w: 2000 }),
-  executiveMobility: unsplashPhoto("photo-1618843479313-40f8afb4b4d8", { w: 2000, q: 85 }),
+  executiveMobility: owned.boarding,
   airport: unsplashPhoto("photo-1436491865332-7a61a109cc05", { w: 2000 }),
 };

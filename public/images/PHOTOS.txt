@@ -16,3 +16,12 @@ BRAND:
   /images/brand/   — logos, marks (SVG or PNG)
 
 After you add files, set each vehicle’s imageSrc in content/fleet.js to e.g. "/images/fleet/mercedes-s-class-560/hero.webp".
+
+OWNED ASSETS CURRENTLY WIRED (HiTouch shoot):
+  /images/marketing/hero/boarding.jpg
+  /images/marketing/hero/fleet-pair.jpg
+  /images/marketing/hero/suburban-curb.jpg
+  /images/marketing/services/door-service.jpg
+  /images/marketing/about/team.jpg (+ team-portrait, team-full)
+  /images/fleet/chevy-suburban-2025/hero.jpg (+ gallery-1, gallery-2)
+  /images/fleet/chevy-tahoe-2024/hero.jpg (+ gallery-1)

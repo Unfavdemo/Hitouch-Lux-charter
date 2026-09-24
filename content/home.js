@@ -10,7 +10,7 @@ export const heroContent = {
   supporting:
     "Private mobility and curated experiences for people who expect more from how they move.",
   image: media.fineDiningHero,
-  imageAlt: "Elegant fine-dining table with candlelight and glassware",
+  imageAlt: "HiTouch team assisting a guest boarding a black SUV",
   primaryCta: { label: "Request Your Experience", href: "/experience-request" },
   secondaryCta: { label: "Book Transportation", href: "/book" },
 };
@@ -103,7 +103,7 @@ export const founderStory = {
   quote: "Service is the rent we pay for our time here on Earth.",
   quoteLabel: "The HiTouch philosophy",
   image: media.phillySkyline,
-  imageAlt: "Philadelphia architecture and city life at dusk",
+  imageAlt: "HiTouch Suburban at the curb with gold brand mark",
 };
 
 export const servicesBento = [
@@ -131,7 +131,7 @@ export const servicesBento = [
     blurb: "Executive car service for principals and teams—punctual, discreet, and consistent.",
     href: "/executive-mobility",
     image: media.skyline,
-    alt: "Modern glass office towers at dusk",
+    alt: "HiTouch team in front of a branded black SUV",
     layout: "medium",
   },
   {

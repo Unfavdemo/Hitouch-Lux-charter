@@ -1,8 +1,8 @@
-import { media } from "@/content/media";
+import { media, owned } from "@/content/media";
 
 /**
  * Fleet catalog — aligned with Moovs vehicle classes (pricing: request quote).
- * Replace imageSrc with licensed HiTouch photography when available.
+ * Owned photography wired for Tahoe / Suburban; remaining vehicles still need shoots.
  */
 export const fleet = [
   {
@@ -42,8 +42,8 @@ export const fleet = [
     partition: false,
     fromPriceUsd: null,
     requestQuote: true,
-    imageSrc: media.sedanAlt,
-    imageAlt: "Black premium SUV in an urban setting",
+    imageSrc: owned.tahoeHero,
+    imageAlt: "HiTouch black SUV with VIP boarding on a city curb",
     width: 1200,
     height: 800,
     detailIntro:
@@ -66,8 +66,8 @@ export const fleet = [
     partition: false,
     fromPriceUsd: null,
     requestQuote: true,
-    imageSrc: media.suv,
-    imageAlt: "Large black SUV at dusk",
+    imageSrc: owned.suburbanHero,
+    imageAlt: "Tinted black 2025 Chevy Suburban with HiTouch mark at the curb",
     width: 1200,
     height: 800,
     detailIntro:
