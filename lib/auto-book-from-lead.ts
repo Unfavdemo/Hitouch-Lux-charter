@@ -1,4 +1,5 @@
 import { createCorporateCompany, createTrip } from "@/lib/trip-service";
+import { getExperienceLeadById } from "@/lib/lead-storage";
 import { isPrismaConfigured, prisma } from "@/lib/prisma";
 
 export type LeadScope = "corporate" | "events" | "experience";
@@ -48,7 +49,7 @@ async function createTripFromLead(
 }
 
 async function bookFromExperience(leadId: string): Promise<AutoBookResult> {
-  const lead = await prisma.experienceLead.findUnique({ where: { id: leadId } });
+  const lead = await getExperienceLeadById(leadId);
   if (!lead) return { created: false, skipped: true, reason: "Lead not found." };
 
   const p =
@@ -56,14 +57,21 @@ async function bookFromExperience(leadId: string): Promise<AutoBookResult> {
       ? (lead.payload as Record<string, unknown>)
       : {};
 
-  const firstName = String(p.firstName ?? "").trim();
-  const lastName = String(p.lastName ?? "").trim();
-  const pickupDate = String(p.pickupDate ?? "");
-  const pickupTime = String(p.pickupTime ?? "12:00");
-  const pickupAddress = String(p.pickupAddress ?? "").trim();
-  const destinationAddress = String(p.destinationAddress ?? "").trim();
-  const phone = String(p.phone ?? "").trim();
-  const email = typeof p.email === "string" ? p.email.trim() : null;
+  const firstName = String(p.firstName ?? lead.firstName ?? "").trim();
+  const lastName = String(p.lastName ?? lead.lastName ?? "").trim();
+  const pickupDate = String(p.pickupDate ?? lead.pickupDate ?? "");
+  const pickupTime = String(p.pickupTime ?? lead.pickupTime ?? "12:00");
+  const pickupAddress = String(p.pickupAddress ?? lead.pickupAddress ?? "").trim();
+  const destinationAddress = String(
+    p.destinationAddress ?? lead.destinationAddress ?? "",
+  ).trim();
+  const phone = String(p.phone ?? lead.phone ?? "").trim();
+  const email =
+    typeof p.email === "string"
+      ? p.email.trim()
+      : typeof lead.email === "string"
+        ? lead.email.trim()
+        : null;
 
   if (!pickupAddress || !destinationAddress || !pickupDate || !phone) {
     return {
