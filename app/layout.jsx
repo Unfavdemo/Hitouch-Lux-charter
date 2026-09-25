@@ -30,7 +30,7 @@ export const metadata = {
       "Curated luxury experiences for discerning clients—spa retreats, date nights, wine country, weddings, and executive evenings.",
     type: "website",
     locale: "en_US",
-    images: [{ url: "/images/hitouch-logo.jpg", alt: "HiTouch Luxury Charter Services" }],
+    images: [{ url: "/images/hitouch-logo-og.jpg", alt: "HiTouch Luxury Charter Services" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -43,7 +43,7 @@ export const metadata = {
       { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
       { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
     ],
-    apple: "/images/hitouch-logo.jpg",
+    apple: "/apple-icon.png",
     shortcut: "/favicon-32.png",
   },
 };

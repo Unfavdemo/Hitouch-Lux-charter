@@ -10,6 +10,7 @@ export function HomeHero({ site }) {
         alt={heroContent.imageAlt}
         fill
         priority
+        quality={70}
         sizes="100dvw"
         className="object-cover object-center opacity-50"
       />

@@ -28,6 +28,7 @@ export function MarketingPageHero({
             alt={imageAlt}
             fill
             priority
+            quality={70}
             sizes="100dvw"
             className="object-cover object-center opacity-45 saturate-[0.92] contrast-[1.05]"
           />
