@@ -11,33 +11,44 @@ export function unsplashPhoto(slug, { w = 1200, q = 80 } = {}) {
   return `${BASE}/${path}?auto=format&fit=crop&w=${w}&q=${q}`;
 }
 
-/** Owned photography from the HiTouch fleet / team shoot */
+/** Owned photography from the HiTouch JPG + RAW shoots */
 export const owned = {
   boarding: "/images/marketing/hero/boarding.jpg",
   fleetPair: "/images/marketing/hero/fleet-pair.jpg",
+  fleetLineupDusk: "/images/marketing/hero/fleet-lineup-dusk.jpg",
   suburbanCurb: "/images/marketing/hero/suburban-curb.jpg",
   doorService: "/images/marketing/services/door-service.jpg",
+  cabinCurbside: "/images/marketing/services/cabin-curbside.jpg",
   team: "/images/marketing/about/team.jpg",
   teamPortrait: "/images/marketing/about/team-portrait.jpg",
   teamFull: "/images/marketing/about/team-full.jpg",
+  chauffeurSprinter: "/images/marketing/about/chauffeur-sprinter.jpg",
+  sprinterNightExit: "/images/marketing/experiences/sprinter-night-exit.jpg",
+  sprinterNightAssist: "/images/marketing/experiences/sprinter-night-assist.jpg",
   suburbanHero: "/images/fleet/chevy-suburban-2025/hero.jpg",
   suburbanBadge: "/images/fleet/chevy-suburban-2025/gallery-1.jpg",
   suburbanCabin: "/images/fleet/chevy-suburban-2025/gallery-2.jpg",
+  suburbanRear: "/images/fleet/chevy-suburban-2025/gallery-3.jpg",
   tahoeHero: "/images/fleet/chevy-tahoe-2024/hero.jpg",
   tahoeBadge: "/images/fleet/chevy-tahoe-2024/gallery-1.jpg",
+  tahoeGallery2: "/images/fleet/chevy-tahoe-2024/gallery-2.jpg",
+  executiveSprinterHero: "/images/fleet/executive-sprinter-jet/hero.jpg",
+  executiveSprinterCabin: "/images/fleet/executive-sprinter-jet/gallery-1.jpg",
+  executiveSprinterCabin2: "/images/fleet/executive-sprinter-jet/gallery-2.jpg",
+  mercedesSprinterHero: "/images/fleet/mercedes-benz-sprinter-executive/hero.jpg",
+  fordSprinterHero: "/images/fleet/ford-sprinter-2025/hero.jpg",
 };
 
 /** Curated library */
 export const media = {
-  /* Owned where the shoot covers the subject */
   fineDining: unsplashPhoto("photo-1414235077428-338989a2e8c0"),
-  fineDiningHero: owned.boarding,
+  fineDiningHero: owned.fleetLineupDusk,
   spa: unsplashPhoto("photo-1540555700478-4be289fbecef"),
   golf: unsplashPhoto("photo-1593111774240-d529f12cf4bb"),
   winery: unsplashPhoto("photo-1506377247377-2a5b3b417ebb"),
   concert: unsplashPhoto("photo-1493225457124-a3eb161ffa5f"),
-  sprinterInterior: unsplashPhoto("photo-1684602166069-c45e86b5291e", { w: 2000 }),
-  sprinterExterior: unsplashPhoto("photo-1765461734605-34657fa04db2", { w: 2000 }),
+  sprinterInterior: owned.executiveSprinterCabin,
+  sprinterExterior: owned.executiveSprinterHero,
   luxurySedanInterior: unsplashPhoto("photo-1618843479313-40f8afb4b4d8"),
   wedding: unsplashPhoto("photo-1519741497674-611481863552"),
   weddingHero: unsplashPhoto("photo-1519741497674-611481863552", { w: 2000 }),
@@ -46,9 +57,9 @@ export const media = {
   airport: unsplashPhoto("photo-1436491865332-7a61a109cc05"),
   sedanAlt: owned.tahoeHero,
   suv: owned.suburbanHero,
-  sprinterAlt: unsplashPhoto("photo-1544620347-c4fd4a3d5957"),
+  sprinterAlt: owned.fordSprinterHero,
   limousine: unsplashPhoto("photo-1563720360172-67b8f3dce741"),
-  coach: unsplashPhoto("photo-1558618666-fcd25c85cd64"),
+  coach: owned.mercedesSprinterHero,
 
   /* Game day */
   basketballArena: unsplashPhoto("photo-1504450758481-7338eba7524a"),
@@ -67,7 +78,7 @@ export const media = {
   openRoad: unsplashPhoto("photo-1469854523086-cc02fe5d8800"),
   wineGlasses: unsplashPhoto("photo-1510812431401-41d2bd2722f3"),
   restaurantInterior: unsplashPhoto("photo-1550966871-3ed3cdb5ed0c"),
-  dateNight: unsplashPhoto("photo-1470337458703-46ad1756a187"),
+  dateNight: owned.sprinterNightExit,
   champagne: unsplashPhoto("photo-1592483648228-b35146a4330c"),
 
   /* Wellness */
@@ -81,15 +92,15 @@ export const media = {
 
 /** Interior page hero backgrounds */
 export const pageHeroes = {
-  about: owned.team,
+  about: owned.chauffeurSprinter,
   services: owned.doorService,
-  fleet: owned.suburbanCurb,
-  events: media.weddingHero,
+  fleet: owned.fleetLineupDusk,
+  events: owned.sprinterNightAssist,
   corporate: owned.fleetPair,
-  experiences: unsplashPhoto("photo-1540555700478-4be289fbecef", { w: 2000 }),
+  experiences: owned.sprinterNightExit,
   experienceRequest: owned.boarding,
   gameDay: unsplashPhoto("photo-1459865264687-595d652de67e", { w: 2000 }),
-  memberships: unsplashPhoto("photo-1684602166069-c45e86b5291e", { w: 2000 }),
+  memberships: owned.executiveSprinterCabin,
   executiveMobility: owned.boarding,
   airport: unsplashPhoto("photo-1436491865332-7a61a109cc05", { w: 2000 }),
 };

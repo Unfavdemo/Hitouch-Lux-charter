@@ -42,7 +42,7 @@ export default function AboutPage() {
         title="You don't just book a vehicle. You have HiTouch."
         description="Private mobility and curated experiences for people who value their time differently—built on reliability, relationships, access, and attention to detail."
         image={pageHeroes.about}
-        imageAlt="HiTouch team in front of a branded black SUV"
+        imageAlt="HiTouch chauffeur with Mercedes Sprinter at dusk"
         actions={
           <>
             <Button href="/experience-request" variant="primary">

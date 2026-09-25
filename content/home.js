@@ -10,7 +10,7 @@ export const heroContent = {
   supporting:
     "Private mobility and curated experiences for people who expect more from how they move.",
   image: media.fineDiningHero,
-  imageAlt: "HiTouch team assisting a guest boarding a black SUV",
+  imageAlt: "HiTouch Sprinter and Suburban fleet lined up at dusk",
   primaryCta: { label: "Request Your Experience", href: "/experience-request" },
   secondaryCta: { label: "Book Transportation", href: "/book" },
 };
@@ -122,7 +122,7 @@ export const servicesBento = [
     blurb: "Transportation that's already handled—preferred fleet access, priority booking, and concierge support.",
     href: "/memberships",
     image: media.sprinterInterior,
-    alt: "Executive Sprinter cabin with ambient lighting",
+    alt: "Executive Sprinter cabin with leather seating and ambient lighting",
     layout: "medium",
   },
   {

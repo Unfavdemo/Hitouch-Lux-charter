@@ -3,6 +3,11 @@ import { owned } from "@/content/media";
 
 const teamPhotos = [
   {
+    src: owned.chauffeurSprinter,
+    alt: "HiTouch chauffeur with Mercedes Sprinter at golden hour",
+    caption: "Sprinter-ready",
+  },
+  {
     src: owned.team,
     alt: "HiTouch team standing in front of a branded black SUV",
     caption: "The standard, personified",
@@ -22,25 +27,30 @@ const teamPhotos = [
     alt: "HiTouch chauffeur opening the rear door of a branded SUV",
     caption: "Door service, every time",
   },
+  {
+    src: owned.sprinterNightExit,
+    alt: "Guest exiting the lit Sprinter cabin at night",
+    caption: "Night arrivals, handled",
+  },
 ];
 
 /** Owned team / service photography strip for the About page. */
 export function AboutTeamGallery() {
   return (
-    <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {teamPhotos.map((photo, index) => (
         <figure
           key={photo.src}
           className={`group relative overflow-hidden rounded-[var(--radius-card)] border border-light-ink/10 bg-midnight ${
-            index === 0 ? "sm:col-span-2 lg:col-span-2 lg:row-span-2" : ""
+            index === 0 ? "sm:col-span-2 lg:col-span-2" : ""
           }`}
         >
-          <div className={`relative w-full ${index === 0 ? "aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[28rem]" : "aspect-[3/4]"}`}>
+          <div className={`relative w-full ${index === 0 ? "aspect-[16/10]" : "aspect-[4/5] sm:aspect-[3/4]"}`}>
             <Image
               src={photo.src}
               alt={photo.alt}
               fill
-              sizes={index === 0 ? "(min-width: 1024px) 50vw, 100vw" : "(min-width: 1024px) 25vw, 50vw"}
+              sizes={index === 0 ? "(min-width: 1024px) 66vw, 100vw" : "(min-width: 1024px) 33vw, 50vw"}
               className="object-cover transition duration-700 group-hover:scale-[1.03]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-midnight/80 via-transparent to-transparent" />

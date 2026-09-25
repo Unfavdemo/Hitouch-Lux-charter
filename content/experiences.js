@@ -18,7 +18,7 @@ export const featuredSprinter = {
   blurb:
     "The centerpiece of the HiTouch fleet—a private lounge in motion for game days, wine country, and executive travel. Partition-ready, Wi-Fi enabled, and staged to your preferences before the door ever opens.",
   image: media.sprinterInterior,
-  alt: "Luxury executive Sprinter interior with ambient lighting",
+  alt: "Executive Sprinter cabin with leather captain chairs and ambient LEDs",
 };
 
 export const experienceCategories = [

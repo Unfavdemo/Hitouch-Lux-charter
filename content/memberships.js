@@ -8,7 +8,7 @@ export const membershipHero = {
   supporting:
     "It should already be handled. Membership places HiTouch inside how you move—one relationship, one standard, and a team that already knows your preferences.",
   image: media.sprinterInterior,
-  imageAlt: "Executive Sprinter cabin staged with ambient lighting",
+  imageAlt: "Guests in the Executive Sprinter cabin with ambient LED lighting",
   cta: { label: "Request Membership", href: "#apply" },
 };
 

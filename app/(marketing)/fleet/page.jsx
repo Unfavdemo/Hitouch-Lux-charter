@@ -41,7 +41,7 @@ export default function FleetPage() {
         title="Your cabin is part of the experience—not an afterthought."
         description="Every class is inspected, detailed, and briefed before wheels roll—staged to match the tone of your evening, from boardroom privacy to celebration scale."
         image={pageHeroes.fleet}
-        imageAlt="HiTouch Suburban at the curb with gold brand mark"
+        imageAlt="HiTouch Sprinter and Suburban fleet lined up at dusk"
         actions={
           <>
             <Button href="/experience-request" variant="primary">
