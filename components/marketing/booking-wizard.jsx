@@ -4,7 +4,6 @@ import { useCallback, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
-  luxuryChoiceLabel,
   luxuryFieldInput,
   luxuryFieldLabel,
   luxuryFieldset,
@@ -112,7 +111,6 @@ export function BookingWizard({ moovsBookingUrl }) {
       pickupTime: String(fd.get("pickupTime") ?? ""),
       pickupAddress: String(fd.get("pickupAddress") ?? ""),
       destinationAddress: String(fd.get("destinationAddress") ?? ""),
-      vehicleClass: String(fd.get("vehicleClass") ?? "sedan"),
       passengers: Number(fd.get("passengers") ?? 1),
       notes: String(fd.get("notes") ?? ""),
     };
@@ -164,13 +162,14 @@ export function BookingWizard({ moovsBookingUrl }) {
       </p>
       <h2 className="mt-3 font-serif text-2xl text-heading sm:text-3xl">
         {step === 1 && "Your contact details"}
-        {step === 2 && "Trip preferences"}
+        {step === 2 && "Trip details"}
         {step === 3 && "Indicative estimate"}
       </h2>
       <p className="mt-2 max-w-xl text-sm leading-relaxed text-on-dark-muted">
         {step === 1 &&
           "We save your information first so our concierge can follow up—even if you pause before viewing pricing."}
-        {step === 2 && "Tell us about your movement. Estimates are for planning; final pricing is confirmed by the desk."}
+        {step === 2 &&
+          "Share where you're going and how many guests. We assign the vehicle—you don't pick a model from a menu."}
         {step === 3 && "Review your indicative quote, then request concierge confirmation or continue online."}
       </p>
 
@@ -226,23 +225,21 @@ export function BookingWizard({ moovsBookingUrl }) {
             <label className={luxuryFieldLabel}>Destination</label>
             <input required name="destinationAddress" className={luxuryFieldInput} />
           </div>
-          <div className="grid gap-5 sm:grid-cols-2">
-            <div>
-              <label className={luxuryFieldLabel}>Vehicle class</label>
-              <select name="vehicleClass" className={luxuryFieldInput} defaultValue="sedan">
-                <option value="sedan">Executive sedan</option>
-                <option value="suv">Executive SUV</option>
-                <option value="sprinter">Executive Sprinter</option>
-              </select>
-            </div>
-            <div>
-              <label className={luxuryFieldLabel}>Passengers</label>
-              <input required type="number" name="passengers" min={1} max={14} defaultValue={2} className={luxuryFieldInput} />
-            </div>
+          <div>
+            <label className={luxuryFieldLabel}>Passengers</label>
+            <input required type="number" name="passengers" min={1} max={14} defaultValue={2} className={luxuryFieldInput} />
+            <p className="mt-2 text-xs leading-relaxed text-on-dark-muted">
+              HiTouch assigns sedan, SUV, or Sprinter from party size, luggage, and itinerary—not from a vehicle menu.
+            </p>
           </div>
           <div>
             <label className={luxuryFieldLabel}>Notes (optional)</label>
-            <textarea name="notes" rows={3} className={luxuryFieldInput} placeholder="Stops, luggage, discretion requests…" />
+            <textarea
+              name="notes"
+              rows={3}
+              className={luxuryFieldInput}
+              placeholder="Luggage count, stops, child seats, discretion requests…"
+            />
           </div>
           <div className="flex flex-wrap gap-3">
             <Button

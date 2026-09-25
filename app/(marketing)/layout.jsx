@@ -18,7 +18,6 @@ export default function MarketingLayout({ children }) {
         phoneDisplay={site.phoneDisplay}
         primaryCta={site.primaryCta}
         signInCta={site.signInCta}
-        externalBookingUrl={site.moovsBookingUrl}
       />
       <main id="main" className="flex min-w-0 flex-1 flex-col overflow-x-hidden">
         {children}

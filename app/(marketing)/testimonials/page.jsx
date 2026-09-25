@@ -12,7 +12,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata = buildPageMetadata({
   title: "Testimonials & guest stories",
   description:
-    "Client reflections, industry recognition, and the standards behind HiTouch Luxury Charter—private mobility and curated experiences in Philadelphia.",
+    "Client reflections and standards behind HiTouch Luxury Charter—Philadelphia private chauffeur, Sprinter charter, and concierge-led evenings for executives, celebrations, and game days.",
   path: "/testimonials",
 });
 
@@ -55,12 +55,10 @@ export default function TestimonialsPage() {
       </MarketingPageSection>
 
       <MarketingCtaBand
-        title="Ready to experience the standard?"
-        description="Request a curated experience or book transportation—the same concierge team handles both."
+        title="Ready for the HiTouch standard?"
+        description="Request a quote through our questionnaire. We confirm availability and assign the vehicle—no instant online booking."
         primaryHref="/experience-request"
-        primaryLabel="Request experience"
-        secondaryHref="/book"
-        secondaryLabel="Book transportation"
+        primaryLabel="Request a quote"
         tone="cream"
       />
     </>

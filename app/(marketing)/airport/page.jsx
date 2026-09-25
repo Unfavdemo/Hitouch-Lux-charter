@@ -55,8 +55,8 @@ export default function AirportPage() {
         imageAlt="Aircraft on the runway at golden hour"
         actions={
           <>
-            <Button href="/book" variant="primary">
-              Book Transportation
+            <Button href="/experience-request" variant="primary">
+              Request a quote
             </Button>
             <Button href={`tel:${site.phoneTel}`} variant="outlineLight">
               Call {site.phoneDisplay}
@@ -83,11 +83,11 @@ export default function AirportPage() {
       <MarketingCtaBand
         eyebrow="Once you're with HiTouch, you're taken care of"
         title="Make every landing feel handled."
-        description="Book a single transfer, or let membership keep a standing profile—preferences, addresses, and flight patterns already on file."
-        primaryHref="/book"
-        primaryLabel="Book Transportation"
+        description="Request a quote for a single transfer, or let membership keep a standing profile—preferences, addresses, and flight patterns already on file."
+        primaryHref="/experience-request"
+        primaryLabel="Request a quote"
         secondaryHref="/memberships"
-        secondaryLabel="Explore Membership"
+        secondaryLabel="High Touch Membership"
       />
     </>
   );

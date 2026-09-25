@@ -39,16 +39,9 @@ export function HomeHero({ site }) {
           >
             {heroContent.primaryCta.label}
           </Button>
-          <Button
-            href={heroContent.secondaryCta.href}
-            variant="outlineLight"
-            className="sm:min-w-[220px]"
-          >
-            {heroContent.secondaryCta.label}
-          </Button>
         </div>
         <p className="luxury-reveal luxury-reveal-delay-3 mt-6 text-sm text-on-dark-muted">
-          Experience concierge{" "}
+          Concierge{" "}
           <a
             className="font-medium text-heading underline decoration-accent-readable/70 underline-offset-4"
             href={`tel:${site.phoneTel}`}

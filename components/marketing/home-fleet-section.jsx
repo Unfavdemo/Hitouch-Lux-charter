@@ -10,18 +10,18 @@ export function HomeFleetSection({ vehicles }) {
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <p className="text-[11px] font-semibold uppercase tracking-[var(--tracking-nav)] text-accent-readable">
-              The fleet
+              Preview the fleet
             </p>
             <h2 className="mt-3 font-serif text-3xl font-normal leading-tight tracking-tight text-heading sm:text-4xl">
-              Your cabin is part of the experience—not an afterthought.
+              More than a ride, it&apos;s an experience.
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-on-dark-body sm:text-base">
-              Sedans, executive SUVs, and the Executive Sprinter—studio-prepared, detailed, and
-              briefed to match the tone of your day.
+              A look at the sedans, SUVs, and Sprinters we stage. You describe the occasion—we
+              assign the vehicle. Clients do not pick a specific car.
             </p>
           </div>
           <Button href="/fleet" variant="secondary" className="border-heading/35 text-heading hover:bg-white/10">
-            Explore the fleet
+            Preview the fleet
           </Button>
         </div>
         <div className="mt-10">

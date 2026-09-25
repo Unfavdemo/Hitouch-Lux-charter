@@ -5,7 +5,6 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { LuxuryEyebrow } from "@/components/marketing/luxury-eyebrow";
 import { Button } from "@/components/ui/button";
-import { site } from "@/content/site";
 
 function SpecItem({ label, value }) {
   return (
@@ -104,13 +103,8 @@ export function FleetShowcase({ vehicles }) {
               <Button type="button" variant="secondary" onClick={() => setDetail(v)}>
                 Specifications
               </Button>
-              <Button
-                href={site.moovsBookingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="primary"
-              >
-                Reserve vehicle
+              <Button href="/experience-request" variant="primary">
+                Request a quote
               </Button>
             </div>
           </div>
@@ -256,13 +250,8 @@ export function FleetShowcase({ vehicles }) {
                 ))}
               </ul>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Button
-                  href={site.moovsBookingUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variant="primary"
-                >
-                  Reserve online
+                <Button href="/experience-request" variant="primary">
+                  Request a quote
                 </Button>
                 <Button type="button" variant="ghost" onClick={() => setDetail(null)}>
                   Return

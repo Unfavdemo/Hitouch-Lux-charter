@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import { ConciergePanel } from "@/components/marketing/concierge-panel";
-import { ExperienceInquiryForm } from "@/components/marketing/experience-inquiry-form";
 import { ExperiencePackageCard } from "@/components/marketing/experience-package-card";
 import { MarketingCtaBand } from "@/components/marketing/marketing-cta-band";
 import { MarketingPageHero } from "@/components/marketing/marketing-page-hero";
@@ -61,8 +60,8 @@ export default async function ExperienceLandingPage({ params }) {
         imageAlt={exp.alt}
         actions={
           <>
-            <Button href="#inquire" variant="primary">
-              Request This Experience
+            <Button href="/experience-request" variant="primary">
+              Request a quote
             </Button>
             <Button href={`tel:${site.phoneTel}`} variant="outlineLight">
               Call {site.phoneDisplay}
@@ -72,10 +71,10 @@ export default async function ExperienceLandingPage({ params }) {
       />
 
       <MarketingPageSection tone="cream" id="inquire" className="scroll-mt-24">
-        <div className="grid gap-12 lg:grid-cols-[1fr_minmax(0,30rem)] lg:gap-16">
+        <div className="grid gap-12 lg:grid-cols-[1fr_minmax(0,24rem)] lg:gap-16">
           <div>
             <MarketingSectionHeading
-              eyebrow="The experience"
+              eyebrow="What's included"
               title="Every detail, already handled."
               description={exp.cardBlurb}
             />
@@ -119,7 +118,19 @@ export default async function ExperienceLandingPage({ params }) {
             ) : null}
           </div>
           <div className="lg:sticky lg:top-28 lg:self-start">
-            <ExperienceInquiryForm experienceSlug={exp.slug} experienceTitle={exp.title} />
+            <div className="rounded-[var(--radius-card)] border border-light-ink/10 bg-paper p-6 sm:p-8">
+              <p className="text-[11px] font-semibold uppercase tracking-[var(--tracking-brand)] text-accent-on-light">
+                Next step
+              </p>
+              <h3 className="mt-3 font-serif text-2xl text-light-ink">Request a quote</h3>
+              <p className="mt-3 text-sm leading-relaxed text-light-muted">
+                Complete our questionnaire. We confirm driver availability and assign the cabin
+                before anything is locked—mention &ldquo;{exp.title}&rdquo; in your notes.
+              </p>
+              <Button href="/experience-request" variant="onLight" className="mt-6 w-full justify-center">
+                Request a quote
+              </Button>
+            </div>
           </div>
         </div>
       </MarketingPageSection>
@@ -156,11 +167,11 @@ export default async function ExperienceLandingPage({ params }) {
       <MarketingCtaBand
         eyebrow="One call. Every detail handled."
         title="Prefer to talk it through?"
-        description={`Call ${site.phoneDisplay} and describe the occasion—your concierge will design the rest.`}
-        primaryHref="#inquire"
-        primaryLabel="Request This Experience"
+        description={`Call ${site.phoneDisplay} and describe the occasion—or request a quote online. We confirm availability before assignment.`}
+        primaryHref="/experience-request"
+        primaryLabel="Request a quote"
         secondaryHref="/experiences"
-        secondaryLabel="All experiences"
+        secondaryLabel="All offerings"
       />
     </>
   );

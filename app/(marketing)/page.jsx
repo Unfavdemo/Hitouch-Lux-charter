@@ -2,7 +2,6 @@ import { HomeConciergeWidget } from "@/components/marketing/home-concierge-widge
 import { HomeExperiencePreview } from "@/components/marketing/home-experience-preview";
 import { HomeFleetSection } from "@/components/marketing/home-fleet-section";
 import { HomeHero } from "@/components/marketing/home-hero";
-import { HomeServicesBento } from "@/components/marketing/home-services-bento";
 import { LuxuryEyebrow } from "@/components/marketing/luxury-eyebrow";
 import { JsonLdScript } from "@/components/seo/json-ld-script";
 import { Container } from "@/components/ui/container";
@@ -16,9 +15,9 @@ import { faqPageJsonLd, itemListJsonLd } from "@/lib/seo/json-ld";
 import { experienceCategories, experiences } from "@/content/experiences";
 
 export const metadata = buildPageMetadata({
-  title: "Private mobility & curated experiences",
+  title: "Philadelphia luxury black car service & private transportation",
   description:
-    "Your time. Your experience. Your standard. HiTouch delivers private mobility and curated experiences in Philadelphia—game days, executive travel, escapes, and concierge-level service for people who expect more from how they move.",
+    "Luxury experience. High touch standard. HiTouch Luxury Charter provides Philadelphia private black car service, luxury black car service, private transportation, and luxury transportation—executive travel, airports, and private occasions. Request a quote; availability is confirmed before assignment.",
   path: "/",
 });
 
@@ -34,7 +33,7 @@ export default function HomePage() {
       <JsonLdScript
         data={[
           faqPageJsonLd(aeoSnippets),
-          itemListJsonLd({ name: "Private experiences", items: experienceList }),
+          itemListJsonLd({ name: "HiTouch offerings", items: experienceList }),
         ]}
       />
       <HomeHero
@@ -62,12 +61,9 @@ export default function HomePage() {
 
       <HomeExperiencePreview categories={experienceCategories} />
 
-      <HomeServicesBento />
-
       <HomeConciergeWidget
         phoneTel={site.phoneTel}
         phoneDisplay={site.phoneDisplay}
-        moovsBookingUrl={site.moovsBookingUrl}
       />
     </>
   );

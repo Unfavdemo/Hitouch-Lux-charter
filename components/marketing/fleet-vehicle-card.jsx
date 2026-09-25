@@ -52,7 +52,7 @@ export function FleetVehicleCard({ vehicle }) {
         </dl>
         <p className="mt-5 font-serif text-lg text-light-ink">
           {vehicle.requestQuote || vehicle.fromPriceUsd == null
-            ? "Request quote"
+            ? "Assigned by concierge"
             : `From $${vehicle.fromPriceUsd}`}
         </p>
       </div>

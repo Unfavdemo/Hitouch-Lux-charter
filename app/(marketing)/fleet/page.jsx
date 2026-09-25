@@ -5,52 +5,30 @@ import { MarketingPageSection } from "@/components/marketing/marketing-page-sect
 import { MarketingSectionHeading } from "@/components/marketing/marketing-section-heading";
 import { FleetVehicleCard } from "@/components/marketing/fleet-vehicle-card";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { fleet } from "@/content/fleet";
 import { pageHeroes } from "@/content/media";
-import { site } from "@/content/site";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata = buildPageMetadata({
-  title: "Fleet — your mobile salon",
+  title: "Preview the fleet | Luxury black car & Sprinter",
   description:
-    "Studio-prepared sedans, executive SUVs, and custom Sprinters—each class staged to match the tone of your curated experience.",
+    "Preview the HiTouch Luxury Charter fleet in Philadelphia—sedans, SUVs, and Sprinters. Private black car service assigned by concierge based on your needs. Request a quote; no online vehicle booking.",
   path: "/fleet",
 });
-
-const standards = [
-  {
-    title: "Detailing cadence",
-    body: "Interiors vacuumed, surfaces treated, and glass polished between assignments. Neutral scent unless a signature preference is on file.",
-  },
-  {
-    title: "Mechanical readiness",
-    body: "Preventive maintenance aligned with manufacturer guidance and duty-of-care expectations for highway and urban driving.",
-  },
-  {
-    title: "Wi‑Fi & power",
-    body: "Productivity-ready power at every seat with hotspot-first connectivity for live calls and document review in motion.",
-  },
-];
 
 export default function FleetPage() {
   return (
     <>
       <MarketingPageHero
-        eyebrow="The mobile salon"
-        title="Your cabin is part of the experience—not an afterthought."
-        description="Every class is inspected, detailed, and briefed before wheels roll—staged to match the tone of your evening, from boardroom privacy to celebration scale."
+        eyebrow="Preview the fleet"
+        title="More than a ride, it's an experience."
+        description="High-quality looks at the cabins we deploy. Share party size, luggage, and timing—we assign the vehicle. There are no individual car booking pages and no à la carte picker."
         image={pageHeroes.fleet}
         imageAlt="HiTouch Sprinter and Suburban fleet lined up at dusk"
         actions={
-          <>
-            <Button href="/experience-request" variant="primary">
-              Match a vehicle to your evening
-            </Button>
-            <Button href="/experiences" variant="outlineLight">
-              View experiences
-            </Button>
-          </>
+          <Button href="/experience-request" variant="primary">
+            Request a quote
+          </Button>
         }
       />
 
@@ -60,9 +38,9 @@ export default function FleetPage() {
 
       <MarketingPageSection tone="paper">
         <MarketingSectionHeading
-          eyebrow="Class snapshot"
-          title="Compare seating, luggage, and privacy."
-          description="Final assignments vary by availability and itinerary—our concierge confirms the right class for your experience arc."
+          eyebrow="The cabins we stage"
+          title="Photos and short descriptions—assignment is ours."
+          description="This preview is for context only. Final vehicles are confirmed after your quote questionnaire when driver availability is verified."
         />
         <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {fleet.map((v) => (
@@ -71,25 +49,11 @@ export default function FleetPage() {
         </div>
       </MarketingPageSection>
 
-      <MarketingPageSection tone="cream">
-        <MarketingSectionHeading eyebrow="Readiness" title="Standards before every pickup." />
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {standards.map((s) => (
-            <Card key={s.title} variant="light" className="bg-paper p-6">
-              <h3 className="font-serif text-xl text-light-ink">{s.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-light-muted">{s.body}</p>
-            </Card>
-          ))}
-        </div>
-      </MarketingPageSection>
-
       <MarketingCtaBand
-        title="Need a tailored proposal?"
-        description="Share party size, luggage, and timing—or begin with a curated experience package."
+        title="Ready for a quote?"
+        description="Tell us the occasion through our questionnaire. We confirm availability, assign the cabin, and return a proposal—no instant online booking."
         primaryHref="/experience-request"
-        primaryLabel="Request an experience"
-        secondaryHref="/book"
-        secondaryLabel="Get a trip estimate"
+        primaryLabel="Request a quote"
       />
     </>
   );

@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 
-export function HomeConciergeWidget({ phoneTel, phoneDisplay, moovsBookingUrl }) {
+export function HomeConciergeWidget({ phoneTel, phoneDisplay }) {
   return (
     <Section className="border-y border-light-ink/8 bg-cream py-14 lg:py-20">
       <Container>
@@ -19,43 +19,14 @@ export function HomeConciergeWidget({ phoneTel, phoneDisplay, moovsBookingUrl })
           </p>
         </div>
 
-        <div className="mx-auto mt-10 flex max-w-2xl flex-col items-center gap-4">
-          <div className="flex w-full flex-col items-stretch justify-center gap-4 sm:flex-row">
-            <Button
-              href={homeConcierge.primaryCta.href}
-              variant="onLight"
-              className="justify-center px-8 py-3 sm:min-w-[240px]"
-            >
-              {homeConcierge.primaryCta.label}
-            </Button>
-            <Button
-              href={homeConcierge.secondaryCta.href}
-              variant="onLightSecondary"
-              className="justify-center sm:min-w-[220px]"
-            >
-              {homeConcierge.secondaryCta.label}
-            </Button>
-            {homeConcierge.membershipCta ? (
-              <Button
-                href={homeConcierge.membershipCta.href}
-                variant="onLightSecondary"
-                className="justify-center sm:min-w-[220px]"
-              >
-                {homeConcierge.membershipCta.label}
-              </Button>
-            ) : null}
-          </div>
-          <p className="mt-2 text-center text-xs leading-relaxed text-light-muted">
-            {homeConcierge.tertiaryNote}{" "}
-            <a
-              className="font-medium text-light-ink underline decoration-accent-on-light/50 underline-offset-4 transition hover:text-accent-on-light"
-              href={moovsBookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {homeConcierge.tertiaryLabel}
-            </a>
-          </p>
+        <div className="mx-auto mt-10 flex max-w-md flex-col items-center gap-4">
+          <Button
+            href={homeConcierge.primaryCta.href}
+            variant="onLight"
+            className="w-full justify-center px-8 py-3 sm:min-w-[260px]"
+          >
+            {homeConcierge.primaryCta.label}
+          </Button>
           <p className="text-center text-sm text-light-muted">
             Private line{" "}
             <a

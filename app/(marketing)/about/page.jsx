@@ -15,7 +15,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata = buildPageMetadata({
   title: "About HiTouch | Why HiTouch exists",
   description:
-    "You don't just book a vehicle. You have HiTouch. Learn why HiTouch exists—private mobility and curated experiences built on reliability, relationships, and concierge-level attention to detail.",
+    "More than a ride, it's an experience. HiTouch Luxury Charter is Philadelphia private chauffeur and concierge-led charter built on reliability, relationships, and attention to detail—not a generic car hire.",
   path: "/about",
 });
 
@@ -25,7 +25,7 @@ const standards = [
     body: "Professional presentation, route intelligence, and quiet confidence—trained to read the room and protect your time.",
   },
   {
-    title: "Cabin as experience",
+    title: "Cabin with intention",
     body: "Climate, refreshments, and music staged before pickup so the drive feels like part of the evening—not an interlude.",
   },
   {
@@ -39,14 +39,14 @@ export default function AboutPage() {
     <>
       <MarketingPageHero
         eyebrow="About HiTouch"
-        title="You don't just book a vehicle. You have HiTouch."
-        description="Private mobility and curated experiences for people who value their time differently—built on reliability, relationships, access, and attention to detail."
+        title="You don't just book a vehicle. You book luxury."
+        description="Philadelphia luxury chauffeur service for people who value their time differently—built on reliability, relationships, access, and attention to detail."
         image={pageHeroes.about}
         imageAlt="HiTouch chauffeur with Mercedes Sprinter at dusk"
         actions={
           <>
             <Button href="/experience-request" variant="primary">
-              Plan an experience
+              Request a quote
             </Button>
             <Button href="/contact" variant="outlineLight">
               Speak with concierge
@@ -128,12 +128,12 @@ export default function AboutPage() {
       </MarketingPageSection>
 
       <MarketingCtaBand
-        title="Ready for a choreographed proposal?"
-        description="Share your vision through a custom experience request—or explore curated packages to start the conversation."
+        title="Ready for a proposal?"
+        description="Share your vision through our quote questionnaire—or browse offerings to start the conversation."
         primaryHref="/experience-request"
-        primaryLabel="Request an experience"
+        primaryLabel="Request a quote"
         secondaryHref="/experiences"
-        secondaryLabel="Browse experiences"
+        secondaryLabel="Browse offerings"
       />
     </>
   );

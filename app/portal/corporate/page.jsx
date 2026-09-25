@@ -39,8 +39,8 @@ export default async function CorporatePortalPage({ searchParams }) {
         <Badge>Welcome back</Badge>
         <h1 className="mt-4 font-serif text-3xl text-heading sm:text-4xl">{ctx.company}</h1>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
-          Your shortcuts to booking, fleet context, and concierge channels. Moovs remains the
-          system of record for live availability and confirmations.
+          Your shortcuts to requesting a quote, previewing the fleet, and reaching concierge.
+          Live availability is confirmed by HiTouch before a chauffeur is assigned.
         </p>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {tiles.map((t) => (

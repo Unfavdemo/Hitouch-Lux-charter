@@ -25,10 +25,10 @@ const marketingPaths = [
 ];
 
 const highPriorityPaths = new Set([
-  "/book",
+  "/experience-request",
   "/corporate",
   "/experiences",
-  "/game-day",
+  "/fleet",
   "/memberships",
 ]);
 

@@ -1,54 +1,44 @@
 import { media } from "@/content/media";
 
-/** HiTouch Private Membership — relationship-driven, not transactional. */
+/** High Touch Private Membership — convenience and priority access. */
 
 export const membershipHero = {
-  eyebrow: "HiTouch Private Membership",
-  headline: "Transportation shouldn't be something you repeatedly arrange.",
+  eyebrow: "High Touch Private Membership",
+  headline: "Priority access. Convenience at your fingertips.",
   supporting:
-    "It should already be handled. Membership places HiTouch inside how you move—one relationship, one standard, and a team that already knows your preferences.",
+    "Skip repeating the full quote form every time. Members get a direct line, remembered preferences, and priority staging when you need to move.",
   image: media.sprinterInterior,
   imageAlt: "Guests in the Executive Sprinter cabin with ambient LED lighting",
-  cta: { label: "Request Membership", href: "#apply" },
+  cta: { label: "Apply for membership", href: "#apply" },
 };
 
 export const membershipBenefits = [
   {
-    id: "fleet",
-    title: "Preferred fleet access",
-    body: "First position on the vehicles you prefer—including the Executive Sprinter—before general availability.",
+    id: "priority",
+    title: "Priority access",
+    body: "Peak dates and short-notice requests move to the front of the line—without starting from a blank form.",
   },
   {
-    id: "priority",
-    title: "Priority booking",
-    body: "Peak dates, game days, and holidays held for members first. Short-notice requests moved to the front of the line.",
+    id: "convenience",
+    title: "Convenience at your fingertips",
+    body: "One relationship that already knows your preferences, addresses, and how you like to travel.",
   },
   {
     id: "concierge",
-    title: "Concierge support",
-    body: "A direct line to HiTouch Concierge for reservations, tickets, and special requests—well beyond the vehicle.",
-  },
-  {
-    id: "pricing",
-    title: "Preferred member pricing",
-    body: "Member rates across transportation and experiences, with transparent billing and no surge pricing—ever.",
-  },
-  {
-    id: "experiences",
-    title: "Access to private HiTouch experiences",
-    body: "Invitations to member-only experiences and first access to new Game Day, Escape, and Signature offerings.",
+    title: "Direct concierge line",
+    body: "Call or message for private transportation, airport runs, and special requests—handled end to end.",
   },
 ];
 
 export const foundingMembership = {
   eyebrow: "Founding Membership",
-  headline: "Five memberships. By application.",
+  headline: "Limited founding seats. By application.",
   supporting:
-    "Created for individuals, families, and organizations who want HiTouch integrated into how they move. Founding Members shape the standard everyone else joins later—with terms and access that will not be offered again.",
-  note: "Applications are reviewed personally. We respond to every applicant within 48 hours.",
+    "For clients who want HiTouch as their default private transportation—priority access and member rates that stay with you.",
+  note: "We respond to every applicant within 48 hours.",
 };
 
 export const membershipPhilosophy = {
   quote: "Once you're with HiTouch, you're taken care of.",
-  body: "Membership is a relationship, not a subscription. We learn your preferences, protect your time, and treat your plans as our responsibility.",
+  body: "Membership is built for convenience—not exclusivity theater. We learn how you move so every trip starts faster.",
 };

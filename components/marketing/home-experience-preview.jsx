@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 
-/** Five experience categories — Game Day, Escape, Wellness, Leisure, Signature. */
+/** Three offering categories — Executive, Luxury Experiences, Travel. */
 export function HomeExperiencePreview({ categories }) {
   return (
     <Section className="luxury-grain relative overflow-hidden bg-midnight py-14 text-foreground lg:py-20">
@@ -32,15 +32,9 @@ export function HomeExperiencePreview({ categories }) {
             <Link
               key={category.id}
               href={category.href}
-              className={`luxury-image-card group flex flex-col bg-midnight/90 ${
-                index === 0 ? "sm:col-span-2 lg:col-span-2" : ""
-              }`}
+              className="luxury-image-card group flex flex-col bg-midnight/90"
             >
-              <div
-                className={`relative w-full overflow-hidden ${
-                  index === 0 ? "aspect-[5/4] sm:aspect-[2/1]" : "aspect-[5/4]"
-                }`}
-              >
+              <div className="relative aspect-[5/4] w-full overflow-hidden">
                 <Image
                   src={category.image}
                   alt={category.alt}

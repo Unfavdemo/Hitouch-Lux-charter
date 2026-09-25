@@ -1,6 +1,6 @@
 import { InquiryStatus } from "@prisma/client";
 import type { Prisma } from "@prisma/client";
-import { buildMockQuote } from "@/lib/booking/mock-pricing";
+import { buildMockQuote, inferVehicleClass } from "@/lib/booking/mock-pricing";
 import type { ContactStepInput, TripStepInput } from "@/lib/booking/schemas";
 import { scheduleTouchback } from "@/lib/booking/follow-up";
 import { isPrismaConfigured, prisma } from "@/lib/prisma";
@@ -47,7 +47,10 @@ export async function quoteBookingInquiry(inquiryId: string, trip: TripStepInput
   }
 
   const quoteSummary = buildMockQuote(trip);
-  const tripPayload = trip as unknown as Prisma.InputJsonValue;
+  const tripPayload = {
+    ...trip,
+    suggestedVehicleClass: inferVehicleClass(trip.passengers),
+  } as unknown as Prisma.InputJsonValue;
 
   const updated = await prisma.bookingInquiry.update({
     where: { id: inquiryId },

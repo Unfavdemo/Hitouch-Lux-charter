@@ -20,18 +20,16 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 import { itemListJsonLd } from "@/lib/seo/json-ld";
 
 export const metadata = buildPageMetadata({
-  title: "Private experiences | Game Day, Escape, Wellness, Leisure & Signature",
+  title: "Executive transportation, luxury experiences & travel",
   description:
-    "Tell us the occasion. We'll handle the details. Private luxury experiences in Philadelphia—game day transportation, wine country tours, spa days, golf, fine dining, and fully bespoke Signature experiences.",
+    "Philadelphia private black car service and luxury transportation across three offerings: executive transportation, luxury experiences, and travel (airports, stations, intercity). Request a quote—availability confirmed first.",
   path: "/experiences",
 });
 
 const sectionTones = {
-  "game-day": "dark",
-  escape: "cream",
-  wellness: "paper",
-  leisure: "cream",
-  signature: "dark",
+  executive: "dark",
+  "luxury-experiences": "cream",
+  travel: "paper",
 };
 
 /** Keep each category's card row balanced rather than leaving orphans. */
@@ -51,7 +49,7 @@ export default function ExperiencesPage() {
 
   return (
     <>
-      <JsonLdScript data={itemListJsonLd({ name: "Private experiences", items: listItems })} />
+      <JsonLdScript data={itemListJsonLd({ name: "HiTouch offerings", items: listItems })} />
       <MarketingPageHero
         eyebrow={experiencesHero.eyebrow}
         title={experiencesHero.headline}
@@ -59,14 +57,9 @@ export default function ExperiencesPage() {
         image={pageHeroes.experiences}
         imageAlt="Relaxing spa atmosphere with soft lighting"
         actions={
-          <>
-            <Button href="/experience-request" variant="primary">
-              Request Your Experience
-            </Button>
-            <Button href="/memberships" variant="outlineLight">
-              Explore Membership
-            </Button>
-          </>
+          <Button href="/experience-request" variant="primary">
+            Request a quote
+          </Button>
         }
       />
 
@@ -81,23 +74,12 @@ export default function ExperiencesPage() {
             tone={tone}
             className="scroll-mt-24"
           >
-            <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-              <MarketingSectionHeading
-                eyebrow={category.name}
-                title={category.tagline}
-                description={category.description}
-                light={light}
-              />
-              {category.id === "game-day" ? (
-                <Button
-                  href="/game-day"
-                  variant="secondary"
-                  className="shrink-0 border-heading/35 text-heading hover:bg-white/10"
-                >
-                  Explore Game Day
-                </Button>
-              ) : null}
-            </div>
+            <MarketingSectionHeading
+              eyebrow={category.name}
+              title={category.tagline}
+              description={category.description}
+              light={light}
+            />
             <div className={`mt-12 grid gap-6 ${gridClass(items.length)}`}>
               {items.map((exp, index) => (
                 <ExperiencePackageCard
@@ -114,8 +96,8 @@ export default function ExperiencesPage() {
                 />
               ))}
             </div>
-            {category.id === "game-day" ? (
-              <p className="mt-8 max-w-3xl text-xs leading-relaxed text-on-dark-muted">
+            {category.id === "luxury-experiences" ? (
+              <p className="mt-8 max-w-3xl text-xs leading-relaxed text-light-muted">
                 {teamDisclaimer}
               </p>
             ) : null}
@@ -132,11 +114,11 @@ export default function ExperiencesPage() {
       </MarketingPageSection>
 
       <MarketingCtaBand
-        eyebrow="Transportation is only the beginning"
+        eyebrow="Availability confirmed first"
         title="Tell us the occasion. We'll handle the details."
-        description="Share your vision, guest count, and timing—your concierge returns a complete proposal, from vehicles to reservations, within 24–48 hours."
+        description="Request a quote through our questionnaire. We confirm driver availability, assign the cabin, and return a proposal—no instant online booking."
         primaryHref="/experience-request"
-        primaryLabel="Request Your Experience"
+        primaryLabel="Request a quote"
         secondaryHref="/contact"
         secondaryLabel="Speak with concierge"
       />

@@ -1,7 +1,8 @@
 import { media, owned } from "@/content/media";
 
 /**
- * Fleet catalog — aligned with Moovs vehicle classes (pricing: request quote).
+ * Fleet catalog — capacity and cabin standards for marketing.
+ * Clients do not select vehicles; HiTouch assigns from itinerary and party size.
  * Owned photography wired for Tahoe / Suburban; remaining vehicles still need shoots.
  */
 export const fleet = [

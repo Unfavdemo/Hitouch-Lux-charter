@@ -1,76 +1,55 @@
 import { media } from "@/content/media";
 
 /**
- * Experience catalog — five categories, each experience with its own
- * landing page at /experiences/[slug] and a dedicated inquiry form.
- * Slugs and SEO fields are keyword-targeted for Philadelphia searches.
+ * Experience catalog — three public categories.
+ * Each offering has a landing page at /experiences/[slug] and quote intake via /experience-request.
  */
 
 export const experiencesHero = {
-  eyebrow: "Private experiences · HiTouch Concierge",
+  eyebrow: "Private black car service · Philadelphia",
   headline: "Tell us the occasion. We'll handle the details.",
   supporting:
-    "Transportation is only the beginning. Every HiTouch experience pairs private chauffeured mobility with concierge-level coordination—reservations, tickets, timing, and the details in between.",
+    "Executive transportation, luxury experiences, and travel—Philadelphia luxury black car service and private transportation staged around your itinerary. Request a quote; we confirm availability before assigning a chauffeur.",
 };
 
 export const featuredSprinter = {
   title: "The Executive Sprinter",
   blurb:
-    "The centerpiece of the HiTouch fleet—a private lounge in motion for game days, wine country, and executive travel. Partition-ready, Wi-Fi enabled, and staged to your preferences before the door ever opens.",
+    "When the occasion calls for a private lounge in motion—game days, wine country, executive travel—we stage this cabin: partition-ready, Wi‑Fi enabled, and set to your preferences before the door opens. Assignment is by itinerary, not by client pick-list.",
   image: media.sprinterInterior,
   alt: "Executive Sprinter cabin with leather captain chairs and ambient LEDs",
 };
 
 export const experienceCategories = [
   {
-    id: "game-day",
-    name: "Game Day",
-    tagline: "The game starts before tipoff.",
+    id: "executive",
+    name: "Executive Transportation",
+    tagline: "Board-ready private black car service.",
     description:
-      "Sixers, Eagles, Phillies, Flyers—private pickup, curated vehicle experience, coordinated arrival, and dedicated return transportation. No parking. No surge pricing. No logistics.",
-    image: media.stadiumLights,
-    alt: "Stadium under bright evening floodlights",
-    href: "/game-day",
+      "Discreet luxury black car service for principals and teams—hourly coverage, multi-stop days, and consistent door times without choosing a vehicle from a menu.",
+    image: media.suv,
+    alt: "Executive black SUV staged for private transportation",
+    href: "/experiences#executive",
   },
   {
-    id: "escape",
-    name: "Escape",
-    tagline: "Leave the itinerary to us.",
+    id: "luxury-experiences",
+    name: "Luxury Experiences",
+    tagline: "The night, handled end to end.",
     description:
-      "Wine country, the Hamptons, and weekend getaways—door-to-door escapes where the drive is part of the retreat, not the price of it.",
-    image: media.winery,
-    alt: "Vineyard rows in soft golden light",
-    href: "/experiences#escape",
-  },
-  {
-    id: "wellness",
-    name: "Wellness",
-    tagline: "Arrive already unwound.",
-    description:
-      "Private spa days, couples wellness, and group wellness experiences—quiet cabins, unhurried timing, and a composed return home.",
-    image: media.spa,
-    alt: "Relaxing spa atmosphere with soft lighting",
-    href: "/experiences#wellness",
-  },
-  {
-    id: "leisure",
-    name: "Leisure",
-    tagline: "Your evening, orchestrated.",
-    description:
-      "Golf experiences, fine dining, and date nights—reservations coordinated, doors timed, and every detail handled between them.",
+      "Game days, wine country, spa weekends, golf, fine dining, date nights, and fully custom evenings—private transportation paired with concierge coordination.",
     image: media.fineDining,
     alt: "Elegant fine-dining table with candlelight",
-    href: "/experiences#leisure",
+    href: "/experiences#luxury-experiences",
   },
   {
-    id: "signature",
-    name: "Signature",
-    tagline: "Designed entirely around you.",
+    id: "travel",
+    name: "Travel",
+    tagline: "Airports, stations, and intercity runs.",
     description:
-      "Completely customized experiences built from a single conversation—tell us how you want the day to feel and we'll architect everything else.",
-    image: media.sprinterInterior,
-    alt: "Executive Sprinter cabin staged with ambient lighting",
-    href: "/experiences#signature",
+      "PHL and PNE transfers, train-station pickups, and intercity private transportation with flight-aware timing and luggage handled.",
+    image: media.airport,
+    alt: "Aircraft and airport runway at golden hour",
+    href: "/experiences#travel",
   },
 ];
 
@@ -79,11 +58,152 @@ export const teamDisclaimer =
   "HiTouch Luxury Charter is an independent private transportation and experience company. We are not affiliated with, endorsed by, or sponsored by any professional sports team, league, or venue.";
 
 export const experiences = [
-  /* ---------------- GAME DAY ---------------- */
+  /* ---------------- EXECUTIVE TRANSPORTATION ---------------- */
+  {
+    id: "executive-hourly",
+    slug: "executive-black-car",
+    categoryId: "executive",
+    title: "Executive Black Car",
+    cardBlurb:
+      "Hourly or point-to-point luxury black car service for principals—discreet, punctual, and consistent.",
+    heroEyebrow: "Executive Transportation",
+    heroHeadline: "Private black car service for the workday—and after.",
+    heroSupporting:
+      "Board meetings, multi-stop days, and evening functions covered by one desk. We assign the cabin; you stay focused on the schedule.",
+    image: media.suv,
+    alt: "Executive black SUV for private transportation",
+    seoTitle: "Executive Black Car Service Philadelphia | Private Transportation",
+    seoDescription:
+      "Philadelphia executive black car service and luxury black car service for principals and teams. Hourly coverage and point-to-point private transportation. Request a quote—availability confirmed before assignment.",
+    included: [
+      "Professional chauffeur and assigned cabin for your party size",
+      "Hourly or point-to-point coverage as confirmed in your quote",
+      "Preferences remembered for recurring executive travel",
+      "Quiet cabin staging for calls and document review",
+    ],
+    conciergeAdditions: [
+      "Road-show sequencing across venues",
+      "Multi-principal coordination",
+      "Corporate invoicing on request",
+    ],
+    closingLine: "You don't just book a vehicle. You book luxury.",
+  },
+  {
+    id: "corporate-road-show",
+    slug: "corporate-road-show",
+    categoryId: "executive",
+    title: "Corporate Road Show",
+    cardBlurb:
+      "Multi-stop executive days with one thread of accountability—from first pickup to final drop.",
+    heroEyebrow: "Executive Transportation",
+    heroHeadline: "Road shows without the logistics load.",
+    heroSupporting:
+      "Share the run-of-show. We stage private transportation between offices, hotels, and venues so principals stay on time.",
+    image: media.suv,
+    alt: "Chauffeur door service for executive transportation",
+    seoTitle: "Corporate Road Show Transportation Philadelphia",
+    seoDescription:
+      "Corporate road show private transportation in Philadelphia. Luxury black car service for multi-stop executive days. Request a quote for staged coverage.",
+    included: [
+      "Itinerary review and timing plan",
+      "Assigned vehicle class for party and luggage",
+      "Live adjustments for meeting overrun",
+      "Discreet curb protocol at each stop",
+    ],
+    conciergeAdditions: [
+      "Hotel and venue coordination",
+      "Backup coverage for peak days",
+    ],
+    closingLine: "You don't just book a vehicle. You book luxury.",
+  },
+  /* ---------------- TRAVEL ---------------- */
+  {
+    id: "airport-transfers",
+    slug: "airport-transfers",
+    categoryId: "travel",
+    title: "Airport Transfers",
+    cardBlurb:
+      "PHL, PNE, and private FBO meet-and-greet with flight-aware timing and luggage handled.",
+    heroEyebrow: "Travel",
+    heroHeadline: "Airport private transportation that watches the flight.",
+    heroSupporting:
+      "Commercial and private aviation corridors—meet-and-greet, luggage, and a composed cabin home or to the city.",
+    image: media.airport,
+    alt: "Airport runway at golden hour",
+    seoTitle: "PHL Airport Black Car Service | Private Transportation",
+    seoDescription:
+      "Philadelphia PHL and PNE airport private black car service and luxury transportation. Flight-aware timing, meet-and-greet, luggage handled. Request a quote.",
+    included: [
+      "Flight monitoring and adjusted pickup timing",
+      "Meet-and-greet where permitted",
+      "Luggage assistance",
+      "Assigned cabin confirmed after quote review",
+    ],
+    conciergeAdditions: [
+      "Private FBO coordination",
+      "Multi-passenger family or team arrivals",
+    ],
+    closingLine: "You don't just book a vehicle. You book luxury.",
+  },
+  {
+    id: "train-station",
+    slug: "train-station-transfers",
+    categoryId: "travel",
+    title: "Train Station Transfers",
+    cardBlurb:
+      "30th Street Station and regional rail connections with curb timing that matches your train.",
+    heroEyebrow: "Travel",
+    heroHeadline: "Station to destination—already handled.",
+    heroSupporting:
+      "Private transportation for Amtrak and regional arrivals and departures, with luggage and timing on us.",
+    image: media.suv,
+    alt: "Luxury black car for station transfers",
+    seoTitle: "Train Station Private Transportation Philadelphia",
+    seoDescription:
+      "Private transportation to and from Philadelphia train stations including 30th Street Station. Luxury black car service with luggage handling. Request a quote.",
+    included: [
+      "Pickup or drop timed to your train",
+      "Luggage assistance",
+      "Assigned vehicle for party size",
+    ],
+    conciergeAdditions: [
+      "Hotel and office connections",
+      "Group arrivals",
+    ],
+    closingLine: "You don't just book a vehicle. You book luxury.",
+  },
+  {
+    id: "intercity",
+    slug: "intercity-private-transportation",
+    categoryId: "travel",
+    title: "Intercity Private Transportation",
+    cardBlurb:
+      "Door-to-door luxury transportation between Philadelphia, New York, D.C., and regional destinations.",
+    heroEyebrow: "Travel",
+    heroHeadline: "Intercity runs without the airport maze.",
+    heroSupporting:
+      "Private transportation for city-to-city travel when a flight is more friction than value—Wi‑Fi-ready cabins when staged.",
+    image: media.sprinterExterior,
+    alt: "Sprinter and SUV for intercity private transportation",
+    seoTitle: "Intercity Private Transportation | Philadelphia Luxury Black Car",
+    seoDescription:
+      "Intercity private transportation from Philadelphia—New York, Washington D.C., and regional destinations. Luxury black car and Sprinter service. Request a quote.",
+    included: [
+      "Door-to-door itinerary",
+      "Cabin assigned for distance and party size",
+      "Stops coordinated in advance",
+    ],
+    conciergeAdditions: [
+      "Overnight holds on request",
+      "Multi-city corporate loops",
+    ],
+    closingLine: "You don't just book a vehicle. You book luxury.",
+  },
+  /* ---------------- LUXURY EXPERIENCES (game day, escape, wellness, leisure, signature) ---------------- */
   {
     id: "sixers",
     slug: "sixers-private-game-day",
-    categoryId: "game-day",
+    categoryId: "luxury-experiences",
     title: "Sixers Private Game Day",
     cardBlurb:
       "Private pickup, a curated ride to the arena in South Philadelphia, and a chauffeur waiting when the final buzzer sounds.",
@@ -114,7 +234,7 @@ export const experiences = [
   {
     id: "eagles",
     slug: "eagles-sunday-experience",
-    categoryId: "game-day",
+    categoryId: "luxury-experiences",
     title: "Eagles Sunday Experience",
     cardBlurb:
       "Sundays in Philadelphia deserve better than stadium parking. Tailgate-to-final-whistle transportation, handled.",
@@ -145,7 +265,7 @@ export const experiences = [
   {
     id: "phillies",
     slug: "phillies-night-out",
-    categoryId: "game-day",
+    categoryId: "luxury-experiences",
     title: "Phillies Night Out",
     cardBlurb:
       "Summer nights at the ballpark—private transportation, pre-game dinner coordination, and a waiting return ride.",
@@ -176,7 +296,7 @@ export const experiences = [
   {
     id: "flyers",
     slug: "flyers-game-night",
-    categoryId: "game-day",
+    categoryId: "luxury-experiences",
     title: "Flyers Game Night",
     cardBlurb:
       "Winter game nights without the cold walk from a distant lot—door-to-door service to the arena and back.",
@@ -209,7 +329,7 @@ export const experiences = [
   {
     id: "wine-country",
     slug: "wine-country-tours",
-    categoryId: "escape",
+    categoryId: "luxury-experiences",
     title: "Wine Country",
     cardBlurb:
       "Brandywine Valley estates and beyond—multi-vineyard routing, tasting reservations, and case storage for the ride home.",
@@ -239,7 +359,7 @@ export const experiences = [
   {
     id: "hamptons",
     slug: "hamptons-getaway",
-    categoryId: "escape",
+    categoryId: "luxury-experiences",
     title: "Hamptons",
     cardBlurb:
       "Philadelphia to the Hamptons in a private cabin built for the long weekend—luggage handled, house arrival timed.",
@@ -269,7 +389,7 @@ export const experiences = [
   {
     id: "weekend-getaways",
     slug: "weekend-getaways",
-    categoryId: "escape",
+    categoryId: "luxury-experiences",
     title: "Weekend Getaways",
     cardBlurb:
       "Cape May, the Poconos, New York, D.C.—a private cabin for the miles between here and away.",
@@ -301,7 +421,7 @@ export const experiences = [
   {
     id: "private-spa-days",
     slug: "private-spa-days",
-    categoryId: "wellness",
+    categoryId: "luxury-experiences",
     title: "Private Spa Days",
     cardBlurb:
       "Appointment coordination, quiet chauffeured transfers, and a return home that keeps the calm intact.",
@@ -331,7 +451,7 @@ export const experiences = [
   {
     id: "couples-wellness",
     slug: "couples-wellness",
-    categoryId: "wellness",
+    categoryId: "luxury-experiences",
     title: "Couples Wellness",
     cardBlurb:
       "Dual pickups, couples treatments coordinated, and an evening that unfolds without either of you checking the time.",
@@ -361,7 +481,7 @@ export const experiences = [
   {
     id: "group-wellness",
     slug: "group-wellness",
-    categoryId: "wellness",
+    categoryId: "luxury-experiences",
     title: "Group Wellness Experiences",
     cardBlurb:
       "Retreat days for friends, teams, and celebrations—group transportation and venue coordination on one thread.",
@@ -393,7 +513,7 @@ export const experiences = [
   {
     id: "golf",
     slug: "golf-experiences",
-    categoryId: "leisure",
+    categoryId: "luxury-experiences",
     title: "Golf Experiences",
     cardBlurb:
       "Tee-time synchronized arrivals, club storage, and the 19th hole without a designated driver.",
@@ -423,7 +543,7 @@ export const experiences = [
   {
     id: "fine-dining",
     slug: "fine-dining",
-    categoryId: "leisure",
+    categoryId: "luxury-experiences",
     title: "Fine Dining",
     cardBlurb:
       "Reservations coordinated, doors timed to the course, and a quiet cabin waiting when the evening winds down.",
@@ -453,7 +573,7 @@ export const experiences = [
   {
     id: "date-nights",
     slug: "date-nights",
-    categoryId: "leisure",
+    categoryId: "luxury-experiences",
     title: "Date Nights",
     cardBlurb:
       "Dinner, theater, and after-hours—privacy glass, staged cabins, and timing that keeps the night unhurried.",
@@ -485,7 +605,7 @@ export const experiences = [
   {
     id: "signature",
     slug: "signature-experiences",
-    categoryId: "signature",
+    categoryId: "luxury-experiences",
     title: "Signature Experiences",
     cardBlurb:
       "Completely customized experiences designed around the client—one conversation, and we architect everything else.",
@@ -510,7 +630,7 @@ export const experiences = [
       "Security and executive protection coordination",
       "Multi-day experience management",
     ],
-    closingLine: "You don't just book a vehicle. You have HiTouch.",
+    closingLine: "You don't just book a vehicle. You book luxury.",
   },
 ];
 
@@ -540,7 +660,9 @@ export function getCategoryById(id) {
   return experienceCategories.find((c) => c.id === id) ?? null;
 }
 
-export const gameDayExperiences = getExperiencesByCategory("game-day");
+export const gameDayExperiences = experiences.filter((e) =>
+  ["sixers", "eagles", "phillies", "flyers"].includes(e.id),
+);
 
 /** All landing page slugs (sitemap + static params) */
 export const experienceSlugs = experiences.map((e) => e.slug);
