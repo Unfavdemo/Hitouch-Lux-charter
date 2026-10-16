@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BrandLogo } from "@/components/marketing/brand-logo";
+import { MbeCertificationBadge } from "@/components/marketing/mbe-certification-badge";
 
 export function SiteFooter({ site: s }) {
   return (
@@ -56,7 +57,11 @@ export function SiteFooter({ site: s }) {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-charcoal sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+        <div className="mt-8 flex justify-center border-t border-white/10 pt-8">
+          <MbeCertificationBadge />
+        </div>
+
+        <div className="mt-6 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-charcoal sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} {s.brandName}
           </p>
