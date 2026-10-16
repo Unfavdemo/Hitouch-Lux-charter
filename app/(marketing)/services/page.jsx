@@ -22,7 +22,7 @@ export default function ServicesPage() {
       <MarketingPageHero
         eyebrow="Occasions we choreograph"
         title="Every frame is an experience arc—not a menu item."
-        description="Choose the occasion that matches your evening. Our concierge team returns a choreographed proposal with vehicle class, route cadence, and cabin staging."
+        description="Choose the occasion that matches your evening. Our concierge returns a proposal with the assigned vehicle, route timing, and cabin staging—you don't pick a car from a menu."
         image={pageHeroes.services}
         imageAlt="Vineyard rows in soft evening light"
         actions={
@@ -107,9 +107,9 @@ export default function ServicesPage() {
       <MarketingCtaBand
         tone="cream"
         title="Know your itinerary already?"
-        description="Get a trip estimate online—our team still reviews every request for timing and vehicle fit. Same-day scheduling is also available through reserve online."
-        primaryHref="/book"
-        primaryLabel="Get a trip estimate"
+        description="Request a quote online—our team reviews every request for timing, assigns the vehicle, and confirms driver availability before anything is locked."
+        primaryHref="/experience-request"
+        primaryLabel="Request a quote"
         secondaryHref="/contact"
         secondaryLabel="Contact concierge"
       />

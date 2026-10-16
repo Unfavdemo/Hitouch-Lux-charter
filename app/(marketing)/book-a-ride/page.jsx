@@ -1,12 +1,6 @@
 import { redirect } from "next/navigation";
-import { site } from "@/content/site";
 
-/** @type {import('next').Metadata} */
-export const metadata = {
-  title: "Book a ride",
-  description: "Redirecting to secure external booking.",
-};
-
+/** Legacy Moovs deep-link — public path is the quote questionnaire. */
 export default function BookARidePage() {
-  redirect(site.moovsBookingUrl);
+  redirect("/experience-request");
 }

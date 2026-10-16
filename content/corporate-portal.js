@@ -1,33 +1,25 @@
 /**
  * Dashboard shortcuts for corporate portal sessions (magic-link authenticated).
- * @param {{ moovsBookingUrl: string; phoneDisplay: string; phoneTel: string; email: string }} site
+ * @param {{ phoneDisplay: string; phoneTel: string; email: string }} site
  */
 export function corporatePortalTiles(site) {
   return [
     {
-      id: "reserve",
-      title: "Reserve executive travel",
+      id: "quote",
+      title: "Request a quote",
       description:
-        "Request live availability and confirmations through the partner booking desk.",
-      href: site.moovsBookingUrl,
-      external: true,
-      buttonLabel: "Open booking",
+        "Submit itinerary details through the questionnaire. Availability is confirmed before assignment.",
+      href: "/experience-request",
+      external: false,
+      buttonLabel: "Request a quote",
     },
     {
       id: "fleet",
-      title: "Review fleet classes",
-      description: "Compare sedans, SUVs, and sprinters for road shows and board weeks.",
+      title: "Preview the fleet",
+      description: "See cabin standards—HiTouch assigns the vehicle from your itinerary.",
       href: "/fleet",
       external: false,
-      buttonLabel: "View fleet",
-    },
-    {
-      id: "experience",
-      title: "Luxury experience intake",
-      description: "Share itinerary nuance, security notes, or bespoke hospitality requests.",
-      href: "/experience-request",
-      external: false,
-      buttonLabel: "Start questionnaire",
+      buttonLabel: "Preview the fleet",
     },
     {
       id: "contact",

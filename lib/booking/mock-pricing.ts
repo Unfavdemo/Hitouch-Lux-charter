@@ -1,4 +1,4 @@
-import type { TripStepInput } from "@/lib/booking/schemas";
+import type { SuggestedVehicleClass, TripStepInput } from "@/lib/booking/schemas";
 
 const BASE_CENTS = {
   sedan: 18500,
@@ -11,6 +11,13 @@ const PER_PASSENGER_CENTS = {
   suv: 1000,
   sprinter: 1200,
 } as const;
+
+/** Internal planning band from party size — clients do not select vehicle class. */
+export function inferVehicleClass(passengers: number): SuggestedVehicleClass {
+  if (passengers >= 7) return "sprinter";
+  if (passengers >= 4) return "suv";
+  return "sedan";
+}
 
 /** Rough distance band from address string length difference (deterministic mock). */
 function distanceBandCents(pickup: string, destination: string): number {
@@ -34,12 +41,13 @@ export type QuoteSummary = {
 };
 
 export function buildMockQuote(trip: TripStepInput): QuoteSummary {
-  const base = BASE_CENTS[trip.vehicleClass];
-  const passengerAdj = Math.max(0, trip.passengers - 1) * PER_PASSENGER_CENTS[trip.vehicleClass];
+  const vehicleClass = inferVehicleClass(trip.passengers);
+  const base = BASE_CENTS[vehicleClass];
+  const passengerAdj = Math.max(0, trip.passengers - 1) * PER_PASSENGER_CENTS[vehicleClass];
   const distance = distanceBandCents(trip.pickupAddress, trip.destinationAddress);
 
   const lineItems: QuoteLineItem[] = [
-    { label: `${capitalize(trip.vehicleClass)} base`, amountCents: base },
+    { label: "Indicative service base", amountCents: base },
     { label: "Route estimate", amountCents: distance },
   ];
   if (passengerAdj > 0) {
@@ -53,12 +61,8 @@ export function buildMockQuote(trip: TripStepInput): QuoteSummary {
     subtotalCents,
     estimateLabel: "Indicative estimate",
     disclaimer:
-      "This is a non-binding estimate for planning purposes. Final pricing is confirmed by the concierge desk after route review.",
+      "This is a non-binding estimate for planning. HiTouch assigns the vehicle from party size, luggage, and itinerary—clients do not choose a specific car. Final pricing is confirmed by the concierge desk.",
   };
-}
-
-function capitalize(value: string): string {
-  return value.charAt(0).toUpperCase() + value.slice(1);
 }
 
 export function formatUsd(cents: number): string {

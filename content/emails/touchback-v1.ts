@@ -12,7 +12,7 @@ export function touchbackEmail({
     "Thank you for starting a reservation inquiry with HiTouch Luxury Charter.",
     "Our concierge team noticed your request may still be in progress.",
     "",
-    "Reply to this email or call our private line to confirm routing, vehicle class, and final pricing.",
+    "Reply to this email or call our private line to confirm routing, assigned vehicle, and final pricing.",
     "",
     `Reference: ${inquiryId}`,
     "",
@@ -22,7 +22,7 @@ export function touchbackEmail({
   const html = `
     <p>Hello ${escapeHtml(contactName)},</p>
     <p>Thank you for starting a reservation inquiry with <strong>HiTouch Luxury Charter</strong>.</p>
-    <p>Our concierge team noticed your request may still be in progress. Reply to this email or call our private line to confirm routing, vehicle class, and final pricing.</p>
+    <p>Our concierge team noticed your request may still be in progress. Reply to this email or call our private line to confirm routing, assigned vehicle, and final pricing.</p>
     <p style="color:#7d8496;font-size:12px;">Reference: ${escapeHtml(inquiryId)}</p>
     <p>— HiTouch Luxury Charter</p>
   `.trim();

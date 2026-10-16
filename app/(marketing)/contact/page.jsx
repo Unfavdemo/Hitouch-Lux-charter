@@ -104,12 +104,10 @@ export default function ContactPage() {
       </MarketingPageSection>
 
       <MarketingCtaBand
-        title="Ready to architect your evening?"
-        description="Tell us the occasion—we'll return a choreographed proposal with vehicle class, route cadence, and cabin staging."
+        title="Ready for a quote?"
+        description="Tell us the occasion—we'll return a proposal with the assigned vehicle, route timing, and cabin staging."
         primaryHref="/experience-request"
-        primaryLabel="Request an experience"
-        secondaryHref="/book"
-        secondaryLabel="Get a trip estimate"
+        primaryLabel="Request a quote"
       />
     </>
   );

@@ -66,8 +66,8 @@ export default function ExecutiveMobilityPage() {
         imageAlt="Executive vehicle interior with refined details"
         actions={
           <>
-            <Button href="/book" variant="primary">
-              Book Transportation
+            <Button href="/experience-request" variant="primary">
+              Request a quote
             </Button>
             <Button href="/corporate" variant="outlineLight">
               Corporate accounts
@@ -94,7 +94,7 @@ export default function ExecutiveMobilityPage() {
       <MarketingPageSection tone="dark">
         <MarketingSectionHeading
           eyebrow="The standard"
-          title="You don't just book a vehicle. You have HiTouch."
+          title="You don't just book a vehicle. You book luxury."
           light={false}
         />
         <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -109,11 +109,11 @@ export default function ExecutiveMobilityPage() {
       <MarketingCtaBand
         eyebrow="Your plans. Our responsibility."
         title="Put your movement on one thread."
-        description={`Book a single trip, open a corporate account, or call ${site.phoneDisplay} to design a standing executive program.`}
-        primaryHref="/book"
-        primaryLabel="Book Transportation"
+        description={`Request a quote, open a corporate account, or call ${site.phoneDisplay} to design a standing executive program.`}
+        primaryHref="/experience-request"
+        primaryLabel="Request a quote"
         secondaryHref="/memberships"
-        secondaryLabel="Explore Membership"
+        secondaryLabel="High Touch Membership"
         tone="cream"
       />
     </>

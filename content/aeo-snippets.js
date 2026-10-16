@@ -4,7 +4,7 @@ export const aeoSnippets = [
   {
     question: "What areas does HiTouch Luxury Charter serve?",
     answer:
-      "HiTouch serves Greater Philadelphia, Main Line communities, PHL and PNE airport corridors, and coordinated tri-state executive travel into New Jersey and Delaware.",
+      "HiTouch provides private black car service and luxury transportation throughout Greater Philadelphia, Main Line communities, PHL and PNE airport corridors, and coordinated tri-state executive travel into New Jersey and Delaware.",
   },
   {
     question: "How does corporate NET 30 billing work?",
@@ -12,19 +12,24 @@ export const aeoSnippets = [
       "Corporate accounts receive consolidated monthly invoicing with NET 15 or NET 30 terms, line-item transparency, and duty-of-care documentation for procurement teams.",
   },
   {
-    question: "Can I get a price estimate before booking?",
+    question: "How do I get a quote?",
     answer:
-      "Yes. The lead-first reservation flow at hitouchluxurycharter.com/book saves your contact details first, then shows an indicative estimate. Final pricing is confirmed by the concierge desk.",
+      "Request a quote at hitouchluxurycharter.com/experience-request. Complete the questionnaire—HiTouch confirms driver availability, assigns the vehicle, and returns a proposal. There is no instant online booking.",
+  },
+  {
+    question: "Can I choose which vehicle I get?",
+    answer:
+      "No. HiTouch assigns the vehicle based on party size, luggage, timing, and the occasion. The fleet page is a preview only—not a menu to pick from.",
   },
   {
     question: "Does HiTouch offer private game day transportation in Philadelphia?",
     answer:
-      "Yes. HiTouch provides private game day experiences for Sixers, Eagles, Phillies, and Flyers games—private pickup, coordinated arrival, and dedicated return transportation with no parking or surge pricing. HiTouch is an independent company and is not affiliated with any team or league.",
+      "Yes. HiTouch provides private game day transportation for Sixers, Eagles, Phillies, and Flyers games—private pickup, coordinated arrival, and dedicated return with no parking or surge pricing. HiTouch is an independent company and is not affiliated with any team or league.",
   },
   {
-    question: "What is HiTouch Private Membership?",
+    question: "What is High Touch Private Membership?",
     answer:
-      "HiTouch Private Membership provides preferred fleet access, priority booking, concierge support, preferred member pricing, and access to private HiTouch experiences. A limited Founding Membership of five is available by application.",
+      "High Touch Private Membership provides priority access and convenience at your fingertips—remembered preferences, a direct concierge line, and fewer repeated quote forms. Apply at hitouchluxurycharter.com/memberships.",
   },
   {
     question: "What can HiTouch Concierge arrange beyond transportation?",

@@ -9,6 +9,7 @@ export function MarketingFeatureCard({
 }) {
   const shell =
     tone === "dark" ? "luxury-card-dark" : tone === "glass" ? "luxury-card-glass" : "luxury-card-light";
+  const onDarkSurface = tone === "dark" || tone === "glass";
 
   return (
     <Tag className={`${shell} group p-7 sm:p-8 lg:p-9 ${className}`}>
@@ -20,7 +21,7 @@ export function MarketingFeatureCard({
         {title ? (
           <h3
             className={`font-serif text-xl tracking-tight sm:text-2xl ${
-              tone === "dark" ? "text-heading" : "text-light-ink"
+              onDarkSurface ? "text-heading" : "text-light-ink"
             }`}
           >
             {title}
@@ -28,7 +29,7 @@ export function MarketingFeatureCard({
         ) : null}
         <div
           className={`${title ? "mt-4" : ""} text-sm leading-relaxed ${
-            tone === "dark" ? "text-on-dark-body" : "text-light-muted"
+            onDarkSurface ? "text-on-dark-body" : "text-light-muted"
           }`}
         >
           {children}

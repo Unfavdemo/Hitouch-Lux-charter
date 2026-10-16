@@ -1,8 +1,8 @@
 /** Ornamental small-caps label with gold flanking rules */
 export function LuxuryEyebrow({ children, light = true, className = "" }) {
-  const textClass = light ? "text-accent" : "text-accent-readable";
+  const textClass = light ? "text-accent-on-light" : "text-accent-readable";
   const lineClass = light
-    ? "bg-gradient-to-r from-transparent via-accent/70 to-transparent"
+    ? "bg-gradient-to-r from-transparent via-accent-on-light/70 to-transparent"
     : "bg-gradient-to-r from-transparent via-accent-readable/80 to-transparent";
 
   return (

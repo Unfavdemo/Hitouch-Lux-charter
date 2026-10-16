@@ -128,10 +128,33 @@ export async function POST(request) {
     );
   }
 
-  console.info("[experience-request]", JSON.stringify(b, null, 2));
+  const lead = {
+    inquiryType: "experience-request",
+    firstName: String(b.firstName).trim(),
+    lastName: String(b.lastName).trim(),
+    email: String(b.email).trim(),
+    phone: String(b.phone).trim(),
+    occasions,
+    occasionOther: typeof b.occasionOther === "string" ? b.occasionOther.trim() : "",
+    serviceInterest: b.serviceInterest,
+    serviceOther: typeof b.serviceOther === "string" ? b.serviceOther.trim() : "",
+    pickupDate: String(b.pickupDate),
+    pickupTime: String(b.pickupTime),
+    pickupAddress: String(b.pickupAddress).trim(),
+    destinationAddress: String(b.destinationAddress).trim(),
+    returnDate: String(b.returnDate),
+    returnTime: String(b.returnTime),
+    driverWait: b.driverWait,
+    guestCount: String(b.guestCount),
+    largeBagsCount: String(b.largeBagsCount).trim(),
+    accommodations,
+    tripDetails: String(b.tripDetails).trim(),
+  };
+
+  console.info("[experience-request]", JSON.stringify(lead, null, 2));
 
   try {
-    await insertExperienceLead(b);
+    await insertExperienceLead(lead);
   } catch (err) {
     console.error("[experience-request] persist failed", err);
     return NextResponse.json(

@@ -19,23 +19,32 @@ const playfair = Playfair_Display({
 export const metadata = {
   metadataBase: new URL("https://www.hitouchluxurycharter.com"),
   title: {
-    default: "HiTouch Luxury Charter | Curated Luxury Experiences",
+    default: "HiTouch Luxury Charter | Philadelphia Luxury Black Car Service",
     template: "%s | HiTouch Luxury Charter",
   },
   description:
-    "Curated luxury experiences choreographed in Philadelphia and the tri-state region—date nights, retreats, corporate evenings, and celebration movement with discreet chauffeurs.",
+    "Luxury experience. High touch standard. Philadelphia private black car service, luxury black car service, private transportation, and luxury transportation. Request a quote—availability confirmed before assignment.",
   openGraph: {
-    title: "HiTouch Luxury Charter",
+    title: "HiTouch Luxury Charter | Luxury Black Car Service Philadelphia",
     description:
-      "Curated luxury experiences for discerning clients—spa retreats, date nights, wine country, weddings, and executive evenings.",
+      "Private black car service and luxury transportation in Philadelphia—executives, airports, and private occasions. Request a quote.",
     type: "website",
     locale: "en_US",
+    images: [{ url: "/images/hitouch-logo-og.jpg", alt: "HiTouch Luxury Charter Services" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "HiTouch Luxury Charter",
     description:
-      "Curated luxury experiences—choreographed movement, discreet chauffeurs, concierge-led.",
+      "Philadelphia luxury black car service and private transportation. Request a quote.",
+  },
+  icons: {
+    icon: [
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: "/apple-icon.png",
+    shortcut: "/favicon-32.png",
   },
 };
 

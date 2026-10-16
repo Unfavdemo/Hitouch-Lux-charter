@@ -21,13 +21,14 @@ const marketingPaths = [
   "/privacy",
   "/services",
   "/terms",
+  "/testimonials",
 ];
 
 const highPriorityPaths = new Set([
-  "/book",
+  "/experience-request",
   "/corporate",
   "/experiences",
-  "/game-day",
+  "/fleet",
   "/memberships",
 ]);
 

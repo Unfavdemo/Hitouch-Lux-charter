@@ -2,8 +2,11 @@ export const site = {
   brandName: "HiTouch Luxury Charter",
   /** Shorter label for the fixed header on medium viewports */
   brandNameNav: "HiTouch Luxury",
-  tagline: "You don't just book a vehicle. You have HiTouch.",
-  shortTagline: "Private mobility and curated experiences.",
+  logoSrc: "/images/hitouch-logo.webp",
+  logoAlt: "HiTouch Luxury Charter Services",
+  tagline: "More than a ride, it's an experience.",
+  shortTagline:
+    "Philadelphia luxury black car service and private transportation for executives, airports, and private occasions.",
   phoneDisplay: "215-650-7216",
   phoneTel: "+12156507216",
   email: "concierge@hitouchluxurycharter.com",
@@ -11,11 +14,12 @@ export const site = {
   region: "Pennsylvania",
   country: "United States",
   coverageBlurb:
-    "Experience-led chauffeur programs throughout Greater Philadelphia, the Main Line, PHL and PNE corridors, and coordinated tri-state executive travel into New Jersey and Delaware.",
+    "Luxury black car service and private transportation throughout Greater Philadelphia, the Main Line, PHL and PNE airport corridors, plus coordinated executive travel into New Jersey and Delaware.",
+  /** Internal / partner desk only — not linked from public marketing CTAs. */
   moovsBookingUrl:
     "https://customer.moovs.app/hitouch-luxury-charter/request/new",
   primaryCta: {
-    label: "Request experience",
+    label: "Request a quote",
     href: "/experience-request",
   },
   signInCta: {
@@ -25,18 +29,24 @@ export const site = {
   partnerNote:
     "Proudly connected with select hospitality and aviation partner networks across the Mid-Atlantic.",
   nav: [
-    { label: "Memberships", href: "/memberships" },
-    { label: "Executive Mobility", href: "/executive-mobility" },
-    { label: "Private Experiences", href: "/experiences" },
-    { label: "Game Day", href: "/game-day" },
+    { label: "Fleet", href: "/fleet" },
+    { label: "Membership", href: "/memberships" },
+    { label: "Experiences", href: "/experiences" },
+    { label: "Testimonials", href: "/testimonials" },
     { label: "Corporate", href: "/corporate" },
-    { label: "Airport", href: "/airport" },
   ],
   footerCompany: [
     { label: "About", href: "/about" },
-    { label: "Why HiTouch", href: "/about#why-hitouch" },
+    { label: "Testimonials", href: "/testimonials" },
     { label: "FAQ", href: "/faq" },
     { label: "Contact", href: "/contact" },
+  ],
+  footerExplore: [
+    { label: "Preview the fleet", href: "/fleet" },
+    { label: "Experiences", href: "/experiences" },
+    { label: "High Touch Private Membership", href: "/memberships" },
+    { label: "Request a quote", href: "/experience-request" },
+    { label: "Corporate", href: "/corporate" },
   ],
   footerLegal: [
     { label: "Privacy", href: "/privacy" },
@@ -46,10 +56,11 @@ export const site = {
 
 /**
  * Core brand voice — woven throughout the site.
- * "You don't just book a vehicle. You have HiTouch."
+ * Lead line: "More than a ride, it's an experience."
  */
 export const brandLines = {
-  core: "You don't just book a vehicle. You have HiTouch.",
+  core: "More than a ride, it's an experience.",
+  relationship: "You don't just book a vehicle. You book luxury.",
   responsibility: "Your plans. Our responsibility.",
   oneCall: "One call. Every detail handled.",
   timeValue: "For people who value their time differently.",

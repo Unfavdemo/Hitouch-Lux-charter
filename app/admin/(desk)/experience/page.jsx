@@ -15,10 +15,21 @@ function fmtDate(value) {
   }
 }
 
-function trunc(s, max) {
-  const t = String(s ?? "").trim();
-  if (!t) return "—";
-  return t.length <= max ? t : `${t.slice(0, max - 1)}…`;
+function joinList(value) {
+  if (Array.isArray(value)) return value.map(String).filter(Boolean).join(", ") || "—";
+  const t = String(value ?? "").trim();
+  return t || "—";
+}
+
+function Detail({ label, children }) {
+  return (
+    <div>
+      <dt className="text-[10px] font-semibold uppercase tracking-[0.14em] text-amber-200/70">
+        {label}
+      </dt>
+      <dd className="mt-1 text-sm leading-relaxed text-zinc-200">{children}</dd>
+    </div>
+  );
 }
 
 /** @type {import("next").Metadata} */
@@ -40,7 +51,9 @@ export default async function AdminExperiencePage() {
     <div className="space-y-6">
       <div>
         <h2 className="font-serif text-xl text-white">Luxury experience requests</h2>
-        <p className="mt-1 text-sm text-zinc-400">Newest first. Full itinerary lives in each row.</p>
+        <p className="mt-1 text-sm text-zinc-400">
+          Synced from Airtable Experience Leads. Expand a card for the full itinerary.
+        </p>
       </div>
       {error ? (
         <p className="rounded-md border border-red-500/35 bg-red-950/35 px-4 py-3 text-sm text-red-100">
@@ -52,64 +65,90 @@ export default async function AdminExperiencePage() {
           No submissions yet.
         </p>
       ) : null}
-      {rows.length > 0 ? (
-        <div className="overflow-x-auto rounded-lg border border-white/10">
-          <table className="w-full min-w-[960px] border-collapse text-left text-sm">
-            <thead>
-              <tr className="border-b border-white/10 bg-white/[0.04] text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
-                <th className="px-4 py-3">Received</th>
-                <th className="px-4 py-3">Name</th>
-                <th className="px-4 py-3">Contact</th>
-                <th className="px-4 py-3">Service</th>
-                <th className="px-4 py-3">Pickup</th>
-                <th className="px-4 py-3">Route</th>
-                <th className="px-4 py-3">Request</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((r) => (
-                <tr key={String(r.id)} className="border-b border-white/5 align-top text-zinc-200 last:border-0">
-                  <td className="whitespace-nowrap px-4 py-3 text-xs text-zinc-400">{fmtDate(r.createdAt)}</td>
-                  <td className="px-4 py-3 font-medium text-white">
-                    {String(r.firstName ?? "").trim()} {String(r.lastName ?? "").trim()}
-                  </td>
-                  <td className="px-4 py-3 text-xs">
-                    <a className="text-amber-200/90 underline-offset-2 hover:underline" href={`mailto:${r.email}`}>
+
+      <div className="space-y-4">
+        {rows.map((r) => {
+          const p =
+            r.payload && typeof r.payload === "object" && !Array.isArray(r.payload) ? r.payload : {};
+          const name = `${String(r.firstName ?? "").trim()} ${String(r.lastName ?? "").trim()}`.trim();
+          return (
+            <article
+              key={String(r.id)}
+              className="overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02]"
+            >
+              <div className="flex flex-col gap-4 border-b border-white/10 p-5 sm:flex-row sm:items-start sm:justify-between">
+                <div className="min-w-0 space-y-1">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-amber-200/70">
+                    {fmtDate(r.createdAt)}
+                    {p.inquiryType ? ` · ${String(p.inquiryType)}` : ""}
+                  </p>
+                  <h3 className="font-serif text-lg text-white">{name || "Guest"}</h3>
+                  <p className="text-sm text-zinc-400">
+                    {String(r.serviceInterest || p.experienceTitle || "Custom request")}
+                  </p>
+                  <div className="flex flex-wrap gap-x-4 gap-y-1 pt-1 text-xs">
+                    <a
+                      className="text-amber-200/90 underline-offset-2 hover:underline"
+                      href={`mailto:${r.email}`}
+                    >
                       {String(r.email ?? "")}
                     </a>
-                    <div className="mt-1">
-                      <a
-                        className="text-amber-200/90 underline-offset-2 hover:underline"
-                        href={`tel:${String(r.phone ?? "").replace(/\s/g, "")}`}
-                      >
-                        {String(r.phone ?? "")}
-                      </a>
-                    </div>
-                  </td>
-                  <td className="max-w-[8rem] px-4 py-3 text-xs text-zinc-400">
-                    {trunc(r.serviceInterest, 24)}
-                  </td>
-                  <td className="whitespace-nowrap px-4 py-3 text-xs text-zinc-400">
-                    {String(r.pickupDate ?? "")} {String(r.pickupTime ?? "")}
-                  </td>
-                  <td className="max-w-xs px-4 py-3 text-xs text-zinc-400">
-                    <span className="block">{trunc(r.pickupAddress, 80)}</span>
-                    <span className="mt-1 block text-zinc-500">→ {trunc(r.destinationAddress, 80)}</span>
-                  </td>
-                  <td className="min-w-[9rem] px-4 py-3">
-                    <LeadRowActions
-                      scope="experience"
-                      id={String(r.id)}
-                      status={String(r.status ?? "pending")}
-                      reviewedAt={r.reviewedAt ? String(r.reviewedAt) : null}
-                    />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      ) : null}
+                    <a
+                      className="text-amber-200/90 underline-offset-2 hover:underline"
+                      href={`tel:${String(r.phone ?? "").replace(/\s/g, "")}`}
+                    >
+                      {String(r.phone ?? "")}
+                    </a>
+                  </div>
+                </div>
+                <LeadRowActions
+                  scope="experience"
+                  id={String(r.id)}
+                  status={String(r.status ?? "pending")}
+                  reviewedAt={r.reviewedAt ? String(r.reviewedAt) : null}
+                />
+              </div>
+
+              <details className="group">
+                <summary className="cursor-pointer list-none px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-zinc-400 transition hover:text-amber-100 [&::-webkit-details-marker]:hidden">
+                  <span className="inline-flex items-center gap-2">
+                    <span className="text-accent transition group-open:rotate-90" aria-hidden>
+                      ▸
+                    </span>
+                    Full itinerary
+                  </span>
+                </summary>
+                <dl className="grid gap-5 border-t border-white/10 px-5 py-5 sm:grid-cols-2 lg:grid-cols-3">
+                  <Detail label="Experience">
+                    {joinList(p.experienceTitle || p.experienceSlug)}
+                  </Detail>
+                  <Detail label="Occasions">{joinList(p.occasions)}</Detail>
+                  <Detail label="Occasion other">{joinList(p.occasionOther)}</Detail>
+                  <Detail label="Service">{joinList(r.serviceInterest || p.serviceInterest)}</Detail>
+                  <Detail label="Service other">{joinList(p.serviceOther)}</Detail>
+                  <Detail label="Guests">{joinList(p.guestCount)}</Detail>
+                  <Detail label="Pickup">
+                    {joinList([r.pickupDate || p.pickupDate, r.pickupTime || p.pickupTime].filter(Boolean))}
+                  </Detail>
+                  <Detail label="Return">
+                    {joinList([p.returnDate, p.returnTime].filter(Boolean))}
+                  </Detail>
+                  <Detail label="Driver wait">{joinList(p.driverWait)}</Detail>
+                  <Detail label="Pickup address">{joinList(r.pickupAddress || p.pickupAddress)}</Detail>
+                  <Detail label="Destination">
+                    {joinList(r.destinationAddress || p.destinationAddress)}
+                  </Detail>
+                  <Detail label="Large bags">{joinList(p.largeBagsCount)}</Detail>
+                  <Detail label="Accommodations">{joinList(p.accommodations)}</Detail>
+                  <div className="sm:col-span-2 lg:col-span-3">
+                    <Detail label="Trip details">{joinList(p.tripDetails)}</Detail>
+                  </div>
+                </dl>
+              </details>
+            </article>
+          );
+        })}
+      </div>
     </div>
   );
 }

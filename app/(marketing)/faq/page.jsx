@@ -12,7 +12,7 @@ import { faqPageJsonLd } from "@/lib/seo/json-ld";
 export const metadata = buildPageMetadata({
   title: "FAQ",
   description:
-    "Answers about curated experiences, booking windows, airports, executive protection, pricing, and special requests for HiTouch Luxury Charter.",
+    "Answers about private black car service, luxury transportation, airports, membership, pricing, and requesting a quote with HiTouch Luxury Charter.",
   path: "/faq",
 });
 
@@ -49,12 +49,12 @@ export default function FaqPage() {
       </MarketingPageSection>
 
       <MarketingCtaBand
-        title="Planning a curated evening?"
-        description="Browse signature packages or describe the mood—we architect the movement."
-        primaryHref="/experiences"
-        primaryLabel="View experiences"
-        secondaryHref="/book"
-        secondaryLabel="Get a trip estimate"
+        title="Ready to request a quote?"
+        description="Complete our questionnaire—we confirm availability and assign the vehicle before anything is locked."
+        primaryHref="/experience-request"
+        primaryLabel="Request a quote"
+        secondaryHref="/experiences"
+        secondaryLabel="View offerings"
       />
     </>
   );

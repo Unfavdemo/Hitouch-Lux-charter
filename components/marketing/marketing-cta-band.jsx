@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 
 export function MarketingCtaBand({
-  eyebrow = "Begin your experience",
+  eyebrow = "Ready when you are",
   title,
   description,
   primaryHref,

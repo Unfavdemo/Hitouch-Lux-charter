@@ -19,7 +19,7 @@ function Stars({ rating }) {
       {Array.from({ length: 5 }).map((_, i) => (
         <span
           key={i}
-          className={i < rating ? "text-accent" : "text-muted/40"}
+          className={i < rating ? "text-accent-readable" : "text-muted"}
           aria-hidden
         >
           ★
@@ -34,7 +34,7 @@ export function ReviewMasonry({ reviews, light = false }) {
     ? "border-light-ink/10 bg-paper"
     : "border-border-subtle bg-surface";
   const textClass = light ? "text-light-ink" : "text-heading";
-  const mutedClass = light ? "text-light-muted" : "text-charcoal";
+  const mutedClass = light ? "text-light-muted" : "text-on-dark-muted";
 
   return (
     <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
@@ -50,11 +50,11 @@ export function ReviewMasonry({ reviews, light = false }) {
           <p className={`mt-4 text-sm leading-relaxed ${textClass}`}>&ldquo;{review.text}&rdquo;</p>
           <footer className={`mt-4 text-xs ${mutedClass}`}>
             <span className="font-medium">{review.author}</span>
-            <span className="mx-2 opacity-50">·</span>
+            <span className="mx-2 text-border-subtle">·</span>
             <time dateTime={review.date}>{review.date}</time>
             {review.city ? (
               <>
-                <span className="mx-2 opacity-50">·</span>
+                <span className="mx-2 text-border-subtle">·</span>
                 <span>{review.city}</span>
               </>
             ) : null}

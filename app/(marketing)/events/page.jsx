@@ -45,7 +45,7 @@ export default function EventsPage() {
               Start event inquiry
             </Button>
             <Button href="/fleet" variant="outlineLight">
-              Review fleet mix
+              See how we stage
             </Button>
           </>
         }
@@ -70,9 +70,9 @@ export default function EventsPage() {
             </ul>
           </div>
           <Card variant="light" className="p-6">
-            <h3 className="font-serif text-xl text-light-ink">Illustrative vehicle matrix</h3>
+            <h3 className="font-serif text-xl text-light-ink">Illustrative staging matrix</h3>
             <p className="mt-2 text-xs text-light-muted">
-              Counts are planning examples only—final staging is bespoke to your run-of-show.
+              Planning examples only—HiTouch assigns the mix. Clients do not pick individual vehicles from a menu.
             </p>
             <div className="mt-6 overflow-x-auto">
               <table className="w-full min-w-[320px] text-left text-xs text-light-muted">

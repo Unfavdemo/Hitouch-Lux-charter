@@ -20,15 +20,15 @@ export function FeaturedSprinterSpotlight({ sprinter }) {
         />
       </div>
       <div className="relative flex flex-col justify-center border-t border-white/10 bg-gradient-to-br from-surface/90 to-midnight p-8 sm:p-10 lg:border-t-0 lg:border-l lg:p-12">
-        <LuxuryEyebrow light={false}>Featured vehicle</LuxuryEyebrow>
+        <LuxuryEyebrow light={false}>Signature cabin</LuxuryEyebrow>
         <h2 className="luxury-display mt-5 text-3xl text-heading sm:text-4xl">{sprinter.title}</h2>
         <p className="mt-4 max-w-prose text-sm leading-relaxed text-on-dark-body sm:text-base">
           {sprinter.blurb}
         </p>
         <div className="mt-8 h-px w-12 bg-gradient-to-r from-accent-readable/90 to-transparent" aria-hidden />
         <div className="mt-8">
-          <Button href="/fleet" variant="outlineLight">
-            Explore fleet
+          <Button href="/experience-request" variant="outlineLight">
+            Request a quote
           </Button>
         </div>
       </div>

@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 
-/** Five experience categories — Game Day, Escape, Wellness, Leisure, Signature. */
+/** Three offering categories — Executive, Luxury Experiences, Travel. */
 export function HomeExperiencePreview({ categories }) {
   return (
-    <Section className="luxury-grain relative overflow-hidden bg-midnight py-20 text-foreground lg:py-28">
+    <Section className="luxury-grain relative overflow-hidden bg-midnight py-14 text-foreground lg:py-20">
       <div className="pointer-events-none absolute inset-0 luxury-mesh-dark" aria-hidden />
       <Container className="relative z-[1]">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
@@ -32,15 +32,9 @@ export function HomeExperiencePreview({ categories }) {
             <Link
               key={category.id}
               href={category.href}
-              className={`luxury-image-card group flex flex-col bg-midnight/90 ${
-                index === 0 ? "sm:col-span-2 lg:col-span-2" : ""
-              }`}
+              className="luxury-image-card group flex flex-col bg-midnight/90"
             >
-              <div
-                className={`relative w-full overflow-hidden ${
-                  index === 0 ? "aspect-[5/4] sm:aspect-[2/1]" : "aspect-[5/4]"
-                }`}
-              >
+              <div className="relative aspect-[5/4] w-full overflow-hidden">
                 <Image
                   src={category.image}
                   alt={category.alt}
@@ -50,7 +44,7 @@ export function HomeExperiencePreview({ categories }) {
                 />
                 <div className="absolute inset-0 image-caption-scrim" />
                 <span
-                  className="absolute left-4 top-4 text-[10px] font-semibold uppercase tracking-[var(--tracking-nav)] text-accent-readable/90"
+                  className="absolute left-4 top-4 text-[10px] font-semibold uppercase tracking-[var(--tracking-nav)] text-accent-readable"
                   aria-hidden
                 >
                   {String(index + 1).padStart(2, "0")}
@@ -60,7 +54,7 @@ export function HomeExperiencePreview({ categories }) {
                 </p>
               </div>
               <div className="flex flex-1 flex-col border-t border-white/10 bg-gradient-to-b from-surface/50 to-midnight p-5 sm:p-6">
-                <p className="font-serif text-lg text-accent-readable/95">{category.tagline}</p>
+                <p className="font-serif text-lg text-accent-readable">{category.tagline}</p>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-on-dark-body">
                   {category.description}
                 </p>

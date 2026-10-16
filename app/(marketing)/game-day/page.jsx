@@ -71,7 +71,7 @@ export default function GameDayPage() {
           <h2 className="luxury-display text-3xl text-light-ink sm:text-4xl">
             {gameDayHub.promise}
           </h2>
-          <p className="mt-6 font-serif text-2xl text-accent sm:text-3xl">{gameDayHub.closing}</p>
+          <p className="mt-6 font-serif text-2xl text-accent-on-light sm:text-3xl">{gameDayHub.closing}</p>
         </div>
         <ol className="mx-auto mt-16 grid max-w-5xl gap-8 md:grid-cols-3 md:gap-6">
           {gameDaySteps.map((step, index) => (
@@ -111,7 +111,7 @@ export default function GameDayPage() {
             />
           ))}
         </div>
-        <p className="mt-10 max-w-3xl text-xs leading-relaxed text-on-dark-body/70">
+        <p className="mt-10 max-w-3xl text-xs leading-relaxed text-on-dark-muted">
           {teamDisclaimer}
         </p>
       </MarketingPageSection>
@@ -119,11 +119,11 @@ export default function GameDayPage() {
       <MarketingCtaBand
         eyebrow="Season after season"
         title="Make game day a standing arrangement."
-        description="Members get priority booking on game days, preferred fleet access, and concierge ticket coordination—so the season is handled before it starts."
+        description="Members get priority booking on game days, priority vehicle assignment, and concierge ticket coordination—so the season is handled before it starts."
         primaryHref="/memberships"
         primaryLabel="Request Membership"
         secondaryHref="/experience-request"
-        secondaryLabel="Request Your Experience"
+        secondaryLabel="Request a quote"
         tone="cream"
       />
     </>

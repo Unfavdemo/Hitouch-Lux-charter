@@ -38,7 +38,10 @@ export function inquiryToTripDraft(inquiry: {
   if (!inquiry.tripPayload || typeof inquiry.tripPayload !== "object" || Array.isArray(inquiry.tripPayload)) {
     return null;
   }
-  const trip = inquiry.tripPayload as TripStepInput;
+  const trip = inquiry.tripPayload as TripStepInput & {
+    vehicleClass?: string;
+    suggestedVehicleClass?: string;
+  };
   if (!trip.pickupDate || !trip.pickupAddress || !trip.destinationAddress) return null;
 
   const scheduledAt = combineDateAndTime(trip.pickupDate, trip.pickupTime || "12:00");
@@ -47,13 +50,15 @@ export function inquiryToTripDraft(inquiry: {
       ? (inquiry.quoteSummary as Record<string, unknown>)
       : null;
 
+  const suggestedClass = trip.suggestedVehicleClass || trip.vehicleClass;
+
   return {
     scheduledAt,
     pickupLabel: trip.pickupAddress,
     dropoffLabel: trip.destinationAddress,
     notes: [
       "Converted from /book inquiry.",
-      trip.vehicleClass ? `Vehicle: ${trip.vehicleClass}` : null,
+      suggestedClass ? `Suggested vehicle class (assigned by HiTouch): ${suggestedClass}` : null,
       trip.passengers ? `Passengers: ${trip.passengers}` : null,
       trip.notes ? `Notes: ${trip.notes}` : null,
       quote?.totalDisplay ? `Quote: ${String(quote.totalDisplay)}` : null,

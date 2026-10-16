@@ -81,7 +81,11 @@ export default async function AdminBookingInquiriesPage() {
                           {trip.pickupAddress} → {trip.destinationAddress}
                         </p>
                         <p className="mt-1 text-zinc-500">
-                          {trip.pickupDate} {trip.pickupTime} · {trip.vehicleClass}
+                          {trip.pickupDate} {trip.pickupTime}
+                          {trip.suggestedVehicleClass || trip.vehicleClass
+                            ? ` · Suggested: ${trip.suggestedVehicleClass || trip.vehicleClass}`
+                            : ""}
+                          {trip.passengers ? ` · ${trip.passengers} pax` : ""}
                         </p>
                       </>
                     ) : (

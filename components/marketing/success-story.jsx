@@ -3,7 +3,7 @@ import { ReviewMasonry } from "@/components/marketing/review-masonry";
 
 export function SuccessStory({ award, reviews, light = false }) {
   const headingClass = light ? "text-light-ink" : "text-heading";
-  const mutedClass = light ? "text-light-muted" : "text-charcoal";
+  const mutedClass = light ? "text-light-muted" : "text-on-dark-muted";
 
   return (
     <div>
@@ -27,7 +27,7 @@ export function SuccessStory({ award, reviews, light = false }) {
       </div>
 
       <div className="mt-14">
-        <p className={`text-center text-[11px] font-semibold uppercase tracking-[var(--tracking-brand)] ${light ? "text-accent" : "text-accent-readable"}`}>
+        <p className={`text-center text-[11px] font-semibold uppercase tracking-[var(--tracking-brand)] ${light ? "text-accent-on-light" : "text-accent-readable"}`}>
           Guest reflections
         </p>
         <p className={`mt-3 text-center text-sm ${mutedClass}`}>

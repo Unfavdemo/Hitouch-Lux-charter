@@ -1,7 +1,45 @@
 "use client";
 
-import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+
+function usePrefersReducedMotion() {
+  const [reduce, setReduce] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReduce(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+
+  return reduce;
+}
+
+function useInViewOnce() {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "-10% 0px" },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  return { ref, inView };
+}
 
 function useCountUp(target, active, reduceMotion) {
   const [animated, setAnimated] = useState(0);
@@ -28,27 +66,20 @@ function useCountUp(target, active, reduceMotion) {
 }
 
 function MetricCard({ metric, light = false }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-10%" });
-  const reduce = useReducedMotion();
-  const display = useCountUp(metric.value, inView, !!reduce);
+  const { ref, inView } = useInViewOnce();
+  const reduceMotion = usePrefersReducedMotion();
+  const display = useCountUp(metric.value, inView, reduceMotion);
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial={reduce ? false : { opacity: 0, y: 12 }}
-      whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-10%" }}
-      transition={{ duration: 0.5 }}
       className={`rounded-[var(--radius-card)] border p-6 shadow-sm ${
-        light
-          ? "border-light-ink/10 bg-cream"
-          : "border-border-subtle bg-surface"
+        light ? "border-light-ink/10 bg-cream" : "border-border-subtle bg-surface"
       }`}
     >
       <p
         className={`text-[11px] font-semibold uppercase tracking-[var(--tracking-brand)] ${
-          light ? "text-light-muted" : "text-charcoal"
+          light ? "text-light-muted" : "text-on-dark-muted"
         }`}
       >
         {metric.label}
@@ -64,12 +95,12 @@ function MetricCard({ metric, light = false }) {
       </p>
       <p
         className={`mt-3 text-sm leading-relaxed ${
-          light ? "text-light-muted" : "text-charcoal"
+          light ? "text-light-muted" : "text-on-dark-body"
         }`}
       >
         {metric.description}
       </p>
-    </motion.div>
+    </div>
   );
 }
 
