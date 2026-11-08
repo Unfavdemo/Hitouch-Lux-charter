@@ -3,20 +3,19 @@ import Image from "next/image";
 export function MbeCertificationBadge({ className = "" }) {
   return (
     <figure
-      className={`flex flex-col items-center text-center ${className}`.trim()}
+      className={`flex justify-center ${className}`.trim()}
       aria-label="Minority certified business"
     >
-      <Image
-        src="/certifications/mbe-certified.png"
-        alt="Minority business enterprise certified"
-        width={96}
-        height={96}
-        unoptimized
-        className="h-20 w-20 object-contain sm:h-24 sm:w-24"
-      />
-      <figcaption className="mt-2 max-w-[14rem] text-xs leading-snug text-charcoal">
-        Minority certified business
-      </figcaption>
+      <div className="inline-flex items-center justify-center rounded-md bg-[#f4f5fa] px-8 py-4 sm:px-10 sm:py-5">
+        <Image
+          src="/certifications/mbe-nmsdc.png"
+          alt="Minority business enterprise certified"
+          width={363}
+          height={363}
+          unoptimized
+          className="h-28 w-28 object-contain sm:h-32 sm:w-32"
+        />
+      </div>
     </figure>
   );
 }

@@ -5,6 +5,7 @@ import { MarketingFeatureCard } from "@/components/marketing/marketing-feature-c
 import { MarketingPageHero } from "@/components/marketing/marketing-page-hero";
 import { MarketingPageSection } from "@/components/marketing/marketing-page-section";
 import { MarketingSectionHeading } from "@/components/marketing/marketing-section-heading";
+import { MbeCertificationBadge } from "@/components/marketing/mbe-certification-badge";
 import { SuccessStory } from "@/components/marketing/success-story";
 import { Button } from "@/components/ui/button";
 import { industryAward, importedReviews } from "@/content/reviews";
@@ -99,6 +100,9 @@ export default function AboutPage() {
                   <dd className="text-right font-medium text-light-ink">
                     {site.city}, {site.region}
                   </dd>
+                </div>
+                <div className="border-t border-light-ink/10 pt-5">
+                  <MbeCertificationBadge />
                 </div>
               </dl>
             }
